@@ -1,0 +1,49 @@
+---
+title: "Examples"
+author: "Brandie QC"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Examples
+
+-   Figure updates:
+
+    -   Sort “over time” figures by date (convert from character to date, Brandie can demonstrate)
+
+    -   Error bars on mean TDR per bed bar plot (Brandie can share some code for this)
+
+    -   Bar plot for mean TDR per position (+ error bars)
+
+    -   Compare Bed\*Pos over time
+
+        -   Example Top of Bed A vs Top of Bed B (similar to the boxplot you made)
+
+## Libraries
+```{r}
+library(tidyverse)
+
+sem <- function(x, na.rm=FALSE) {           #for calculating standard error
+  sd(x,na.rm=na.rm)/sqrt(length(na.omit(x)))
+} 
+```
+
+## Example of converting Date characters to actual dates 
+```{r}
+dummy_dates <- tibble(Date=c("10/16/25", "8/16/25", "7/4/25"))
+dummy_dates
+
+dummy_dates %>% 
+  mutate(Date_2=mdy(Date))
+```
+
+
+1.  Test for a correlation between TDR and MetStation when the data overlaps
+
+    1.  Correlation test with mean MetStation soil moisture for summer 2024 and mean TDR for each Bed for 2024
+
+    2.  Calculate the difference from the Metstation sensor to see how that varies over time and across positions of TDR measurements (can make figures where the y axis is the difference) 
