@@ -25,7 +25,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Libraries
 ```{r}
-library(tidyverse)
+library(tidyverse) #for easy data manipulations 
+library(corrplot) #plotting correlations and getting the significance of correlations 
 
 sem <- function(x, na.rm=FALSE) {           #for calculating standard error
   sd(x,na.rm=na.rm)/sqrt(length(na.omit(x)))
@@ -34,16 +35,74 @@ sem <- function(x, na.rm=FALSE) {           #for calculating standard error
 
 ## Example of converting Date characters to actual dates 
 ```{r}
-dummy_dates <- tibble(Date=c("10/16/25", "8/16/25", "7/4/25"))
-dummy_dates
+dummy_dates <- tibble(Date=c("10/16/25", "8/16/25", "7/4/25")) #make a data frame with some dates
+dummy_dates #these dates are "characters" according to R right now 
 
 dummy_dates %>% 
-  mutate(Date_2=mdy(Date))
+  mutate(Date_2=mdy(Date)) #convert those dates to the date format - we used mdy here because our dates are in the month/day/year format 
 ```
 
+
+## Example for error bars
+```{r}
+wl2_establishment <- read_csv("../input/WL2_Establishment.csv") #data for survival 3 weeks post-transplant in 2023 at WL2
+head(wl2_establishment) #look at first few rows 
+
+wl2_est_summary <- wl2_establishment %>% 
+  group_by(bed) %>% #summarize by bed 
+  summarise(meanSurv=mean(Establishment, na.rm=TRUE), #calculate the mean of establishment
+            semSurv=sem(Establishment, na.rm=TRUE))  #calculate the standard error of establishment using the function at the top of this script ("sem")
+wl2_est_summary
+
+wl2_est_summary %>% 
+  ggplot(aes(x=fct_reorder(bed, meanSurv), y=meanSurv)) + #fct_reorder just reorders the beds on the x axis according to their mean establishment 
+  geom_col(width = 0.7,position = position_dodge(0.75)) + #make a bar plot 
+  geom_errorbar(aes(ymin=meanSurv-semSurv, ymax=meanSurv+semSurv), #add error bars 
+                width=.2, position = position_dodge(0.75)) + #give the error bars some properties to match the bars
+  theme_classic() + 
+  labs(x="Bed", y="Establishment") #label the x and y axis 
+
+
+## make the same plot as above but filter first
+wl2_est_summary %>% 
+  filter(bed=="A" | bed=="B") %>% #only keep beds A and B, you could do position == "Top" for example 
+  ggplot(aes(x=fct_reorder(bed, meanSurv), y=meanSurv)) +
+  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  geom_errorbar(aes(ymin=meanSurv-semSurv,ymax=meanSurv+semSurv),width=.2, position = 
+                  position_dodge(0.75)) + 
+  theme_classic() +
+  labs(x="Bed", y="Establishment", title="Top") #add a title to indicate what position you filtered by 
+```
 
 1.  Test for a correlation between TDR and MetStation when the data overlaps
 
     1.  Correlation test with mean MetStation soil moisture for summer 2024 and mean TDR for each Bed for 2024
 
     2.  Calculate the difference from the Metstation sensor to see how that varies over time and across positions of TDR measurements (can make figures where the y axis is the difference) 
+    
+```{r}
+wl2_cors <- wl2_establishment %>% 
+  select(GrwSsn_GD_Recent, GrwSsn_GD_Historical) #make a dataframe with just the columns you want to correlate
+
+cor.norm = cor(wl2_cors) #test correlations among the traits
+cor.norm
+cor.sig <- cor.mtest(wl2_cors, method = "pearson") #getting the p-values for correlations 
+cor.sig
+```
+
+```{r}
+test_metdata <- tibble(Date=c("10/16/25", "8/16/25", "7/4/25"), #tibble allows you to make new data frames 
+                    MetStation_moisture=c(0, 0, 0.2))
+test_metdata
+
+test_TDRdata <- tibble(Date=c("10/16/25", "8/16/25", "7/4/25", "10/16/25", "8/16/25", "7/4/25"),
+                       Bed = c("A", "A","A", "B", "B", "B"),
+                       Pos = c("Top","Top","Top","Top","Top","Top"),
+                       TDR = c(0, 0, 0.2, 0, 0, 0.2))
+test_TDRdata
+
+merge_test <- left_join(test_TDRdata, test_metdata) %>% #merge the metstation and TDR data, by using left_join and having the TDR listed first, it will duplicate the metstation data to line up with the TDR data according to the Date column 
+  mutate(Moisture_dif = MetStation_moisture-TDR) #calcualte the difference between each of the TDR measurements and the MetStation soil moisture 
+merge_test
+```
+
