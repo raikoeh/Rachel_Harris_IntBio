@@ -20,7 +20,6 @@ When you click the **Knit** button a document will be generated that includes bo
 library(tidyverse)
 library(corrplot)
 
-
 sem <- function(x, na.rm=FALSE) {           #for calculating standard error
   sd(x,na.rm=na.rm)/sqrt(length(na.omit(x)))
 }
@@ -29,14 +28,14 @@ sem <- function(x, na.rm=FALSE) {           #for calculating standard error
 #Changing "date" from characters to actual dates in R
 
 ```{r}
-combinedtdr$...1 <- NULL
+TDR_Dates <- tibble(date=c)
 
 ```
 
 #All "over time" plots change date from character to actual dates
 ```{r}
 #setting bed average
- bed_avg <- combinedtdr %>% 
+ bed_avg <- combined_tdr %>% 
   group_by(date, Bed) %>% 
   summarize(mean_TDR = mean(TDR, na.rm = TRUE), .groups = "drop")
 
@@ -50,7 +49,7 @@ combinedtdr$...1 <- NULL
   scale_color_viridis_d(option = "viridis")
  
 #setting position average
- position_avg <- combinedtdr %>% 
+ position_avg <- combined_tdr %>% 
   group_by(date, Position) %>% 
   summarize(mean_TDR = mean(TDR, na.rm = TRUE), .groups = "drop")
  
@@ -61,39 +60,5 @@ combinedtdr$...1 <- NULL
   labs(title = "Average TDR per Position over Time", y = "Avg TDR", x = "Date") +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11))
- 
-#All TDR points over time
-  ggplot(combinedtdr, aes(x = date, y = TDR, color = Bed)) +
-   geom_point(size = 3, alpha = 0.5) +
-   labs(title = "All TDR Points over Time", x = "Date", y = "TDR", color = "Bed") +
-   theme_classic() +
-   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 11)) +
-   scale_color_viridis_d(option = "viridis")
-```
-
-
-
-
-
-
-
-
-```{r}
-#Error bars
-library(ggplot2)
-library(dplyr)
-
-#Mean TDR for Each Bed
-bed_means <- combinedtdr %>% 
-  group_by(Bed) %>% 
-  summarize(mean_TDR = mean(TDR, na.rm = TRUE))
-
-ggplot(bed_means, aes(x = Bed, y = mean_TDR)) +
-  geom_col(fill = "steelblue") +
-  labs(title = "Mean TDR for Each Bed", y = "Mean TDR", x = "Bed") +
-  theme_minimal()
-
-
- 
 ```
 
