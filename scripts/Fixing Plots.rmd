@@ -8,14 +8,7 @@ date: "2025-10-10"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-
-#Libraries that I'll be using + initial setup
+# Libraries that I'll be using + initial setup
 ```{r}
 library(tidyverse)
 library(corrplot)
@@ -25,14 +18,14 @@ sem <- function(x, na.rm=FALSE) {           #for calculating standard error
 }
 ```
 
-#Changing "date" from characters to actual dates in R
+# Changing "date" from characters to actual dates in R
 
 ```{r}
 TDR_Dates <- tibble(date=c)
 
 ```
 
-#All "over time" plots change date from character to actual dates
+## All "over time" plots change date from character to actual dates
 ```{r}
 #setting bed average
  bed_avg <- combined_tdr %>% 
@@ -47,6 +40,7 @@ TDR_Dates <- tibble(date=c)
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 11)) +
   scale_color_viridis_d(option = "viridis")
+ggsave("../output/Bedovertime.png", width = 12, height = 8, units = "in")
  
 #setting position average
  position_avg <- combined_tdr %>% 
@@ -60,5 +54,6 @@ TDR_Dates <- tibble(date=c)
   labs(title = "Average TDR per Position over Time", y = "Avg TDR", x = "Date") +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11))
+ggsave("../output/Positionovertime.png", width = 12, height = 8, units = "in")
 ```
 
