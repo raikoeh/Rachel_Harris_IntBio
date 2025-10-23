@@ -1,0 +1,64 @@
+---
+title: "Rachel_Harris_IntBio"
+output: html_document
+date: "2025-10-10"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+#Libraries that I'll be using + initial setup
+```{r}
+library(tidyverse)
+library(corrplot)
+
+sem <- function(x, na.rm=FALSE) {           #for calculating standard error
+  sd(x,na.rm=na.rm)/sqrt(length(na.omit(x)))
+}
+```
+
+#Changing "date" from characters to actual dates in R
+
+```{r}
+TDR_Dates <- tibble(date=c)
+
+```
+
+#All "over time" plots change date from character to actual dates
+```{r}
+#setting bed average
+ bed_avg <- combined_tdr %>% 
+  group_by(date, Bed) %>% 
+  summarize(mean_TDR = mean(TDR, na.rm = TRUE), .groups = "drop")
+
+#Average TDR per Bed over Time Plot
+ ggplot(bed_avg, aes(x = date, y = mean_TDR, color = Bed)) +
+  geom_point(size = 3) +
+  geom_line() +
+  labs(title = "Average TDR per Bed over Time", y = "Avg TDR", x = "Date") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 11)) +
+  scale_color_viridis_d(option = "viridis")
+ 
+#setting position average
+ position_avg <- combined_tdr %>% 
+  group_by(date, Position) %>% 
+  summarize(mean_TDR = mean(TDR, na.rm = TRUE), .groups = "drop")
+ 
+#Average TDR per Position over Time Plot
+ ggplot(position_avg, aes(x = date, y = mean_TDR, color = Position)) +
+  geom_point(size = 3) +
+  geom_line() +
+  labs(title = "Average TDR per Position over Time", y = "Avg TDR", x = "Date") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11))
+```
+
