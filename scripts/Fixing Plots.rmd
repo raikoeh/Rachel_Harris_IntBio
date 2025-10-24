@@ -18,11 +18,10 @@ sem <- function(x, na.rm=FALSE) {           #for calculating standard error
 }
 ```
 
-# Changing "date" from characters to actual dates in R
+# Load TDR Data
 
 ```{r}
-TDR_Dates <- tibble(date=c)
-
+combined_tdr <- read_csv("../input/WL2_2024_TDR_Processed.csv") #produced in "TDR_Plots.R"
 ```
 
 ## All "over time" plots change date from character to actual dates
@@ -64,7 +63,7 @@ library(ggplot2)
 library(dplyr)
 
 #Mean TDR for Each Bed
-bed_means <- combinedtdr %>% 
+bed_means <- combined_tdr %>% 
   group_by(Bed, Position) %>% 
   summarize(mean_TDR = mean(TDR, na.rm = TRUE),
           sem_TDR=sem(TDR, na.rm=TRUE))
@@ -74,7 +73,7 @@ bed_means
 bed_means %>% 
   ggplot(aes(x=fct_reorder(Bed, mean_TDR), y=sem_TDR)) + 
   geom_col(width = 0.7,position = position_dodge(0.75)) +  
-  geom_errorbar(aes(ymin=mean_TDR-sem_TDR, ymax=mean_TDR+sem_TDR),  #theres three error bars per column
+  geom_errorbar(aes(ymin=mean_TDR-sem_TDR, ymax=mean_TDR+sem_TDR),  #there's three error bars per column - BQC, because bed_means has 3 rows for every bed (for the three positions per bed)
                 width=.2, position = position_dodge(0.75)) + 
   theme_classic() + 
   labs(x="Bed", y="Mean TDR")
