@@ -65,24 +65,56 @@ library(dplyr)
 
 #Mean TDR for Each Bed
 bed_means <- combinedtdr %>% 
-  group_by(Bed) %>% 
+  group_by(Bed, Position) %>% 
   summarize(mean_TDR = mean(TDR, na.rm = TRUE),
           sem_TDR=sem(TDR, na.rm=TRUE))
 bed_means
 
+#error bars are weird on this plot
 bed_means %>% 
   ggplot(aes(x=fct_reorder(Bed, mean_TDR), y=sem_TDR)) + 
   geom_col(width = 0.7,position = position_dodge(0.75)) +  
-  geom_errorbar(aes(ymin=mean_TDR-sem_TDR, ymax=mean_TDR+sem_TDR),  
+  geom_errorbar(aes(ymin=mean_TDR-sem_TDR, ymax=mean_TDR+sem_TDR),  #theres three error bars per column
                 width=.2, position = position_dodge(0.75)) + 
   theme_classic() + 
   labs(x="Bed", y="Mean TDR")
 
 ggplot(bed_means, aes(x = Bed, y = mean_TDR)) +
   geom_col(fill = "steelblue") +
-  labs(title = "Mean TDR for Each Bed", y = "Mean TDR", x = "Bed") +
+  labs(title = "Mean TDR per Bed", y = "Mean TDR", x = "Bed") +
   theme_minimal()
+ggsave("../output/MeanTDRperBed.png", width = 12, height = 8, units = "in")
 
 
+#Filtering plots for each bed position
+bed_means %>% 
+  filter(Position=="top") %>% 
+  ggplot(aes(x=fct_reorder(Bed, mean_TDR), y=mean_TDR)) +
+  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  geom_errorbar(aes(ymin=mean_TDR-sem_TDR,ymax=mean_TDR+sem_TDR),width=.2, position = 
+                  position_dodge(0.75)) + 
+  theme_classic() +
+  labs(x="Bed", y="Mean TDR", title="All Beds at Top Position")
+ggsave("../output/MeanTDRTopBeds.png", width = 12, height = 8, units = "in")
+
+bed_means %>% 
+  filter(Position=="middle") %>% 
+  ggplot(aes(x=fct_reorder(Bed, mean_TDR), y=mean_TDR)) +
+  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  geom_errorbar(aes(ymin=mean_TDR-sem_TDR,ymax=mean_TDR+sem_TDR),width=.2, position = 
+                  position_dodge(0.75)) + 
+  theme_classic() +
+  labs(x="Bed", y="Mean TDR", title="All Beds at Middle Position")
+ggsave("../output/MeanTDRMiddleBeds.png", width = 12, height = 8, units = "in")
+
+bed_means %>% 
+  filter(Position=="end") %>% 
+  ggplot(aes(x=fct_reorder(Bed, mean_TDR), y=mean_TDR)) +
+  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  geom_errorbar(aes(ymin=mean_TDR-sem_TDR,ymax=mean_TDR+sem_TDR),width=.2, position = 
+                  position_dodge(0.75)) + 
+  theme_classic() +
+  labs(x="Bed", y="Mean TDR", title="All Beds at End Position")
+ggsave("../output/MeanTDREndBeds.png", width = 12, height = 8, units = "in")
  
 ```
