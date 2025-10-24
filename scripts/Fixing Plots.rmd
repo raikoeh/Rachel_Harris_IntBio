@@ -57,3 +57,22 @@ ggsave("../output/Bedovertime.png", width = 12, height = 8, units = "in")
 ggsave("../output/Positionovertime.png", width = 12, height = 8, units = "in")
 ```
 
+
+```{r}
+#Error bars
+library(ggplot2)
+library(dplyr)
+
+#Mean TDR for Each Bed
+bed_means <- combinedtdr %>% 
+  group_by(Bed) %>% 
+  summarize(mean_TDR = mean(TDR, na.rm = TRUE))
+
+ggplot(bed_means, aes(x = Bed, y = mean_TDR)) +
+  geom_col(fill = "steelblue") +
+  labs(title = "Mean TDR for Each Bed", y = "Mean TDR", x = "Bed") +
+  theme_minimal()
+
+
+ 
+```
