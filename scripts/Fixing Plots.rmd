@@ -143,7 +143,6 @@ MetStationData1$X.TIMESTAMP <- sub('^"', ' ', MetStationData1$X.TIMESTAMP)
 MetStationData1$X.TIMESTAMP <- as.POSIXct(MetStationData1$X.TIMESTAMP, format="%Y-%m-%d %H:%M:%S")
 
 MetStationData1 <- MetStationData1 %>% slice(-c(1, 2))
-
 #
 
 ```
