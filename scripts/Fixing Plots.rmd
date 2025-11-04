@@ -136,14 +136,56 @@ ggsave("../output/MeanTDREndBeds.png", width = 12, height = 8, units = "in")
 ```{r}
 #Compare Bed and Position over time
 
-library(dplyr)
 
+#Example, A and B top
+bed_pos_means %>% 
+ filter(Bed %in% c("A", "B"), Position == "top") %>%  #only keep beds A and B, you could do position == "Top" for example 
+  ggplot(aes(x=fct_reorder(Bed, mean_TDR), y=mean_TDR)) +
+  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  geom_errorbar(aes(ymin=mean_TDR-sem_TDR,ymax=mean_TDR+sem_TDR),width=.2, position = 
+                  position_dodge(0.75)) + 
+  theme_classic() +
+  labs(x="Bed", y="Mean TDR", title="Beds A and B at Top Position")
+ggsave("../output/MeanTDREndBeds.png", width = 12, height = 8, units = "in")
+
+bed_tdr_avg <- combined_tdr %>% 
+  group_by(Bed, date) %>% 
+  summarise(
+    mean_TDR=mean(TDR, na.rm=TRUE),
+    sem_TDR=sem(TDR, na.rm=TRUE)/sqrt(n()), .groups = "drop")
+
+bed_tdr_avg
+
+#Average TDR of All Beds over Time
+bed_tdr_avg %>%
+  ggplot(aes(x =date, y =mean_TDR, color = Bed, group = Bed)) +
+  geom_line(size = 1) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11)) +
+  labs(x = "Date", y = "Average TDR", color = "Bed",
+    title = "Average TDR for All Beds over Time") +
+  scale_color_viridis_d(option = "viridis")
+ggsave("../output/MeanTDREndBeds.png", width = 12, height = 8, units = "in")
+
+#Average TDR of A, K, B, C over Time
+bed_tdr_avg %>%
+  filter(Bed %in% c("A", "B", "C", "K")) %>% 
+  ggplot(aes(x =date, y =mean_TDR, color = Bed, group = Bed)) +
+  geom_line(size = 1) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11)) +
+  labs(x = "Date", y = "Average TDR", color = "Bed",
+    title = "Average TDR for All Beds over Time") +
+  scale_color_viridis_d(option = "viridis")
+ggsave("../output/MeanTDREndBeds.png", width = 12, height = 8, units = "in")
+
+```
+
+```{r}
 #fixing MetStationData1
-MetStationData1$X.TIMESTAMP <- sub('^"', ' ', MetStationData1$X.TIMESTAMP)
+MetStationData1$X.TIMESTAMP <- sub('^"', ' ', MetStationData1$X.TIMESTAMP) #took away " at the start of every timestamp
 MetStationData1$X.TIMESTAMP <- as.POSIXct(MetStationData1$X.TIMESTAMP, format="%Y-%m-%d %H:%M:%S")
 
-MetStationData1 <- MetStationData1 %>% slice(-c(1, 2))
-#
-
+MetStationData1 <- MetStationData1 %>% slice(-c(1, 2)) #removed first two empty rows
 ```
 
