@@ -182,10 +182,37 @@ ggsave("../output/MeanTDREndBeds.png", width = 12, height = 8, units = "in")
 ```
 
 ```{r}
+
 #fixing MetStationData1
 MetStationData1$X.TIMESTAMP <- sub('^"', ' ', MetStationData1$X.TIMESTAMP) #took away " at the start of every timestamp
 MetStationData1$X.TIMESTAMP <- as.POSIXct(MetStationData1$X.TIMESTAMP, format="%Y-%m-%d %H:%M:%S")
 
 MetStationData1 <- MetStationData1 %>% slice(-c(1, 2)) #removed first two empty rows
+
+```
+
+```{r}
+#filtering metstation for dates starting in summer 2024
+library(dplyr)
+
+MetStation_summer2024 <- MetStationData1 %>% #says there is no 2024 timestamps
+  filter(X.TIMESTAMP >= as.POSIXct("2024-06-01 00:00:00") &
+           X.TIMESTAMP >= "2024-08-31 23:59:59")
+
+MS_Test <- read.table("CR1000XSeries_IntBioHalfHourTable.dat", header = TRUE, sep = "", fill = TRUE)
+write.csv(df, "MS_test.csv", row.names = FALSE)
+
+```
+
+
+```{r}
+# correlating metstation and TDR data, example code below
+wl2_cors <- wl2_establishment %>% 
+  select(GrwSsn_GD_Recent, GrwSsn_GD_Historical) #make a dataframe with just the columns you want to correlate
+
+cor.norm = cor(wl2_cors) #test correlations among the traits
+cor.norm
+cor.sig <- cor.mtest(wl2_cors, method = "pearson") #getting the p-values for correlations 
+cor.sig
 ```
 
