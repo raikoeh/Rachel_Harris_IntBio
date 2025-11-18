@@ -34,6 +34,10 @@ combined_tdr_dates <- combined_tdr %>%
                               if_else(date=="7/3/24", "7/2/24", date)))) %>%  #fix the errors found above
   mutate(date=mdy(date)) #converting the date column to a date format 
 unique(combined_tdr_dates$date) #check if the date column has been properly corrected 
+
+combined_tdr_dates %>% filter(is.na(TDR))
+#no measurements for Beds B,C,D,F,J on 8/20, 8/27 - Remove these dates so that the averages aren't thrown off
+#some beds only have data for one position on some dates...
 ```
 
 ## All "over time" plots change date from character to actual dates
@@ -71,7 +75,9 @@ ggsave("../output/Positionovertime.png", width = 12, height = 8, units = "in")
 ## Error bars
 ```{r}
 #Mean TDR for Each Bed
-bed_means <- combined_tdr %>% 
+bed_means <- combined_tdr_dates %>% 
+  filter(date != "2024-08-20") %>% 
+  filter(date != "2024-08-27") %>% #remove these dates since don't have data for all beds (might throw off the averages)
   group_by(Bed) %>% 
   summarize(mean_TDR = mean(TDR, na.rm = TRUE),
           sem_TDR=sem(TDR, na.rm=TRUE))
@@ -89,7 +95,9 @@ ggsave("../output/MeanTDRperBed.png", width = 12, height = 8, units = "in")
 
 
 #new df bed_pos_means
-bed_pos_means <- combined_tdr %>% 
+bed_pos_means <- combined_tdr_dates %>% 
+  filter(date != "2024-08-20") %>% 
+  filter(date != "2024-08-27") %>% #remove these dates since don't have data for all beds (might throw off the averages)
   group_by(Position, Bed) %>% 
   summarize(mean_TDR = mean(TDR, na.rm = TRUE),
           sem_TDR=sem(TDR, na.rm=TRUE))
@@ -170,10 +178,35 @@ bed_tdr_avg %>%
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=25)) +
   labs(x = "Date", y = "Average TDR", color = "Bed",
-    title = "Average TDR for Beds A, B, C K over Time- Top") +
+    title = "Average TDR for Beds A, B, C, K over Time- Top") +
   scale_color_viridis_d(option = "viridis")
 ggsave("../output/MeanTDRTopBeds_Time.png", width = 12, height = 8, units = "in")
 
+#Average TDR of A, B, I, J over Time - Middle Position 
+bed_tdr_avg %>%
+  filter(Bed %in% c("A", "B", "I", "J")) %>% 
+  filter(Position=="middle") %>% 
+  ggplot(aes(x =date, y =mean_TDR, color = Bed, group = Bed)) +
+  geom_line(size = 1) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=25)) +
+  labs(x = "Date", y = "Average TDR", color = "Bed",
+    title = "Average TDR for Beds A, B, I, J over Time- Middle") +
+  scale_color_viridis_d(option = "viridis")
+ggsave("../output/MeanTDRMiddleBeds_Time.png", width = 12, height = 8, units = "in")
+
+#Average TDR of A, C, D, E over Time - End Position 
+bed_tdr_avg %>%
+  filter(Bed %in% c("A", "C", "D", "E")) %>% 
+  filter(Position=="end") %>% 
+  ggplot(aes(x =date, y =mean_TDR, color = Bed, group = Bed)) +
+  geom_line(size = 1) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=25)) +
+  labs(x = "Date", y = "Average TDR", color = "Bed",
+    title = "Average TDR for Beds A, C, D, E over Time- End") +
+  scale_color_viridis_d(option = "viridis")
+ggsave("../output/MeanTDREndBeds_Time.png", width = 12, height = 8, units = "in")
 ```
 
 ```{r}
