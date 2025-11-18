@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Libraries that I'll be using + initial setup
 ```{r}
-library(tidyverse)
+library(tidyverse) #includes ggplot and dplyer
 library(corrplot)
 
 sem <- function(x, na.rm=FALSE) {           #for calculating standard error
@@ -56,30 +56,14 @@ ggsave("../output/Bedovertime.png", width = 12, height = 8, units = "in")
 ggsave("../output/Positionovertime.png", width = 12, height = 8, units = "in")
 ```
 
-
+## Error bars
 ```{r}
-#Error bars
-library(ggplot2)
-library(dplyr)
-
 #Mean TDR for Each Bed
 bed_means <- combined_tdr %>% 
   group_by(Bed) %>% 
   summarize(mean_TDR = mean(TDR, na.rm = TRUE),
           sem_TDR=sem(TDR, na.rm=TRUE))
-
 bed_means
-
-
-
-#should I keep this plot since the next plot is the Mean TDR per Bed?
-bed_means %>% 
-  ggplot(aes(x=fct_reorder(Bed, mean_TDR), y=sem_TDR)) + 
-  geom_col(width = 0.7,position = position_dodge(0.75)) +  
-  geom_errorbar(aes(ymin=mean_TDR-sem_TDR, ymax=mean_TDR+sem_TDR),
-                width=.2, position = position_dodge(0.75)) + 
-  theme_classic() + 
-  labs(x="Bed", y="Mean TDR")
 
 #Mean TDR per Bed
 ggplot(bed_means, aes(x = Bed, y = mean_TDR)) +
@@ -87,7 +71,8 @@ ggplot(bed_means, aes(x = Bed, y = mean_TDR)) +
    geom_errorbar(aes(ymin=mean_TDR-sem_TDR,ymax=mean_TDR+sem_TDR),width=.2, position = 
                   position_dodge(0.75)) + 
   labs(title = "Mean TDR per Bed", y = "Mean TDR", x = "Bed") +
-  theme_minimal()
+  theme_minimal() +
+  theme(text=element_text(size=25)) #making the text bigger 
 ggsave("../output/MeanTDRperBed.png", width = 12, height = 8, units = "in")
 
 
