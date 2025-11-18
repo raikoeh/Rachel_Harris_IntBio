@@ -22,14 +22,17 @@ sem <- function(x, na.rm=FALSE) {           #for calculating standard error
 
 ```{r}
 combined_tdr <- read_csv("../input/WL2_2024_TDR_Processed.csv") #produced in "TDR_Plots.R"
-unique(combined_tdr$date) #check for issues in date column #some cases of "816124"
+unique(combined_tdr$date) #check for issues in date column 
+#some cases of "816124"
+#Where did the April time points come from? Is this an error from data entry?
+combined_tdr %>% filter(Bed=="J" | Bed=="K") %>% mutate(date=mdy(date)) %>% arrange(Bed, date) #missing 9/3/24 
 
 combined_tdr_dates <- combined_tdr %>% 
-  mutate(date=if_else(date=="816124", "8/16/24", date)) %>%  #fix the error found above
+  mutate(date=if_else(date=="816124", "8/6/24", 
+                      if_else(date=="4/3/24", "9/3/24", date))) %>%  #fix the errors found above
   mutate(date=mdy(date)) #converting the date column to a date format 
 unique(combined_tdr_dates$date) #check if the date column has been properly corrected 
-
-#Where did the April time points come from? Is this an error from data entry?
+#some 7/2/24 and some 7/3/24, but that matches the data sheet...
 ```
 
 ## All "over time" plots change date from character to actual dates
