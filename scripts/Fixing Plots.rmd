@@ -26,13 +26,14 @@ unique(combined_tdr$date) #check for issues in date column
 #some cases of "816124"
 #Where did the April time points come from? Is this an error from data entry?
 combined_tdr %>% filter(Bed=="J" | Bed=="K") %>% mutate(date=mdy(date)) %>% arrange(Bed, date) #missing 9/3/24 
+#some 7/2/24 and some 7/3/24, error from hand-written data - should be 7/2
 
 combined_tdr_dates <- combined_tdr %>% 
   mutate(date=if_else(date=="816124", "8/6/24", 
-                      if_else(date=="4/3/24", "9/3/24", date))) %>%  #fix the errors found above
+                      if_else(date=="4/3/24", "9/3/24", 
+                              if_else(date=="7/3/24", "7/2/24", date)))) %>%  #fix the errors found above
   mutate(date=mdy(date)) #converting the date column to a date format 
 unique(combined_tdr_dates$date) #check if the date column has been properly corrected 
-#some 7/2/24 and some 7/3/24, but that matches the data sheet...
 ```
 
 ## All "over time" plots change date from character to actual dates
@@ -48,7 +49,7 @@ unique(combined_tdr_dates$date) #check if the date column has been properly corr
   geom_line() +
   labs(title = "Average TDR per Bed over Time", y = "Avg TDR", x = "Date") +
   theme_classic() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 11)) +
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=25)) +
   scale_color_viridis_d(option = "viridis")
 ggsave("../output/Bedovertime.png", width = 12, height = 8, units = "in")
  
@@ -63,7 +64,7 @@ ggsave("../output/Bedovertime.png", width = 12, height = 8, units = "in")
   geom_line() +
   labs(title = "Average TDR per Position over Time", y = "Avg TDR", x = "Date") +
   theme_classic() +
-  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11))
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=25)) 
 ggsave("../output/Positionovertime.png", width = 12, height = 8, units = "in")
 ```
 
@@ -142,35 +143,36 @@ bed_pos_means %>%
   labs(x="Bed", y="Mean TDR", title="Beds A and B at Top Position")
 #ggsave("../output/MeanTDRtopBeds_AB_Time.png", width = 12, height = 8, units = "in")
 
-bed_tdr_avg <- combined_tdr %>% 
-  group_by(Bed, date) %>% 
+bed_tdr_avg <- combined_tdr_dates %>% 
+  group_by(Bed, date, Position) %>% 
   summarise(
-    mean_TDR=mean(TDR, na.rm=TRUE),
-    sem_TDR=sem(TDR, na.rm=TRUE), .groups = "drop")
+    mean_TDR=mean(TDR, na.rm=TRUE), .groups = "drop")
 bed_tdr_avg
 
-#Average TDR of All Beds over Time
+#Average TDR of All Beds over Time - Top position 
 bed_tdr_avg %>%
+  filter(Position=="top") %>% 
   ggplot(aes(x =date, y =mean_TDR, color = Bed, group = Bed)) +
   geom_line(size = 1) +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=25)) +
   labs(x = "Date", y = "Average TDR", color = "Bed",
-    title = "Average TDR for All Beds over Time") +
+    title = "Average TDR for All Beds over Time - Top") +
   scale_color_viridis_d(option = "viridis")
-ggsave("../output/MeanTDRperBed_Time.png", width = 12, height = 8, units = "in")
+ggsave("../output/MeanTDRTopBed_Time.png", width = 12, height = 8, units = "in")
 
-#Average TDR of A, K, B, C over Time
+#Average TDR of A, K, B, C over Time - Top Position 
 bed_tdr_avg %>%
   filter(Bed %in% c("A", "B", "C", "K")) %>% 
+  filter(Position=="top") %>% 
   ggplot(aes(x =date, y =mean_TDR, color = Bed, group = Bed)) +
   geom_line(size = 1) +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=25)) +
   labs(x = "Date", y = "Average TDR", color = "Bed",
-    title = "Average TDR for Beds A, B, C K over Time") +
+    title = "Average TDR for Beds A, B, C K over Time- Top") +
   scale_color_viridis_d(option = "viridis")
-ggsave("../output/MeanTDREndBeds_Time.png", width = 12, height = 8, units = "in")
+ggsave("../output/MeanTDRTopBeds_Time.png", width = 12, height = 8, units = "in")
 
 ```
 
