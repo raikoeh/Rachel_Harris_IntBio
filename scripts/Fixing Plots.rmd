@@ -22,12 +22,20 @@ sem <- function(x, na.rm=FALSE) {           #for calculating standard error
 
 ```{r}
 combined_tdr <- read_csv("../input/WL2_2024_TDR_Processed.csv") #produced in "TDR_Plots.R"
+unique(combined_tdr$date) #check for issues in date column #some cases of "816124"
+
+combined_tdr_dates <- combined_tdr %>% 
+  mutate(date=if_else(date=="816124", "8/16/24", date)) %>%  #fix the error found above
+  mutate(date=mdy(date)) #converting the date column to a date format 
+unique(combined_tdr_dates$date) #check if the date column has been properly corrected 
+
+#Where did the April time points come from? Is this an error from data entry?
 ```
 
 ## All "over time" plots change date from character to actual dates
 ```{r}
 #setting bed average
- bed_avg <- combined_tdr %>% 
+ bed_avg <- combined_tdr_dates %>% 
   group_by(date, Bed) %>% 
   summarize(mean_TDR = mean(TDR, na.rm = TRUE), .groups = "drop")
 
@@ -42,7 +50,7 @@ combined_tdr <- read_csv("../input/WL2_2024_TDR_Processed.csv") #produced in "TD
 ggsave("../output/Bedovertime.png", width = 12, height = 8, units = "in")
  
 #setting position average
- position_avg <- combined_tdr %>% 
+ position_avg <- combined_tdr_dates %>% 
   group_by(date, Position) %>% 
   summarize(mean_TDR = mean(TDR, na.rm = TRUE), .groups = "drop")
  
@@ -66,7 +74,7 @@ bed_means <- combined_tdr %>%
 bed_means
 
 #Mean TDR per Bed
-ggplot(bed_means, aes(x = Bed, y = mean_TDR)) +
+ggplot(bed_means, aes(x=fct_reorder(Bed, mean_TDR), y = mean_TDR)) +
   geom_col(fill = "steelblue") +
    geom_errorbar(aes(ymin=mean_TDR-sem_TDR,ymax=mean_TDR+sem_TDR),width=.2, position = 
                   position_dodge(0.75)) + 
@@ -81,9 +89,7 @@ bed_pos_means <- combined_tdr %>%
   group_by(Position, Bed) %>% 
   summarize(mean_TDR = mean(TDR, na.rm = TRUE),
           sem_TDR=sem(TDR, na.rm=TRUE))
-
 bed_pos_means
-
 
 #Filtering plots for each bed position
 bed_pos_means %>% 
@@ -92,7 +98,8 @@ bed_pos_means %>%
   geom_col(width = 0.7,position = position_dodge(0.75)) + 
   geom_errorbar(aes(ymin=mean_TDR-sem_TDR,ymax=mean_TDR+sem_TDR),width=.2, position = 
                   position_dodge(0.75)) + 
-  theme_classic() +
+  theme_minimal() +
+  theme(text=element_text(size=25)) + #making the text bigger 
   labs(x="Bed", y="Mean TDR", title="All Beds at Top Position")
 ggsave("../output/MeanTDRTopBeds.png", width = 12, height = 8, units = "in")
 
@@ -102,7 +109,8 @@ bed_pos_means %>%
   geom_col(width = 0.7,position = position_dodge(0.75)) + 
   geom_errorbar(aes(ymin=mean_TDR-sem_TDR,ymax=mean_TDR+sem_TDR),width=.2, position = 
                   position_dodge(0.75)) + 
-  theme_classic() +
+  theme_minimal() +
+  theme(text=element_text(size=25)) + #making the text bigger 
   labs(x="Bed", y="Mean TDR", title="All Beds at Middle Position")
 ggsave("../output/MeanTDRMiddleBeds.png", width = 12, height = 8, units = "in")
 
@@ -112,16 +120,14 @@ bed_pos_means %>%
   geom_col(width = 0.7,position = position_dodge(0.75)) + 
   geom_errorbar(aes(ymin=mean_TDR-sem_TDR,ymax=mean_TDR+sem_TDR),width=.2, position = 
                   position_dodge(0.75)) + 
-  theme_classic() +
+  theme_minimal() +
+  theme(text=element_text(size=25)) + #making the text bigger 
   labs(x="Bed", y="Mean TDR", title="All Beds at End Position")
 ggsave("../output/MeanTDREndBeds.png", width = 12, height = 8, units = "in")
- 
 ```
 
+## Compare Bed and Position over time
 ```{r}
-#Compare Bed and Position over time
-
-
 #Example, A and B top
 bed_pos_means %>% 
  filter(Bed %in% c("A", "B"), Position == "top") %>%  #only keep beds A and B, you could do position == "Top" for example 
@@ -131,14 +137,13 @@ bed_pos_means %>%
                   position_dodge(0.75)) + 
   theme_classic() +
   labs(x="Bed", y="Mean TDR", title="Beds A and B at Top Position")
-ggsave("../output/MeanTDREndBeds.png", width = 12, height = 8, units = "in")
+#ggsave("../output/MeanTDRtopBeds_AB_Time.png", width = 12, height = 8, units = "in")
 
 bed_tdr_avg <- combined_tdr %>% 
   group_by(Bed, date) %>% 
   summarise(
     mean_TDR=mean(TDR, na.rm=TRUE),
-    sem_TDR=sem(TDR, na.rm=TRUE)/sqrt(n()), .groups = "drop")
-
+    sem_TDR=sem(TDR, na.rm=TRUE), .groups = "drop")
 bed_tdr_avg
 
 #Average TDR of All Beds over Time
@@ -146,11 +151,11 @@ bed_tdr_avg %>%
   ggplot(aes(x =date, y =mean_TDR, color = Bed, group = Bed)) +
   geom_line(size = 1) +
   theme_classic() +
-  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11)) +
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=25)) +
   labs(x = "Date", y = "Average TDR", color = "Bed",
     title = "Average TDR for All Beds over Time") +
   scale_color_viridis_d(option = "viridis")
-ggsave("../output/MeanTDREndBeds.png", width = 12, height = 8, units = "in")
+ggsave("../output/MeanTDRperBed_Time.png", width = 12, height = 8, units = "in")
 
 #Average TDR of A, K, B, C over Time
 bed_tdr_avg %>%
@@ -158,11 +163,11 @@ bed_tdr_avg %>%
   ggplot(aes(x =date, y =mean_TDR, color = Bed, group = Bed)) +
   geom_line(size = 1) +
   theme_classic() +
-  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11)) +
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=25)) +
   labs(x = "Date", y = "Average TDR", color = "Bed",
-    title = "Average TDR for All Beds over Time") +
+    title = "Average TDR for Beds A, B, C K over Time") +
   scale_color_viridis_d(option = "viridis")
-ggsave("../output/MeanTDREndBeds.png", width = 12, height = 8, units = "in")
+ggsave("../output/MeanTDREndBeds_Time.png", width = 12, height = 8, units = "in")
 
 ```
 
