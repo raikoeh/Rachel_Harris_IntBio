@@ -1,0 +1,5 @@
+date,bed,row,col,unique.ID,height.cm,long.leaf.cm,herbiv.y.n,survey.notes,problem
+1/19/24,E,4,A,519,2 1,2.6,N,NA,spaces
+1/19/24,E,42,D,677,3 6,2.2,N,NA,spaces
+1/19/24,E,4,A,519,2 1,2.6,N,NA,character
+1/19/24,E,42,D,677,3 6,2.2,N,NA,character

@@ -1,0 +1,4 @@
+SurveyDate,bed,row,col,unique.ID,height.cm,long.leaf.cm,herbiv.y.n,survey.notes,problem
+4/5/24,A,34,C,1008,425,8.4,Y,NA,extreme value
+4/5/24,A,31,B,1020,2.5,2.5,5,N,herbiv col
+4/5/24,A,38,C,2023,NA.,NA,NA,Dead,character

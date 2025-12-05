@@ -1,0 +1,12 @@
+bed,row,col,unique.ID,phen,diam.mm,num.flw,num.fruitordate.collected,long.fruit.cm,total.branch,overhd.diam,overhd.perp,survey.date,survey.notes,...15,problem
+A,40,D,1044,X,5.76,0,NA,N A,1,8.5,8,7/3/24,NA,NA,spaces
+D,12,A,633,P,12.46,0,6/6/24,7. 4,1,78,24,6/6/24,NA,NA,spaces
+B,30,C,580,X,18:17,0,NA,NA,3,17.5,16,7/10/24,Dead 7/10/24,NA,character
+B,38,B,260,X,7.73,0,NA,NA,I,16,14,7/10/24,dead 7/10/24,NA,character
+D,2,C,115,X,4.85,0,NA,NA,I,11,8.5,7/10/24,Dead 7/10/24,NA,character
+D,3,C,678,P,9.95,0,7/3/24,8,I,50,48,7/3/24,NA,NA,character
+E,34,C,757,P,10.34,10,7/11/24,5.5,I,14.5,16.5,7/11/24,Dying,NA,character
+F,9,A,2001,P,17.91,0,6/14/24,6.9,I,109,80,6/6/24,NA,NA,character
+D,5,D,2046,P,16.66,O,7/3/24,7.5,1,84,65,7/3/24,NA,NA,character
+E,30,D,559,X,8.61,D,5/30/24,5,1,30,20,5/23/24,NA,NA,character
+C,34,D,1390,P,12.04,0,6/20/24,9.8,1,83.6,3/4/00,6/14/24,for different plant / mystery numbers,NA,character
