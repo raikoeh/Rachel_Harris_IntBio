@@ -211,25 +211,48 @@ ggsave("../output/MeanTDREndBeds_Time.png", width = 12, height = 8, units = "in"
 
 ```{r}
 
-#fixing MetStationData1
+#fixing MetStationData
 MetStationData1$X.TIMESTAMP <- sub('^"', ' ', MetStationData1$X.TIMESTAMP) #took away " at the start of every timestamp
 MetStationData1$X.TIMESTAMP <- as.POSIXct(MetStationData1$X.TIMESTAMP, format="%Y-%m-%d %H:%M:%S")
 
 MetStationData1 <- MetStationData1 %>% slice(-c(1, 2)) #removed first two empty rows
 
-```
-
-```{r}
-#filtering metstation for dates starting in summer 2024
-library(dplyr)
-
+#filtering for summer 2024 dates
 MetStation_summer2024 <- MetStationData1 %>% #says there is no 2024 timestamps
   filter(X.TIMESTAMP >= as.POSIXct("2024-06-01 00:00:00") &
            X.TIMESTAMP >= "2024-08-31 23:59:59")
 
-MS_Test <- read.table("CR1000XSeries_IntBioHalfHourTable.dat", header = TRUE, sep = "", fill = TRUE)
-write.csv(df, "MS_test.csv", row.names = FALSE)
+```
 
+```{r}
+#initial filtering of MetStation data, replace MetStationData.csv with MetStation_2024
+library(readr)
+Data <- read.csv("MetStationData.csv", header = TRUE, sep = ",", quote = "", stringsAsFactors = FALSE)
+head(Data)
+
+Data$X1 <- NULL
+Data <- Data[, c("X.TIMESTAMP", "VWC_5cm_Avg")]
+write.csv(Data, file = "MetStationData.csv", row.names = FALSE)
+
+library(dplyr)
+
+Data_VWC <- Data %>% 
+  select(X.TIMESTAMP, contains("VWC"))
+
+
+write.csv(Data_VWC, file = "VWC_Data.csv", row.names = FALSE)
+
+Available_VWC <- Data_VWC %>% 
+  filter(if_any(contains("VWC"), ~ !is.na(.))) %>% 
+  pull(X.TIMESTAMP)
+
+writeLines(as.character(Available_VWC), "Available_Timestamps.txt")
+
+```
+
+
+```{r}
+setwd("C:/Users/rachelharris/Desktop/Intbio_work/Rachel_Harris_IntBio/input")
 ```
 
 
