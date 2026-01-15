@@ -11,17 +11,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Examples
 
--   Figure updates:
-
-    -   Sort “over time” figures by date (convert from character to date, Brandie can demonstrate)
-
-    -   Error bars on mean TDR per bed bar plot (Brandie can share some code for this)
-
-    -   Bar plot for mean TDR per position (+ error bars)
-
-    -   Compare Bed\*Pos over time
-
-        -   Example Top of Bed A vs Top of Bed B (similar to the boxplot you made)
 
 ## Libraries
 ```{r}
@@ -31,6 +20,55 @@ library(corrplot) #plotting correlations and getting the significance of correla
 sem <- function(x, na.rm=FALSE) {           #for calculating standard error
   sd(x,na.rm=na.rm)/sqrt(length(na.omit(x)))
 } 
+```
+
+## Example using left_join for merging data 
+```{r}
+ann_cens <- read_csv("../input/UCD_annual_census_20240718_corrected.csv") #read in the annual census data
+head(ann_cens) #take a peak 
+
+genotype_info <- read_csv("../input/Genotypes_2023_2024.csv") #read in genotype info
+head(genotype_info) #take a peak
+unique(genotype_info$`Plant Type`) #look at what the different options are for this column (Main_Parent = TM2 or WL2, Other_Parent=other parent pops, F1 = first gen of crossing, F2 = second gen of crossing)
+
+#make sure the names match 
+names(ann_cens)
+names(genotype_info)
+#unique.ID, bed, row, col are in both data frames, but need to rename the column to "col" in the genotype info data frame
+
+ann_cens_genotype_merge <- genotype_info %>% 
+  rename(col=column) %>%  #rename to match the annual census data frame 
+  left_join(ann_cens) #this will merge the two data frames based on the column names that match between the two 
+#this gives an error because the overlapping columns are different types 
+str(ann_cens)
+str(genotype_info)
+#we can see that while bed, row, and col all match in terms of column type between the two data frames, unique.ID is numeric in genotype_info but a character in ann_cens 
+
+#try the merge again fixing the above issue:
+ann_cens_genotype_merge <- genotype_info %>% 
+  rename(col=column) %>%  #rename to match the annual census data frame 
+  mutate(unique.ID=as.character(unique.ID)) %>% #convert unique.ID to be a character instead of numeric to match the annual census 
+  left_join(ann_cens) %>%  #this will merge the two data frames based on the column names that match between the two 
+  filter(!is.na(`Plant Type`)) #remove NA plant tyeps 
+head(ann_cens_genotype_merge) #check that the merge worked 
+#signs that it didn't work would be a bunch of NAs in the new columns you've added, which we don't have here so it looks good
+
+#make a boxplot with stem diameter 
+ann_cens_genotype_merge %>% 
+  ggplot(aes(x=pop.id, y=diam.mm)) +
+  geom_boxplot() +
+  facet_wrap(~`Plant Type`) #facet by plant type 
+
+#or make separate plots for different plant types 
+ann_cens_genotype_merge %>% 
+  filter(`Plant Type`=="Main_Parent") %>% 
+  ggplot(aes(x=pop.id, y=diam.mm)) +
+  geom_boxplot()
+
+ann_cens_genotype_merge %>% 
+  filter(`Plant Type`=="Other_Parent") %>% 
+  ggplot(aes(x=pop.id, y=diam.mm)) +
+  geom_boxplot()
 ```
 
 ## Example of converting Date characters to actual dates 
