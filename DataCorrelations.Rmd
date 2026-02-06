@@ -15,6 +15,14 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r}
+#libraries
+library(tidyverse)
+library(corrplot)
+
+```
+
+
+```{r}
 #merging genotypes and biomass based on their two shared columns "unique.ID" and "blocks"
 Merged_GT_BMB <- left_join(Genotypes_2023_2024, Biomass_Blocks_Biomass_Blocks, by = c("unique.ID", "block"))
 
@@ -22,19 +30,34 @@ Merged_GT_BMB <- left_join(Genotypes_2023_2024, Biomass_Blocks_Biomass_Blocks, b
 
 ## Including Plots
 
+```{r}
+#filtering out data before boxplot
+CMerged_GT_BMB <- Merged_GT_BMB %>% 
+  filter(!is.na(total.biomass_g))
+```
+
 
 ```{r}
 #box plot for correlation between population and biomass
-Merged_GT_BMB %>% 
-  filter(pop.id=="middle") %>% 
+CMerged_GT_BMB %>% 
   ggplot(aes(x=pop.id, y=total.biomass_g)) +
+  geom_boxplot(width = 0.7,position = position_dodge(0.75)) + 
+  facet_wrap(~ `Plant Type`, scales = "free_x") +
+  theme_bw() +
+  labs(x="Population", y="Biomass", title="Population vs Biomass") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("output/Population vs Biomass.png", width = 20, height = 8, units = "in")
+
+#column plot for population and average biomass
+CMerged_GT_BMB %>% 
+  group_by(pop.id) %>% 
+  summarise(mean_biomass = mean(total.biomass_g, na.rm =TRUE)) %>% 
+  ggplot(aes(x=pop.id, y=mean_biomass)) +
   geom_col(width = 0.7,position = position_dodge(0.75)) + 
-  geom_errorbar(aes(ymin=mean_TDR-sem_TDR,ymax=mean_TDR+sem_TDR),width=.2, position = 
-                  position_dodge(0.75)) + 
-  theme_minimal() +
-  theme(text=element_text(size=25)) + #making the text bigger 
-  labs(x="Bed", y="Mean TDR", title="All Beds at Middle Position")
-ggsave("../output/MeanTDRMiddleBeds.png", width = 12, height = 8, units = "in")
+  theme_bw() +
+  labs(x="Population", y="Average Biomass", title="Population vs Average Biomass") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("output/Population vs Average Biomass.png", width = 20, height = 8, units = "in")
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
