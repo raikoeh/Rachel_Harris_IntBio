@@ -46,7 +46,7 @@ CMerged_GT_BMB %>%
   theme_bw() +
   labs(x="Population", y="Biomass", title="Population vs Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("output/Population vs Biomass.png", width = 20, height = 8, units = "in")
+ggsave("output/Population vs Biomass.png", width = 20, height = 14, units = "in")
 
 #column plot for population and average biomass
 CMerged_GT_BMB %>% 
@@ -58,6 +58,74 @@ CMerged_GT_BMB %>%
   labs(x="Population", y="Average Biomass", title="Population vs Average Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
 ggsave("output/Population vs Average Biomass.png", width = 20, height = 8, units = "in")
+```
+
+```{r}
+#mutate before left joining
+class(CMerged_GT_BMB$unique.ID)
+class(UCD_annual_census_20240718_corrected$unique.ID)
+
+CMerged_GT_BMB <- CMerged_GT_BMB %>%
+  mutate(unique.ID = as.character(unique.ID))
+
+UCD_annual_census_20240718_corrected <- UCD_annual_census_20240718_corrected %>%
+  mutate(unique.ID = as.character(unique.ID))
+
+```
+
+
+```{r}
+#merging pop/biomass with annual census
+Merged_PopBio_AnCen <- left_join(CMerged_GT_BMB, UCD_annual_census_20240718_corrected, by = c("unique.ID"))
+```
+
+
+```{r}
+#plot for stem diameter vs biomass
+Merged_PopBio_AnCen %>% 
+  ggplot(aes(x=diam.mm, y=total.biomass_g)) +
+  geom_point(width = 0.7,position = position_dodge(0.75)) + 
+  facet_wrap(~ `Plant Type`, scales = "free_x") +
+  theme_bw() +
+  labs(x="Stem Diameter (mm)", y="Biomass", title="Population vs Biomass") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("output/StemDiametervsBiomass.png", width = 20, height = 8, units = "in")
+
+#non facet plot
+Merged_PopBio_AnCen %>% 
+  ggplot(aes(x=diam.mm, y=total.biomass_g)) +
+  geom_point(width = 0.7,position = position_dodge(0.75)) + 
+  theme_bw() +
+  labs(x="Stem Diameter (mm)", y="Biomass", title="Population vs Biomass") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("output/StemDiamvsBiomassNonFacet.png", width = 20, height = 14, units = "in")
+```
+
+```{r}
+# calculating canopy area (ellipse area formula, /2 since they are diameters)
+Merged_PopBio_AnCen$canopy_area <- pi * (Merged_PopBio_AnCen$overhd.diam/2) * (Merged_PopBio_AnCen$overhd.perp/2)
+
+```
+
+```{r}
+# graph for canopy area vs biomass (faceted)
+Merged_PopBio_AnCen %>% 
+  ggplot(aes(x=canopy_area, y=total.biomass_g)) +
+  geom_point(width = 0.3,position = position_dodge(0.75)) + 
+  facet_wrap(~ `Plant Type`, scales = "free_x") +
+  theme_bw() +
+  labs(x="Canopy Area", y="Biomass", title="Canopy Area vs Biomass") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("output/CanopyAreavsBiomass.png", width = 20, height = 8, units = "in")
+
+#non facet plot
+Merged_PopBio_AnCen %>% 
+  ggplot(aes(x=canopy_area, y=total.biomass_g)) +
+  geom_point(width = 0.5,position = position_dodge(0.75)) + 
+  theme_bw() +
+  labs(x="Canopy Area", y="Biomass", title="Canopy Area vs Biomass") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("output/CanopyAreavsBiomassNonFacet.png", width = 20, height = 14, units = "in")
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
