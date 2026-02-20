@@ -128,4 +128,38 @@ Merged_PopBio_AnCen %>%
 ggsave("output/CanopyAreavsBiomassNonFacet.png", width = 20, height = 14, units = "in")
 ```
 
+
+```{r}
+#merge size survey and biomass/pop
+Merged_BioMass_Size <- left_join(Merged_GT_BMB, UCD_size_survey_20240516_corrected, by = c("unique.ID"))
+```
+```{r}
+Merged_BioMass_Size <- Merged_BioMass_Size[!is.na(Merged_BioMass_Size$height.cm) & !is.na(Merged_BioMass_Size$total.biomass_g), ]
+```
+
+
+```{r}
+#plot for height x biomass
+Merged_BioMass_Size %>% 
+  ggplot(aes(x=height.cm, y=total.biomass_g)) +
+  geom_point(width = 0.3,position = position_dodge(0.75)) + 
+  facet_wrap(~ `Plant Type`, scales = "free_x") +
+  theme_bw() +
+  labs(x="Height cm", y="Biomass", title="Height vs Biomass") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("output/HeightvsBiomass.png", width = 20, height = 8, units = "in")
+
+Merged_BioMass_Size %>% 
+  ggplot(aes(x=height.cm, y=total.biomass_g)) +
+  geom_point(width = 0.3,position = position_dodge(0.75)) + 
+  theme_bw() +
+  labs(x="Height cm", y="Biomass", title="Height vs Biomass") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("output/HeightvsBiomassNonFacet.png", width = 20, height = 8, units = "in")
+```
+
+```{r}
+
+```
+
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
