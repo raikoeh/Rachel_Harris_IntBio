@@ -20,27 +20,31 @@ library(tidyverse)
 library(corrplot)
 
 ```
+```{r}
+Grouped_Biomass_Blocks <- Biomass_Blocks_Biomass_Blocks %>%
+group_by(unique.ID, block) %>%
+summarize(TotalBiomass=sum(total.biomass_g))
+```
 
 
 ```{r}
 #merging genotypes and biomass based on their two shared columns "unique.ID" and "blocks"
-Merged_GT_BMB <- left_join(Genotypes_2023_2024, Biomass_Blocks_Biomass_Blocks, by = c("unique.ID", "block"))
+Merged_GT_BMB <- left_join(Genotypes_2023_2024, Grouped_Biomass_Blocks, by = c("unique.ID", "block"))
 
 ```
 
-## Including Plots
 
 ```{r}
 #filtering out data before boxplot
 CMerged_GT_BMB <- Merged_GT_BMB %>% 
-  filter(!is.na(total.biomass_g))
+  filter(!is.na(TotalBiomass))
 ```
 
 
 ```{r}
 #box plot for correlation between population and biomass
 CMerged_GT_BMB %>% 
-  ggplot(aes(x=pop.id, y=total.biomass_g)) +
+  ggplot(aes(x=pop.id, y=TotalBiomass)) +
   geom_boxplot(width = 0.7,position = position_dodge(0.75)) + 
   facet_wrap(~ `Plant Type`, scales = "free_x") +
   theme_bw() +
@@ -51,7 +55,7 @@ ggsave("output/Population vs Biomass.png", width = 20, height = 14, units = "in"
 #column plot for population and average biomass
 CMerged_GT_BMB %>% 
   group_by(pop.id) %>% 
-  summarise(mean_biomass = mean(total.biomass_g, na.rm =TRUE)) %>% 
+  summarise(mean_biomass = mean(TotalBiomass, na.rm =TRUE)) %>% 
   ggplot(aes(x=pop.id, y=mean_biomass)) +
   geom_col(width = 0.7,position = position_dodge(0.75)) + 
   theme_bw() +
@@ -83,20 +87,20 @@ Merged_PopBio_AnCen <- left_join(CMerged_GT_BMB, UCD_annual_census_20240718_corr
 ```{r}
 #plot for stem diameter vs biomass
 Merged_PopBio_AnCen %>% 
-  ggplot(aes(x=diam.mm, y=total.biomass_g)) +
+  ggplot(aes(x=diam.mm, y=TotalBiomass)) +
   geom_point(width = 0.7,position = position_dodge(0.75)) + 
   facet_wrap(~ `Plant Type`, scales = "free_x") +
   theme_bw() +
-  labs(x="Stem Diameter (mm)", y="Biomass", title="Population vs Biomass") + 
+  labs(x="Stem Diameter (mm)", y="Biomass", title="Stem Diameter vs Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
 ggsave("output/StemDiametervsBiomass.png", width = 20, height = 8, units = "in")
 
 #non facet plot
 Merged_PopBio_AnCen %>% 
-  ggplot(aes(x=diam.mm, y=total.biomass_g)) +
+  ggplot(aes(x=diam.mm, y=TotalBiomass)) +
   geom_point(width = 0.7,position = position_dodge(0.75)) + 
   theme_bw() +
-  labs(x="Stem Diameter (mm)", y="Biomass", title="Population vs Biomass") + 
+  labs(x="Stem Diameter (mm)", y="Biomass", title="Stem Diameter vs Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
 ggsave("output/StemDiamvsBiomassNonFacet.png", width = 20, height = 14, units = "in")
 ```
@@ -110,7 +114,7 @@ Merged_PopBio_AnCen$canopy_area <- pi * (Merged_PopBio_AnCen$overhd.diam/2) * (M
 ```{r}
 # graph for canopy area vs biomass (faceted)
 Merged_PopBio_AnCen %>% 
-  ggplot(aes(x=canopy_area, y=total.biomass_g)) +
+  ggplot(aes(x=canopy_area, y=TotalBiomass)) +
   geom_point(width = 0.3,position = position_dodge(0.75)) + 
   facet_wrap(~ `Plant Type`, scales = "free_x") +
   theme_bw() +
@@ -120,7 +124,7 @@ ggsave("output/CanopyAreavsBiomass.png", width = 20, height = 8, units = "in")
 
 #non facet plot
 Merged_PopBio_AnCen %>% 
-  ggplot(aes(x=canopy_area, y=total.biomass_g)) +
+  ggplot(aes(x=canopy_area, y=TotalBiomass)) +
   geom_point(width = 0.5,position = position_dodge(0.75)) + 
   theme_bw() +
   labs(x="Canopy Area", y="Biomass", title="Canopy Area vs Biomass") + 
@@ -133,15 +137,18 @@ ggsave("output/CanopyAreavsBiomassNonFacet.png", width = 20, height = 14, units 
 #merge size survey and biomass/pop
 Merged_BioMass_Size <- left_join(Merged_GT_BMB, UCD_size_survey_20240516_corrected, by = c("unique.ID"))
 ```
+
+
 ```{r}
-Merged_BioMass_Size <- Merged_BioMass_Size[!is.na(Merged_BioMass_Size$height.cm) & !is.na(Merged_BioMass_Size$total.biomass_g), ]
+# filter out rows with no data for height and biomass columns
+Merged_BioMass_Size <- Merged_BioMass_Size[!is.na(Merged_BioMass_Size$height.cm) & !is.na(Merged_BioMass_Size$TotalBiomass), ]
 ```
 
 
 ```{r}
 #plot for height x biomass
 Merged_BioMass_Size %>% 
-  ggplot(aes(x=height.cm, y=total.biomass_g)) +
+  ggplot(aes(x=height.cm, y=TotalBiomass)) +
   geom_point(width = 0.3,position = position_dodge(0.75)) + 
   facet_wrap(~ `Plant Type`, scales = "free_x") +
   theme_bw() +
@@ -150,7 +157,7 @@ Merged_BioMass_Size %>%
 ggsave("output/HeightvsBiomass.png", width = 20, height = 8, units = "in")
 
 Merged_BioMass_Size %>% 
-  ggplot(aes(x=height.cm, y=total.biomass_g)) +
+  ggplot(aes(x=height.cm, y=TotalBiomass)) +
   geom_point(width = 0.3,position = position_dodge(0.75)) + 
   theme_bw() +
   labs(x="Height cm", y="Biomass", title="Height vs Biomass") + 
@@ -159,7 +166,16 @@ ggsave("output/HeightvsBiomassNonFacet.png", width = 20, height = 8, units = "in
 ```
 
 ```{r}
-
+# Correlation tests: Are Biomass and Height Related? Pearson corr test
+cor.test(Merged_BioMass_Size$height.cm, Merged_BioMass_Size$TotalBiomass, method = "pearson")
+```
+```{r}
+# Are Biomass and Canopy Area related?
+cor.test(Merged_PopBio_AnCen$canopy_area, Merged_PopBio_AnCen$TotalBiomass, method = "pearson")
+```
+```{r}
+# Are Biomass and Stem Diameter Related?
+cor.test(Merged_PopBio_AnCen$diam.mm, Merged_PopBio_AnCen$TotalBiomass, method = "pearson")
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
