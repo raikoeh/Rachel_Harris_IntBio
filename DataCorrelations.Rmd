@@ -16,6 +16,7 @@ When you click the **Knit** button a document will be generated that includes bo
 
 ```{r}
 #libraries
+library(dplyr)
 library(tidyverse)
 library(corrplot)
 
@@ -176,6 +177,39 @@ cor.test(Merged_PopBio_AnCen$canopy_area, Merged_PopBio_AnCen$TotalBiomass, meth
 ```{r}
 # Are Biomass and Stem Diameter Related?
 cor.test(Merged_PopBio_AnCen$diam.mm, Merged_PopBio_AnCen$TotalBiomass, method = "pearson")
+```
+```{r}
+Merged_BioMass_Size$unique.ID <- as.character(Merged_BioMass_Size$unique.ID)
+
+# left join to make size df
+Merged_Size <- left_join(Merged_BioMass_Size, Merged_PopBio_AnCen, by = c("unique.ID"))
+
+# new df with only size variables
+size_variables <- Merged_Size %>% 
+  select(matches("biomass|height|area|diam.mm|width", ignore.case = TRUE))
+
+#filter out NA values and remove duplicate biomass column
+size_variables$TotalBiomass.y <- NULL
+
+size_variables <- size_variables%>% 
+  filter(!is.na(TotalBiomass.x))
+
+size_variables <- size_variables %>% 
+  rename(TotalBiomass = TotalBiomass.x)
+
+```
+
+
+```{r}
+# correlation matrix
+cor_matrix <- cor(size_variables, use = "complete.obs")
+
+png("output/Correlation_Matrix.png", width = 800, height = 800, )
+corrplot(cor_matrix,
+         method = "square",
+         type = "lower",
+         addCoef.col = "black",
+         tl.col = "black")
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
