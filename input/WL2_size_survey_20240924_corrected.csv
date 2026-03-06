@@ -1,0 +1,1218 @@
+block ,bed ,row ,col ,unique.ID ,height.cm ,overhd.diam ,overhd.perp ,herbiv.y.n ,survey.notes 
+NA ,A ,1,A ,TM2_6_11 ,,,,,TM2 fruiting from 2023 
+NA ,A ,6,B ,CC_3_3 ,,,,,
+NA ,A ,16,B ,BH_3_3 ,,,,,6/18/24 No tag 
+NA ,A ,17,A ,BH_7_3 ,NA ,NA ,NA ,NA ,censused
+NA ,A ,18,A ,BH_4_3 ,,,,,6/18/24 No tag /missed FL date 
+NA ,A ,24,A ,WL2_7_9 ,NA ,NA ,NA ,NA ,rest FR 8/27 censused 
+NA ,A ,32,B ,IH_7_4 ,NA ,NA ,NA ,NA ,8/20 tape fruit 8/27 stems with buds dead ensused 
+NA ,A ,35,A ,SC_8_4 ,NA ,NA ,NA ,NA ,8/20 aphids censused 
+NA ,A ,36,A ,BH_3_4 ,NA ,NA ,NA ,NA ,8/20 tape fruit censused 
+NA ,A ,39,B ,WL2_7_10 ,NA ,NA ,NA ,NA ,8/20 tape fruit censused 
+NA ,A ,43,A ,TM2_6_1 ,,,,,TM2 fruiting from 2023 
+NA ,A ,45,B ,IH_2_4 ,NA ,NA ,NA ,NA ,censused 
+NA ,A ,49,A ,YO7_7_23 ,,,,,fruit drying 8/6/24 / dehissing 8/13/24 
+NA ,A ,53,A ,CC_4_4 ,NA ,NA ,NA ,NA ,censused 
+NA ,A ,53,B ,BH_7_4 ,NA ,NA ,NA ,NA ,censused
+NA ,A ,56,B ,TM2_2_12 ,,,,,TM2 fruiting from 2023 
+NA ,A ,14,D ,CC_8_3 ,,,,,6/25/24 snapped off 7/12/24 resprouting 
+NA ,A ,15,C ,CC_1_3 ,48.9,34.8,14.7,N ,
+NA ,A ,17,D ,BH_2_3 ,NA ,NA ,NA ,NA ,8/27 main stem at last FR but sidd stem still active censused 
+NA ,A ,22,D ,SC_8_3 ,NA ,NA ,NA ,NA ,7/16 some buds dying censused 
+NA ,A ,23,D ,TM2_3_3 ,,,,,TM2 fruiting from 2023 
+NA ,A ,36,C ,SC_2_4 ,NA ,NA ,NA ,NA ,7/23 no FL but still buds 8/13 all buds and flowers are gone censused 
+NA ,A ,44,C ,TM2_6_3 ,,,,,TM2 fruiting from 2023 /3 small rosettes nearby 
+NA ,A ,45,D ,SC_4_4 ,NA ,NA ,NA ,NA ,censused 
+NA ,A ,46,D ,SQ1_5_10 ,NA ,NA ,NA ,NA ,7/16 some buds look deformed ususal damaged 7/30 spider nest on leaf 
+NA ,A ,50,D ,IH_6_4 ,NA ,NA ,NA ,NA ,censused 
+NA ,A ,56,C ,IH_1_4 ,NA ,NA ,NA ,NA ,7/16 some buds look deformed or damaged 8/20 tape censused 
+NA ,A ,58,D ,YO7_7_13 ,,,,,8/13/24 some dehiscing 8/27 many dehisced fruits 
+NA ,B ,22,A ,IH_3_5 ,49.3,42.2,35.1,N ,
+NA ,B ,25,A ,IH_6_5 ,40.9,29.2,24.1,Y ,7/30 buds dying 8/20 tape 
+NA ,B ,37,A ,TM2_1_16 ,,,,,TM2 fruiting from 2023 
+NA ,B ,42,A ,BH_2_5 ,NA ,NA ,NA ,NA ,7/30 buds dying censused 
+NA ,B ,43,A ,BH_5_5 ,NA ,NA ,NA ,NA ,censused 
+NA ,B ,56,A ,SC_6_15 ,NA ,NA ,NA ,NA ,marked as budding without date / suse 8/20 many flowers dead and tape censused
+NA ,B ,57,A ,IH_4_4 ,,,,,
+NA ,B ,19,D ,CC_2_6 ,NA ,NA ,NA ,NA ,censused 6/25/24 some buds being eaten 
+NA ,B ,26,C ,IH_5_5 ,,,,,
+NA ,B ,28,C ,BH_4_5 ,NA ,NA ,NA ,NA ,censused 7/30 some buds dying 8/20 tape 
+NA ,B ,36,D ,TM2_1_4 ,,,,,TM2 fruiting from 2023 
+NA ,B ,43,D ,TM2_7_10 ,,,,,TM2 fruiting from 2023 
+NA ,B ,45,C ,WL2_1_11 ,NA ,NA ,NA ,NA ,8/27 some fruits dehiscing censused 
+NA ,B ,47,C ,YO7_4_6 ,NA ,NA ,NA ,NA ,8/27 many fruits dehiscing censused 
+NA ,B ,56,C ,TM2_1_3 ,NA ,NA ,NA ,NA ,8/20 few buds left / dry flowers / tape censused 
+NA ,B ,57,D ,BH_2_4 ,,,,,6/18/24 no tag 7/30 some buds dying 8/20 tape 
+A ,C ,1,A ,buffer ,,,,,
+A ,C ,1,B ,buffer ,,,,,
+A ,C ,2,A ,buffer ,,,,,
+A ,C ,2,B ,buffer ,,,,,
+A ,C ,3,A ,buffer ,,,,,
+A ,C ,3,B ,buffer ,,,,,
+A ,C ,4,A ,280,,,,,6/25/24 wilting 
+A ,C ,4,B ,949,,,,,7/9/24 wilting 
+A ,C ,5,A ,540,,,,,6/18/24 wilting 
+A ,C ,5,B ,317,5.2,2.9,1.6,Y ,
+NA ,C ,6,A ,CC_1_6 ,,,,,7/2/24 dying 
+A ,C ,6,B ,1175,,,,,7/16 red pick no date assumed 7/9 
+A ,C ,7,A ,1091,,,,,
+A ,C ,7,B ,968,,,,,6/25/24 wilting 
+A ,C ,8,A ,333,,,,,
+A ,C ,8,B ,374,,,,,6/25/24 wilting 
+A ,C ,9,B ,521,,,,,
+A ,C ,10,A ,392,,,,,7/2/24 dying 
+A ,C ,10,B ,1160,,,,,6/25/24 wilting 
+A ,C ,11,A ,479,,,,,6/18/24 wilting 
+A ,C ,11,B ,264,,,,,6/25/24 wilting 
+A ,C ,12,A ,199,,,,,6/18/24 wilting 
+A ,C ,12,B ,1102,,,,,6/25/24 wilting 
+A ,C ,13,A ,344,,,,,6/18/24 top of stem wilting 
+A ,C ,13,B ,1511,,,,,
+A ,C ,14,A ,98,,,,,
+A ,C ,14,B ,868,,,,,
+A ,C ,15,A ,125,,,,,6/25/24 wilting 
+A ,C ,15,B ,1007,,,,,
+A ,C ,16,A ,1119,,,,,
+A ,C ,16,B ,189,,,,,
+A ,C ,17,A ,71,,,,,7/9 wilted 
+A ,C ,17,B ,507,,,,,6/25/24 wilting 
+A ,C ,18,A ,1336,,,,,7/9 wilted 
+A ,C ,18,B ,980,,,,,
+A ,C ,19,A ,NA ,,,,,
+A ,C ,19,B ,NA ,,,,,
+B ,C ,20,A ,413,,,,,6/25/24 odd white lines on leaves 
+B ,C ,20,B ,698,6.1,3.5,2.7,Y ,
+B ,C ,21,A ,215,,,,,6/18/24 Powdery mildew 
+B ,C ,21,B ,407,8.1,7.5,2.3,Y ,
+B ,C ,22,A ,532,,,,,
+NA ,C ,22,B ,BH_6_7 ,,,,,7/16 some fuits look sick 7/30 buds 8/13 flowers dead 8/20 tape censused 
+B ,C ,23,A ,469,,,,,
+B ,C ,23,B ,118,5.9,1.7,1.4,Y ,
+B ,C ,24,A ,281,6.8,4.7,1.9,Y ,
+B ,C ,24,B ,1459,5,3.5,2.4,Y ,
+B ,C ,25,A ,1275,,,,,
+B ,C ,25,B ,72,,,,,7/9 wilted 
+B ,C ,26,A ,494,,,,,
+B ,C ,26,B ,154,,,,,
+B ,C ,27,A ,1398,,,,,
+B ,C ,27,B ,200,4.2,3.7,2.4,Y ,7/23 heavily shaded by tree 
+B ,C ,28,A ,480,,,,,Stem snapped still turgid 
+B ,C ,28,B ,347,,,,,
+B ,C ,29,A ,17,,,,,
+B ,C ,29,B ,341,8.3,3.3,2.2,Y ,
+B ,C ,30,A ,1228,6.9,4,3.4,Y ,
+B ,C ,30,B ,513,6.2,1.4,1,Y ,9/24 lower stem exposed  9/3 very purple 
+B ,C ,31,A ,939,7.2,2.4,2.2,Y ,
+B ,C ,31,B ,543,,,,,6/25/24 wilting 
+B ,C ,32,A ,1053,,,,,
+B ,C ,32,B ,1279,,,,,
+B ,C ,33,B ,183,3.6,2.5,1.9,Y ,8/27 shaded by tree 
+B ,C ,34,A ,776,,,,,
+B ,C ,34,B ,2,,,,,
+B ,C ,35,A ,136,,,,,
+B ,C ,35,B ,1348,,,,,
+B ,C ,36,A ,NA ,,,,,
+NA ,C ,36,B ,SC_2_19 ,,,,,7/16 some buds dying 8/20 branch snapped 
+C ,C ,37,A ,145,,,,,
+C ,C ,37,B ,1289,5.7,3.3,1,Y ,
+C ,C ,38,A ,1362,,,,,
+C ,C ,38,B ,128,,,,,7/16 red pick no date 
+C ,C ,39,A ,1347,,,,,7/9 Very wilted 
+C ,C ,39,B ,1003,,,,,
+C ,C ,40,A ,1162,,,,,
+NA ,C ,40,B ,BH_1_7 ,NA ,NA ,NA ,NA ,8/20 tape censused 
+C ,C ,41,A ,738,,,,,7/9 very wilted 
+C ,C ,41,B ,100,,,,,6/18/24 Wilting 
+C ,C ,42,A ,1314,,,,,
+C ,C ,42,B ,888,6.2,1.2,0.3,Y ,9/3 heavy herbivory 
+C ,C ,43,A ,73,6.1,3.1,1.7,Y ,
+C ,C ,43,B ,355,,,,,
+C ,C ,44,A ,481,,,,,
+C ,C ,44,B ,1229,,,,,
+NA ,C ,45,A ,BH_7_7 ,NA ,NA ,NA ,NA ,7/16 one dead stem 8/6 reproductive stem broke 8/20 tape ceus used 
+C ,C ,45,B ,1121,,,,,
+C ,C ,46,A ,452,,,,,
+C ,C ,46,B ,20,,,,,
+C ,C ,47,A ,187,,,,,
+NA ,C ,47,B ,IH_2_7 ,,,,,8/20 tape 8/27 branch Snopped 
+C ,C ,48,A ,361,,,,,7/9 wilting 
+C ,C ,48,B ,243,,,,,
+C ,C ,49,A ,1187,8.2,1.5,0.6,N ,
+C ,C ,49,B ,201,,,,,
+C ,C ,50,A ,907,,,,,
+C ,C ,50,B ,404,7.6,3.7,3.4,Y ,
+C ,C ,51,A ,NA ,,,,,
+C ,C ,51,B ,NA ,,,,,
+D ,C ,52,A ,1409,3.6,2.1,1.9,Y ,
+D ,C ,52,B ,74,6.4,0.9,0.8,N ,
+D ,C ,53,A ,248,,,,,
+NA ,C ,53,B ,IH_3_8 ,,,,,
+D ,C ,54,A ,1255,NA ,NA ,NA ,NA ,9/24 dead 
+NA ,C ,54,B ,TM2_1_14 ,,,,,TM2 Fruiting from 2023 / one seedling 
+NA ,C ,55,A ,YO7_1_4 ,,,,,Dying buds 8/13/24 dehissed 
+D ,C ,55,B ,1124,,,,,6/25/24 almost dead no leaves 
+D ,C ,56,A ,739,,,,,
+D ,C ,56,B ,1241,,,,,
+D ,C ,57,A ,34,,,,,6/18/24 wilting 
+D ,C ,57,B ,453,,,,,
+D ,C ,58,A ,395,5.5,2.4,1.2,Y ,
+D ,C ,58,B ,267,,,,,6/25/24 wilting 
+D ,C ,59,A ,buffer ,,,,,
+D ,C ,59,B ,buffer ,,,,,
+D ,C ,60,A ,buffer ,,,,,
+D ,C ,60,B ,buffer ,,,,,
+A ,C ,1,C ,buffer ,,,,,
+A ,C ,1,D ,buffer ,,,,,
+A ,C ,2,C ,SC_5_6 ,NA ,NA ,NA ,NA ,mistakenly coded as buffer before 7/23 8/20 tape unsused 
+A ,C ,2,D ,CC_9_6 ,NA ,NA ,NA ,NA ,mistakenly coded as buffer before 7/23 8 8/20 tape censused 
+A ,C ,3,C ,buffer ,,,,,
+A ,C ,3,D ,87,,,,,6/18/24 wilting 
+A ,C ,4,C ,987,,,,,6/18/24 wilting 
+A ,C ,4,D ,buffer ,,,,,not a buffer/actually a rock 
+A ,C ,5,C ,666,,,,,6/18/24 wilting 
+A ,C ,5,D ,NA ,,,,,7/9/24 wilted 
+A ,C ,6,C ,1227,,,,,6/25/24 wilting 
+A ,C ,6,D ,1185,,,,,6/18/24 wilting 
+A ,C ,7,C ,1172,,,,,
+A ,C ,7,D ,487,,,,,
+A ,C ,8,C ,167,,,,,6/25/24 wilting 
+A ,C ,8,D ,1127,NA ,NA ,NA ,NA ,Dead but already marked
+A ,C ,9,C ,752,,,,,7/2 wilting 
+A ,C ,9,D ,886,,,,,
+A ,C ,10,C ,303,,,,,7/9 wilted 
+NA ,C ,10,D ,BH_3_6 ,,,,,6/18/24 No tag/ 7/2 stem broken at base 
+A ,C ,11,C ,763,,,,,6/25/24 wilting 
+A ,C ,11,D ,1397,,,,,6/25/24 wilting 
+A ,C ,12,C ,1286,,,,,6/25/24 wilting 
+A ,C ,12,D ,1,,,,,
+A ,C ,13,C ,736,,,,,7/9/24 wilting 
+A ,C ,13,D ,1245,,,,,
+A ,C ,14,C ,149,,,,,6/18/24 wilting 
+A ,C ,14,D ,1423,,,,,7/9/24 wilting 
+A ,C ,15,C ,41,,,,,6/25/24 wilting 
+A ,C ,15,D ,560,,,,,
+A ,C ,16,C ,130,,,,,
+A ,C ,16,D ,932,,,,,6/18/24 wilting 
+A ,C ,17,C ,371,,,,,
+A ,C ,17,D ,600,,,,,
+A ,C ,18,C ,NA ,,,,,
+A ,C ,18,D ,NA ,,,,,
+B ,C ,19,C ,309,,,,,7/16/24 wilting 
+B ,C ,19,D ,298,,,,,6/18/24 dead at planting 
+B ,C ,20,C ,790,,,,,Very wilted 
+B ,C ,20,D ,1123,,,,,6/18/24 wilting 
+B ,C ,21,C ,1311,,,,,7/2 wilting 
+B ,C ,21,D ,1186,,,,,6/25/24 wilting 
+B ,C ,22,C ,88,,,,,6/18/24 wilting 
+B ,C ,22,D ,737,9.3,3.8,3.5,Y ,
+B ,C ,23,C ,170,,,,,6/25/24 wilting 
+NA ,C ,23,D ,TM2_4_12 ,,,,,Crispy flowers 8/20 tape 
+B ,C ,24,C ,1243,,,,,7/9 wilted 
+B ,C ,24,D ,99,,,,,
+B ,C ,25,C ,364,,,,,7/23 wilted 
+B ,C ,25,D ,1108,,,,,7/2 wilting 
+B ,C ,28,C ,251,5.2,6,2.8,Y ,9/3 middle of main stem dead? 
+B ,C ,28,D ,265,11.9,4.2,3.5,N ,
+B ,C ,29,C ,711,5.2,3.5,2.1,Y ,
+B ,C ,29,D ,393,,,,,7/9 wilted 
+NA ,C ,30,C ,BH_4_7 ,NA ,NA ,NA ,NA ,Census 8/20 tape 8/27 Side veg brunch 
+B ,C ,30,D ,961,NA ,NA ,NA ,NA ,Dead 9/3 leaves dead stem Still turgid 
+B ,C ,31,C ,974,,,,,
+B ,C ,31,D ,853,,,,,6/25/24 gone 
+B ,C ,32,C ,859,,,,,
+NA ,C ,32,D ,TM2_7_12 ,,,,,TM2 Fruiting from 2023 
+NA ,C ,33,C ,TM2_2_5 ,,,,,TM2 Fruiting from 2023 
+B ,C ,33,D ,832,,,,,
+B ,C ,34,C ,564,,,,,
+B ,C ,34,D ,990,,,,,wilted 7/16/24 
+B ,C ,35,C ,NA ,,,,,
+B ,C ,35,D ,NA ,,,,,
+B ,C ,36,C ,NA ,,,,,
+C ,C ,36,D ,214,,,,,6/25/24 roots exposed 
+NA ,C ,37,C ,CC_2_7 ,NA ,NA ,NA ,NA ,8/20 tape census
+C ,C ,37,D ,714,4.5,3.5,2.3,N ,
+NA ,C ,38,C ,YO7_1_3 ,,,,,8/6 Fruit 2 vegetative branches drving 
+C ,C ,38,D ,539,5.3,3.3,2.2,Y ,
+C ,C ,39,C ,282,,,,,
+C ,C ,39,D ,1098,,,,,7/23 wilted 
+C ,C ,40,C ,489,,,,,7/16/24 wilted 
+C ,C ,40,D ,126,,,,,
+C ,C ,41,C ,266,,,,,
+C ,C ,41,D ,989,,,,,
+C ,C ,42,C ,174,,,,,
+C ,C ,42,D ,553,,,,,6/18/24 Top Missing 
+C ,C ,43,C ,1156,6.2,1.3,10,Y ,9/24 heavy herbivory
+C ,C ,43,D ,1048,9,4.1,3.7,Y ,
+C ,C ,44,C ,1252,4.2,2.9,1.7,Y ,
+C ,C ,44,D ,1085,4.8,2.9,1.9,Y ,
+C ,C ,45,C ,NA ,,,,,
+C ,C ,45,D ,394,3.6,4.2,1.2,Y ,8/20 plant still alive remove death date heavy herbivory
+C ,C ,46,C ,528,,,,,6/18/24 Plant Sunk 
+C ,C ,46,D ,429,,,,,6/18/24 Plant sunk wilting / 6/25/24 gone 
+C ,C ,47,C ,3,,,,,
+C ,C ,47,D ,1399,2.3,2.2,1,Y ,
+C ,C ,48,C ,89,3.2,2.8,1.2,Y ,
+C ,C ,48,D ,946,,,,,6/25/24 wilting 
+C ,C ,49,C ,37,,,,,
+C ,C ,49,D ,518,,,,,
+C ,C ,50,C ,NA ,,,,,
+C ,C ,50,D ,NA ,,,,,
+C ,C ,51,C ,NA ,,,,,
+C ,C ,51,D ,754,,,,,7/9 wilted 
+D ,C ,52,C ,1062,,,,,7/2 wilting 
+NA ,C ,52,D ,TM2_7_13 ,,,,,TM2 Fruiting from 2023 / 1 seedling / last year's notes say C_53_D 
+D ,C ,53,C ,4,,,,,6/25/24 wilted 
+D ,C ,53,D ,1188,,,,,
+D ,C ,54,C ,885,,,,,
+D ,C ,54,D ,526,,,,,
+D ,C ,55,C ,202,,,,,6/25/24 wilted 
+D ,C ,55,D ,321,,,,,
+D ,C ,56,C ,842,,,,,
+D ,C ,56,D ,376,,,,,
+D ,C ,57,C ,957,,,,,6/25/24 wilted 
+D ,C ,57,D ,1148,,,,,6/25/24 wilted 
+D ,C ,58,C ,21,,,,,
+D ,C ,58,D ,176,,,,,6/25/24 very wilted 
+D ,C ,59,C ,buffer ,,,,,
+D ,C ,59,D ,buffer ,,,,,
+D ,C ,60,C ,buffer ,,,,,
+D ,C ,60,D ,buffer ,,,,,
+D ,D ,1,A ,buffer ,,,,,
+D ,D ,1,B ,buffer ,,,,,
+D ,D ,2,A ,buffer ,,,,,
+D ,D ,2,B ,buffer ,,,,,
+D ,D ,3,A ,buffer ,,,,,
+NA ,D ,3,B ,IH_5_9 ,15.5,11.4,4,Y ,7/23 mistakenly coded as buffer before 8/13 repro. stem broken 
+D ,D ,4,A ,724,,,,,6/25/24 very wilted 
+D ,D ,4,B ,906,,,,,6/25/24 wilting 
+D ,D ,5,A ,1230,,,,,6/25/24 wilting 
+D ,D ,6,B ,90,,,,,6/25/24 wilting 
+D ,D ,8,A ,101,,,,,7/2 wilting 
+D ,D ,9,A ,1350,,,,,6/25/24 wilted 
+D ,D ,9,B ,937,,,,,
+D ,D ,10,A ,283,,,,,7/9/24 wilted 
+D ,D ,10,B ,436,10,5.9,4,Y ,
+D ,D ,11,A ,113,,,,,8/6 Wilting 8/13 dead 
+D ,D ,11,B ,546,,,,,6/25/24 wilted 
+D ,D ,12,A ,NA ,,,,,
+D ,D ,12,B ,NA ,,,,,
+D ,D ,13,A ,NA ,,,,,
+D ,D ,13,B ,304,7.5,4.6,3.6,Y ,
+NA ,D ,14,A ,IH_7_9 ,,,,,
+E ,D ,14,B ,5,,,,,6/25/24 wilted 
+E ,D ,15,A ,119,,,,,
+E ,D ,15,B ,91,,,,,
+E ,D ,16,A ,268,,,,,
+E ,D ,16,B ,1107,6,3.5,2.5,Y ,
+NA ,D ,17,A ,CC_9_9 ,,,,,
+E ,D ,17,B ,162,,,,,
+E ,D ,18,A ,203,,,,,7/9 wilted 
+E ,D ,18,B ,403,5.5,3.5,2.9,Y ,
+NA ,D ,19,A ,TM2_7_18 ,30,17.5,12.4,Y ,
+NA ,D ,19,B ,CC_4_9 ,,,,,stem broken 8/13 stem snapped and no leaves 8/20 harvest 
+E ,D ,20,A ,988,,,,,
+E ,D ,20,B ,141,3.3,1.6,0.6,Y ,
+NA ,D ,21,A ,SC_5_9 ,,,,,7/16 Wilting 
+E ,D ,21,B ,798,,,,,6/25/24 wilting 7/2 wilting 
+E ,D ,22,A ,467,,,,,6/25/24 wilting 
+E ,D ,22,B ,607,,,,,6/25/24 wilting 7/2 wilting 
+E ,D ,23,A ,1231,,,,,6/25/24 snapped off 
+E ,D ,23,B ,22,,,,,
+E ,D ,24,A ,969,,,,,6/25/24 wilting 
+NA ,D ,24,B ,IH_1_9 ,,,,,
+E ,D ,25,A ,447,,,,,7/9/24 Ant hill Formed 
+E ,D ,25,B ,358,,,,,7/9 wilted 
+E ,D ,26,A ,950,,,,,6/25/24 wilting 
+E ,D ,26,B ,148,,,,,7/9 wilted 
+E ,D ,27,A ,1401,,,,,6/25/24 wilting 
+E ,D ,27,B ,756,,,,,
+E ,D ,28,A ,495,,,,,
+E ,D ,28,B ,1244,,,,,6/25/24 wilting 7/2 wilting 
+E ,D ,29,A ,75,,,,,7/2 wilting 
+E ,D ,29,B ,315,,,,,
+E ,D ,30,A ,NA ,,,,,
+E ,D ,30,B ,NA ,,,,,
+F ,D ,31,A ,103,10.6,4,2.2,Y ,
+F ,D ,31,B ,813,,,,,6/25/24 wilting 
+F ,D ,32,A ,92,,,,,
+F ,D ,32,B ,538,,,,,
+F ,D ,33,A ,269,,,,,
+F ,D ,33,B ,741,,,,,7/2 wilting 
+F ,D ,34,A ,1280,4.7,2.2,1.3,N ,
+F ,D ,34,B ,246,7,4.5,4.4,N ,
+F ,D ,35,A ,1101,10.6,4.1,3.4,Y ,
+F ,D ,36,A ,503,15.7,4.4,3.9,N ,
+F ,D ,36,B ,190,4.5,2.6,1.6,N ,
+F ,D ,37,A ,1514,,,,,Dead at planting 
+F ,D ,37,B ,531,,,,,6/25/24 wilted 
+F ,D ,38,A ,713,,,,,7/9 wilted 
+F ,D ,38,B ,6,,,,,6/25/24 roots exposed 
+F ,D ,39,A ,350,,,,,8/27 Dying 
+F ,D ,39,B ,484,10.5,1.9,0.9,Y ,9/24 wilted 
+F ,D ,40,A ,1214,,,,,6/25/24 wilted 7/2 wilting 
+NA ,D ,40,B ,BH_7_8 ,,,,,8/13/24 tape fruit 
+F ,D ,41,A ,757,NA ,NA ,NA ,NA ,9/24 no plant or tag red pick 8/27 leaves dead stem turgid 
+F ,D ,41,B ,559,,,,,7/23 wilted 
+F ,D ,42,A ,1232,,,,,6/25/24 gone 
+F ,D ,42,B ,897,,,,,7/2 wilted 
+F ,D ,43,A ,1190,,,,,
+F ,D ,43,B ,40,,,,,
+F ,D ,44,A ,895,4.1,1.4,0.8,Y ,
+F ,D ,44,B ,NA ,,,,,
+G ,D ,45,A ,205,,,,,
+G ,D ,45,B ,960,,,,,
+G ,D ,46,A ,1023,,,,,
+G ,D ,46,B ,398,9.5,3.5,3.1,Y ,
+G ,D ,47,A ,NA ,,,,,
+G ,D ,47,B ,157,,,,,6/25/24 wilting 
+G ,D ,48,A ,485,9,1.8,1.3,Y ,
+G ,D ,48,B ,1403,10.3,3,3,Y ,
+G ,D ,49,A ,7,,,,,
+G ,D ,49,B ,778,,,,,
+G ,D ,50,A ,270,,,,,
+G ,D ,50,B ,490,,,,,
+G ,D ,51,A ,77,7,3.3,2,Y ,9/24 heavily buried by animal activity 
+G ,D ,51,B ,632,NA ,NA ,NA ,NA ,7/23 heavily shaded/dead 
+G ,D ,52,A ,299,4.7,1.1,1,N ,
+G ,D ,52,B ,326,3.6,NA ,NA ,NA ,9/24 heavilly buried/ no leaves 
+G ,D ,53,A ,522,8.6,3.4,2.1,N ,
+G ,D ,53,B ,NA ,,,,,
+G ,D ,54,A ,1117,,,,,
+G ,D ,54,B ,1387,,,,,6/25/24 wilting 
+G ,D ,55,A ,254,6.5,1.7,1.4,N ,9/3 dying 
+G ,D ,55,B ,181,,,,,
+G ,D ,56,A ,558,,,,,6/25/24 gone 
+G ,D ,56,B ,NA ,,,,,
+G ,D ,57,A ,1242,,,,,6/25/24 wilting 
+G ,D ,57,B ,1344,,,,,Broken stem at planting 
+G ,D ,58,A ,buffer ,,,,,
+G ,D ,58,B ,1327,4.6,2.6,2.2,N ,Broken stem at planting 
+G ,D ,59,A ,114,,,,,
+G ,D ,59,B ,buffer ,,,,,
+D ,D ,1,C ,buffer ,,,,,
+D ,D ,1,D ,buffer ,,,,,
+D ,D ,2,C ,buffer ,,,,,
+D ,D ,2,D ,buffer ,,,,,
+D ,D ,3,C ,buffer ,,,,,
+D ,D ,3,D ,buffer ,,,,,
+D ,D ,4,C ,488,,,,,6/25/24 wilted 
+D ,D ,4,D ,504,,,,,7/2 wilted 
+D ,D ,5,C ,772,,,,,7/2 wilted 
+D ,D ,5,D ,165,,,,,
+D ,D ,7,C ,213,,,,,7/2 wilted 
+D ,D ,8,D ,345,,,,,6/25/24 wilted 7/2 wilted 
+D ,D ,9,C ,1400,,,,,6/25/24 wilted 7/2 wilted 
+D ,D ,9,D ,135,,,,,
+D ,D ,10,C ,986,,,,,7/2/24 wilted 8/27/24 red pick no date 
+D ,D ,10,D ,552,8.8,4.3,4,Y ,
+D ,D ,11,C ,482,,,,,
+D ,D ,11,D ,359,6.4,2.5,1.4,Y ,
+D ,D ,12,C ,144,4.6,1.7,2,Y ,
+D ,D ,12,D ,NA ,,,,,
+D ,D ,13,C ,755,,,,,7/2 wilted 
+E ,D ,13,D ,1159,,,,,
+E ,D ,14,C ,934,,,,,7/2 wilting 
+E ,D ,14,D ,180,,,,,6/25/24 wilted 
+E ,D ,15,C ,324,,,,,7/2 wilting 
+E ,D ,15,D ,102,,,,,
+E ,D ,16,C ,1510,,,,,
+E ,D ,16,D ,396,,,,,
+E ,D ,17,C ,1176,,,,,7/2 wilting 
+E ,D ,17,D ,1084,,,,,
+E ,D ,18,C ,1281,,,,,
+E ,D ,18,D ,548,,,,,
+E ,D ,19,C ,578,,,,,
+E ,D ,19,D ,1005,,,,,
+E ,D ,20,C ,509,,,,,6/25/24 wilted 
+E ,D ,20,D ,525,,,,,
+E ,D ,21,C ,53,4,2.5,2.1,Y ,
+E ,D ,21,D ,252,,,,,7/9/24 wilted 
+E ,D ,22,C ,1345,,,,,6/25/24 roots exposed 
+E ,D ,22,D ,815,3.9,2.5,1.8,Y ,
+E ,D ,23,C ,338,,,,,
+E ,D ,23,D ,704,,,,,6/25/24 roots exposed 
+E ,D ,24,C ,348,,,,,7/9/24 wilted 8/27/24 red pick no date 
+E ,D ,24,D ,301,,,,,
+NA ,D ,25,C ,CC_2_9 ,,,,,6/25/24 stem snapped 
+E ,D ,25,D ,882,,,,,7/9 wilted 
+NA ,D ,26,C ,SC_8_15 ,NA ,NA ,NA ,NA ,8/20 tape 9/24 Already censused 
+E ,D ,26,D ,911,,,,,7/2 wilting 
+E ,D ,27,C ,562,,,,,
+E ,D ,27,D ,1114,,,,,
+E ,D ,28,C ,740,,,,,7/23 wilted 
+E ,D ,28,D ,483,,,,,6/25/24 no leaves 
+E ,D ,29,C ,NA ,,,,,
+E ,D ,29,D ,NA ,,,,,
+E ,D ,30,C ,1469,6.2,3.5,3,Y ,
+E ,D ,30,D ,NA ,,,,,
+F ,D ,31,C ,NA ,,,,,
+F ,D ,31,D ,NA ,,,,,
+F ,D ,32,C ,767,,,,,
+F ,D ,32,D ,1402,,,,,
+F ,D ,33,C ,150,,,,,7/2 wilting 
+F ,D ,33,D ,129,,,,,
+F ,D ,34,C ,879,,,,,6/25/24 wilted and uprooted 
+F ,D ,34,D ,601,,,,,6/25/24 wilted 
+F ,D ,35,C ,127,,,,,
+F ,D ,35,D ,228,,,,,Dead at planting 
+F ,D ,36,C ,204,3.4,2,1.5,Y ,
+F ,D ,36,D ,640,,,,,6/25/24 roots exposed 7/2 wilting 
+F ,D ,37,C ,1189,,,,,7/2 wilting 
+F ,D ,37,D ,312,5.8,4,3.5,Y ,"9/24 missing tag, added new tag"
+F ,D ,38,C ,1269,4.4,2.9,2.2,Y ,
+F ,D ,38,D ,1339,,,,,6/25/24 wilted 
+F ,D ,39,C ,397,,,,,
+F ,D ,39,D ,253,,,,,
+NA ,D ,40,C ,IH_5_8 ,,,,,6/25/24 wilting 
+F ,D ,40,D ,1430,7.3,5.7,4,N ,
+F ,D ,41,C ,1165,,,,,7/2 wilting 
+F ,D ,41,D ,1404,6.5,4.2,3.4,N ,
+F ,D ,42,C ,161,,,,,7/23 wilted 
+F ,D ,42,D ,795,,,,,
+F ,D ,43,C ,491,7.7,2.5,2,N ,
+F ,D ,43,D ,76,1.8,3.2,1.9,Y ,
+F ,D ,44,C ,363,5.3,NA ,NA ,NA ,9/24 very small leaves 
+F ,D ,44,D ,297,,,,,
+G ,D ,45,C ,385,8.5,NA ,NA ,NA ,9/24 No leaves 
+G ,D ,45,D ,1233,,,,,
+G ,D ,46,C ,542,,,,,Broken stem at planting 
+G ,D ,46,D ,917,,,,,
+G ,D ,47,C ,104,,,,,
+G ,D ,47,D ,758,,,,,
+G ,D ,48,C ,1211,,,,,
+G ,D ,48,D ,133,,,,,
+G ,D ,49,C ,212,,,,,6/25/24 wilting 
+G ,D ,49,D ,1313,,,,,6/25/24 wilting 
+G ,D ,50,C ,992,,,,,
+G ,D ,50,D ,1154,,,,,
+NA ,D ,51,C ,IH_1_8 ,NA ,NA ,NA ,NA ,8/20 tape /9/24 censused 
+G ,D ,51,D ,175,,,,,
+G ,D ,52,C ,1271,,,,,
+G ,D ,52,D ,93,,,,,
+G ,D ,53,C ,310,,,,,6/25/24 wilting 
+G ,D ,53,D ,742,,,,,
+G ,D ,54,C ,1191,,,,,
+G ,D ,54,D ,762,,,,,
+NA ,D ,55,C ,SC_4_8 ,NA ,NA ,NA ,NA ,8/20 tape Wilting flowers/ lots of grass / 9/24 Already censused/buried 
+G ,D ,55,D ,936,7.5,3,2.7,N ,
+G ,D ,56,C ,511,,,,,
+G ,D ,56,D ,608,7.3,3.6,1.5,N ,
+G ,D ,57,C ,NA ,,,,,
+G ,D ,57,D ,NA ,,,,,
+G ,D ,58,C ,buffer ,,,,,
+G ,D ,58,D ,buffer ,,,,,
+G ,D ,59,C ,buffer ,,,,,
+G ,D ,59,D ,buffer ,,,,,
+H ,E ,1,A ,buffer ,,,,,
+H ,E ,1,B ,buffer ,,,,,
+H ,E ,2,A ,buffer ,,,,,
+H ,E ,2,B ,buffer ,,,,,
+H ,E ,3,A ,buffer ,,,,,
+H ,E ,3,B ,buffer ,,,,,
+H ,E ,4,A ,NA ,,,,,
+H ,E ,4,B ,NA ,,,,,
+H ,E ,5,A ,958,,,,,6/25/24 wilting 
+H ,E ,5,B ,218,,,,,Stem bent at planting 
+H ,E ,6,B ,498,,,,,6/25/24 wilting 
+H ,E ,7,A ,700,,,,,
+H ,E ,7,B ,1496,,,,,7/2 wilting 
+H ,E ,8,A ,883,,,,,7/9 wilting 
+NA ,E ,8,B ,TM2_6_2 ,,,,,TM2 fruiting from 2023 
+H ,E ,9,A ,928,,,,,6/25/24 wilted 
+H ,E ,10,A ,399,11,6.3,4,Y ,
+H ,E ,10,B ,727,,,,,6/25/24 wilted 
+H ,E ,11,A ,566,,,,,6/25/24 wilted 
+H ,E ,11,B ,998,,,,,7/2 wilting 7/23 red pick no date 
+H ,E ,12,A ,158,,,,,
+H ,E ,12,B ,1253,,,,,7/9 wilting 
+H ,E ,13,A ,454,,,,,6/25/24 wilting 
+H ,E ,14,A ,173,,,,,
+H ,E ,14,B ,25,,,,,
+H ,E ,15,A ,8,,,,,
+H ,E ,15,B ,777,,,,,6/25/24 wilted 
+H ,E ,16,A ,690,,,,,7/2 wilting 
+H ,E ,16,B ,206,,,,,6/25/24 wilted 7/2 wilting 7/23 red pick no date 
+H ,E ,17,A ,770,,,,,
+H ,E ,17,B ,944,NA ,NA ,NA ,NA ,dead 
+H ,E ,18,A ,916,,,,,
+H ,E ,18,B ,372,9.6,5,2.9,Y ,
+H ,E ,19,A ,78,,,,,6/25/24 wilting 
+H ,E ,19,B ,105,,,,,
+H ,E ,20,A ,271,,,,,7/9 wilting 
+H ,E ,20,B ,94,,,,,6/25/24 wilted 
+NA ,E ,21,A ,CC_5_10 ,,,,,8/13/24 tape fruit 8/27 branch snapped at base 8/27 collected fruit 
+H ,E ,21,B ,NA ,,,,,
+NA ,E ,22,A ,IH_2_10 ,,,,,7/23 wilted 
+H ,E ,22,B ,NA ,,,,,
+I ,E ,23,A ,400,5.5,2,1,N ,
+NA ,E ,23,B ,WR_3_2 ,NA ,NA ,NA ,NA ,7/16 Snapped side stem/small flowers 8/20 tane /censused 
+I ,E ,24,A ,761,,,,,7/23 wilted 
+I ,E ,24,B ,431,,,,,
+I ,E ,25,A ,1429,,,,,7/2 wilting 
+NA ,E ,25,B ,TM2_1_15 ,,,,,TM2 fruiting from 2023 
+I ,E ,26,A ,296,,,,,
+I ,E ,26,B ,563,,,,,
+I ,E ,27,A ,95,3.9,2,2,N ,
+I ,E ,27,B ,1319,,,,,7/9 wilting 
+I ,E ,28,A ,715,,,,,Dead at planting 
+I ,E ,28,B ,151,,,,,6/25/24 wilted 
+NA ,E ,29,A ,TM2_1_9 ,,,,,TM2 fruiting from 2023 
+I ,E ,29,B ,707,,,,,Very small no leaves / buried under soil at planting 
+I ,E ,41,A ,1342,,,,,6/25/24 wilted 
+I ,E ,41,B ,851,,,,,
+I ,E ,42,A ,207,,,,,6/25/24 wilted 
+I ,E ,42,B ,1248,,,,,6/25/24 wilted 
+I ,E ,43,A ,369,12.1,2.5,1.9,Y ,7/23 wilted 
+I ,E ,43,B ,1389,,,,,6/25/24 wilted 
+I ,E ,44,A ,168,,,,,6/25/24 wilted 
+NA ,E ,44,B ,SC_4_10 ,NA ,NA ,NA ,NA ,8/20 tape /censused 
+I ,E ,45,A ,1025,,,,,6/25/24 plant gone 
+I ,E ,45,B ,142,,,,,
+I ,E ,46,A ,1147,,,,,
+NA ,E ,46,B ,IH_3_11 ,NA ,NA ,NA ,NA ,8/20 tape /censused 
+NA ,E ,47,A ,BH_4_11 ,NA ,NA ,NA ,NA ,9/3 missing tag/censused 
+I ,E ,47,B ,505,,,,,6/25/24 wilting 
+NA ,E ,48,A ,SC_5_11 ,NA ,NA ,NA ,NA ,censused 
+I ,E ,48,B ,1037,,,,,
+NA ,E ,49,A ,YO7_4_3 ,NA ,NA ,NA ,NA ,censused 6/25/24 started budding last week 
+NA ,E ,49,B ,TM2_6_4 ,NA ,NA ,NA ,NA ,censused 7/23 missed FL date 8/20 tape 
+I ,E ,50,A ,774,,,,,6/25/24 wilting 
+I ,E ,50,B ,1193,11.6,2.4,2.1,N ,
+I ,E ,51,A ,334,7.5,2.6,1.1,N ,
+I ,E ,51,B ,NA ,,,,,
+I ,E ,52,A ,buffer ,,,,,
+I ,E ,52,B ,buffer ,,,,,
+I ,E ,53,A ,buffer ,,,,,
+I ,E ,53,B ,buffer ,,,,,
+H ,E ,1,C ,buffer ,,,,,
+H ,E ,1,D ,buffer ,,,,,
+H ,E ,2,C ,buffer ,,,,,
+H ,E ,2,D ,buffer ,,,,,
+H ,E ,3,C ,buffer ,,,,,
+H ,E ,3,D ,buffer ,,,,,
+H ,E ,4,C ,1457,,,,,
+H ,E ,4,D ,1234,,,,,
+H ,E ,5,C ,250,,,,,6/25/24 wilted 
+H ,E ,5,D ,875,,,,,
+H ,E ,6,C ,527,,,,,6/25/24 wilted 
+H ,E ,6,D ,743,,,,,
+H ,E ,7,C ,1103,,,,,
+H ,E ,7,D ,1406,5.5,4.2,4.1,Y ,
+H ,E ,8,C ,1212,,,,,6/25/24 roots exposed 
+H ,E ,8,D ,486,,,,,6/25/24 wilting 
+H ,E ,9,C ,293,,,,,
+H ,E ,9,D ,1335,,,,,
+H ,E ,10,C ,1247,,,,,6/25/24 wilting 
+H ,E ,10,D ,1192,,,,,6/25/24 wilting 
+H ,E ,11,C ,682,,,,,
+H ,E ,11,D ,378,,,,,6/25/24 wilting 
+H ,E ,12,C ,235,,,,,6/25/24 wilting 
+H ,E ,12,D ,909,,,,,6/25/24 wilting 7/2/24 wilting 
+H ,E ,13,C ,605,,,,,
+H ,E ,13,D ,1490,7,6.1,5.6,Y ,
+H ,E ,14,C ,308,,,,,6/25/24 wilting 
+H ,E ,14,D ,437,,,,,
+H ,E ,15,C ,517,,,,,6/25/24 wilting 
+H ,E ,16,C ,140,,,,,
+H ,E ,17,C ,116,,,,,6/25/24 wilting 
+H ,E ,17,D ,545,,,,,6/25/24 roots exposed 
+H ,E ,18,C ,1167,,,,,6/25/24 wilted 
+H ,E ,18,D ,178,,,,,6/25/24 wilted 
+H ,E ,19,C ,1388,,,,,7/2/24 wilting 
+H ,E ,19,D ,255,7.5,3.4,2,Y ,
+H ,E ,20,C ,NA ,,,,,
+NA ,E ,20,D ,BH_2_10 ,NA ,NA ,NA ,NA ,8/20 tape /9/24 Already censused
+NA ,E ,21,C ,YO7_5_5 ,,,,,
+H ,E ,21,D ,NA ,,,,,
+I ,E ,22,C ,568,,,,,
+I ,E ,22,D ,1235,,,,,
+NA ,E ,23,C ,BH_1_10 ,,,,,
+NA ,E ,23,D ,IH_5_10 ,,,,,7/23 dying 
+I ,E ,24,C ,272,,,,,6/25/24 wilted 
+I ,E ,24,D ,117,,,,,6/25/24 wilted 
+I ,E ,25,C ,244,,,,,
+I ,E ,25,D ,637,5,5.3,4.4,Y ,
+I ,E ,26,C ,106,,,,,
+I ,E ,26,D ,26,,,,,
+NA ,E ,27,C ,BH_4_10 ,NA ,NA ,NA ,NA ,5/20 tape /9/24 Already censused 
+I ,E ,27,D ,79,9.7,3.7,3.5,Y ,
+I ,E ,28,C ,744,,,,,6/25/24 roots exposed 
+I ,E ,28,D ,9,,,,,Very small / buried under soil at planting 
+I ,E ,29,C ,182,,,,,
+NA ,E ,29,D ,IH_4_10 ,NA ,NA ,NA ,NA ,8/20 tape 9/24 Already censused
+I ,E ,41,C ,956,,,,,
+I ,E ,41,D ,904,,,,,
+I ,E ,42,C ,1424,,,,,
+I ,E ,42,D ,256,,,,,
+I ,E ,43,C ,1259,,,,,
+NA ,E ,43,D ,IH_1_10 ,,,,,
+I ,E ,44,C ,470,,,,,6/25/24 wilted 
+I ,E ,44,D ,940,,,,,
+I ,E ,45,C ,1120,,,,,
+I ,E ,45,D ,471,,,,,
+I ,E ,46,C ,594,,,,,Broken stem at planting 
+I ,E ,46,D ,549,,,,,
+I ,E ,47,C ,216,,,,,6/25/24 wilted 
+I ,E ,47,D ,500,,,,,
+I ,E ,48,C ,328,4.7,NA ,NA ,NA ,9/24 No leaves 
+I ,E ,48,D ,728,,,,,6/25/24 wilted 
+I ,E ,49,C ,380,7.9,1.6,1.4,N ,
+I ,E ,49,D ,519,,,,,
+I ,E ,50,C ,318,,,,,
+NA ,E ,50,D ,IH_5_11 ,,,,,8/13/24 Harvest fruit 
+I ,E ,51,C ,NA ,,,,,
+I ,E ,51,D ,NA ,,,,,
+I ,E ,52,C ,buffer ,,,,,
+I ,E ,52,D ,buffer ,,,,,
+I ,E ,53,C ,buffer ,,,,,
+I ,E ,53,D ,buffer ,,,,,
+J ,F ,1,A ,buffer ,,,,,
+J ,F ,1,B ,buffer ,,,,,
+J ,F ,2,A ,buffer ,,,,,
+J ,F ,2,B ,buffer ,,,,,
+J ,F ,3,A ,buffer ,,,,,
+J ,F ,3,B ,buffer ,,,,,
+J ,F ,4,A ,NA ,,,,,
+J ,F ,4,B ,12,,,,,
+J ,F ,5,A ,952,,,,,6/25/24 wilted 
+J ,F ,6,A ,768,,,,,6/25/24 wilted 
+J ,F ,6,B ,1118,,,,,No leaves at planting 
+J ,F ,7,A ,993,,,,,6/25/24 wilted 
+NA ,F ,7,B ,IH_1_12 ,22.4,5.6,0.6,N ,8/6 No leaves or buds 8/27 dying 
+J ,F ,8,A ,535,,,,,6/25/24 wilted 
+J ,F ,8,B ,729,,,,,7/9 gone 
+J ,F ,9,A ,273,,,,,6/25/24 wilted 
+J ,F ,9,B ,1390,,,,,7/23 stem broken/wilted 
+J ,F ,10,A ,1169,,,,,
+J ,F ,10,B ,1146,,,,,6/25/24 wilted 
+J ,F ,11,A ,23,,,,,exposed roots / reburied 6/25/24 wilting 
+J ,F ,11,B ,510,,,,,
+J ,F ,12,A ,80,,,,,
+J ,F ,12,B ,1178,,,,,6/25/24 wilted 
+J ,F ,13,A ,645,,,,,
+J ,F ,13,B ,160,,,,,7/9/24 wilted 
+J ,F ,14,A ,529,,,,,
+J ,F ,14,B ,1251,4.2,3.8,3.6,Y ,
+J ,F ,15,A ,712,,,,,
+J ,F ,15,B ,1200,,,,,
+J ,F ,16,A ,1463,3.4,2.5,1.3,Y ,
+J ,F ,16,B ,401,NA ,NA ,NA ,NA ,9/3 dying Dead 
+J ,F ,17,A ,146,,,,,
+J ,F ,17,B ,377,4.7,0.5,0.3,Y ,Heavy herbivory 9/24
+J ,F ,18,A ,131,,,,,
+J ,F ,18,B ,208,9.9,4.9,4.5,Y ,
+K ,F ,19,A ,1061,,,,,
+K ,F ,19,B ,NA ,,,,,
+K ,F ,20,A ,1321,7.6,5.1,2.4,Y ,
+K ,F ,20,B ,1338,,,,,
+K ,F ,21,A ,1270,,,,,6/18 extremely wilted 
+K ,F ,21,B ,520,8.1,1.7,1.1,Y ,19/24 Heavy herbivory
+K ,F ,22,A ,492,9.6,4.2,3.8,Y ,
+K ,F ,22,B ,515,,,,,
+K ,F ,23,A ,1170,,,,,
+K ,F ,23,B ,108,,,,,7/23 red pick no date 
+NA ,F ,24,A ,TM2_2_4 ,,,,,mistakenly coded as TM2-fruiting prior 7/23 / had fruits in 2023 and survived winter maybe dead earlier 
+K ,F ,24,B ,81,,,,,
+K ,F ,25,A ,402,7.1,7.1,2.2,Y ,
+K ,F ,25,B ,367,,,,,
+NA ,F ,26,A ,WL2_8_4 ,,,,,6/25/24 was budding last week/not marked 8/13 Harvest fruit 8/27 FR 
+K ,F ,26,B ,13,,,,,
+K ,F ,27,A ,1391,,,,,6/25/24 wilted 
+K ,F ,27,B ,138,,,,,
+K ,F ,39,A ,861,7.1,3.2,2.3,N,
+K ,F ,39,B ,1237,NA ,NA ,NA ,NA ,8/27 Wilted / 9/3 no leaves Stem turgid 9/27 Dead
+K ,F ,40,A ,1009,NA ,NA ,NA ,NA ,9/3 roots exposed Dead 9/24 
+K ,F ,40,B ,NA ,,,,,
+K ,F ,41,A ,425,,,,,8/27 broke at base 
+K ,F ,41,B ,547,8.5,2.7,2.1,N,
+K ,F ,42,A ,1179,,,,,
+NA ,F ,42,B ,CC_3_11 ,NA ,NA ,NA ,NA ,7/16 tiny flowers 8/2 tape census
+K ,F ,43,A ,678,,,,,6/18/24 extremely wilted 
+NA ,F ,43,B ,CC_8_11 ,NA ,NA ,NA ,NA ,8/27 no Fruits census
+K ,F ,44,A ,NA ,,,,,
+K ,F ,44,B ,NA ,,,,,
+K ,F ,45,A ,172,,,,,6/25/24 wilted 
+L ,F ,45,B ,896,,,,,Dead at planting 
+L ,F ,46,A ,buffer ,,,,,
+L ,F ,46,B ,buffer ,,,,,
+L ,F ,47,A ,buffer ,,,,,
+L ,F ,47,B ,buffer ,,,,,
+J ,F ,1,C ,buffer ,,,,,
+J ,F ,1,D ,buffer ,,,,,
+J ,F ,2,C ,buffer ,,,,,
+J ,F ,2,D ,buffer ,,,,,
+J ,F ,3,C ,buffer ,,,,,
+J ,F ,3,D ,buffer ,,,,,
+J ,F ,4,C ,1047,,,,,6/25/24 wilted 
+J ,F ,4,D ,472,,,,,6/25/24 wilted 
+J ,F ,5,C ,NA ,,,,,
+J ,F ,5,D ,820,,,,,6/25/24 wilted 
+J ,F ,6,C ,745,,,,,
+J ,F ,6,D ,565,4.4,2.5,2.1,Y ,
+J ,F ,7,C ,1236,,,,,
+J ,F ,7,D ,1249,NA ,NA ,NA ,NA ,Dead 9/24 
+NA ,F ,8,C ,SC_6_12 ,4.6,2.2,1.9,Y ,
+J ,F ,8,D ,496,,,,,
+J ,F ,9,C ,930,,,,,6/18/24 no leaves 
+J ,F ,9,D ,1065,,,,,
+J ,F ,10,C ,NA ,,,,,
+J ,F ,10,D ,115,,,,,6/25/24 wilted 
+J ,F ,11,C ,965,,,,,6/25/24 wilted 
+J ,F ,11,D ,257,,,,,extremly wilted 
+J ,F ,12,C ,1440,,,,,7/9/24 wilted 
+J ,F ,12,D ,107,,,,,6/25/24 wilted 
+J ,F ,13,C ,432,,,,,
+J ,F ,13,D ,188,,,,,6/25/24 wilted 
+J ,F ,14,C ,357,,,,,7/9/24 wilted 
+J ,F ,14,D ,302,,,,,7/23 wilted 
+J ,F ,15,C ,455,,,,,
+J ,F ,15,D ,689,,,,,
+J ,F ,16,C ,316,,,,,6/18/24 roots exposed/reburied 6/25/24 wilted 
+J ,F ,16,D ,NA ,,,,,
+J ,F ,17,C ,1008,,,,,
+J ,F ,17,D ,NA ,,,,,
+J ,F ,18,C ,1453,,,,,
+J ,F ,18,D ,64,4.7,3.3,1.9,N,
+J ,F ,19,C ,NA ,,,,,
+K ,F ,19,D ,217,,,,,6/25/24 wilted 
+K ,F ,20,C ,1222,,,,,
+K ,F ,20,D ,381,6.6,5.6,2.9,Y ,
+K ,F ,21,C ,258,,,,,6/25/24 wilted 
+K ,F ,21,D ,730,,,,,7/23 wilted 
+K ,F ,22,C ,295,7,4.9,4,Y ,
+K ,F ,22,D ,209,,,,,
+NA ,F ,23,C ,SC_2_23 ,NA ,NA ,NA ,NA ,8/20 tape census
+K ,F ,23,D ,473,,,,,
+K ,F ,24,C ,274,,,,,6/25/24 wilted 
+K ,F ,24,D ,1297,,,,,
+K ,F ,25,C ,746,,,,,7/23 wilted 
+K ,F ,25,D ,991,,,,,
+K ,F ,26,C ,122,,,,,
+K ,F ,26,D ,346,,,,,
+K ,F ,27,C ,1405,,,,,
+K ,F ,27,D ,908,,,,,Possible herbivory on stem at planting / no leaves. 
+K ,F ,38,D ,709,,,,,7/2 base of Stem dying 
+K ,F ,39,C ,571,,,,,
+K ,F ,39,D ,179,,,,,
+K ,F ,40,C ,65,,,,,6/25/24 wilting 
+K ,F ,40,D ,554,,,,,6/25/24 wilting 
+K ,F ,41,C ,329,,,,,6/25/24 wilted 
+K ,F ,41,D ,314,7.7,3.5,2.6,N ,
+K ,F ,42,C ,147,,,,,6/25/24 wilted 
+K ,F ,42,D ,927,,,,,6/25/24 wilted 
+NA ,F ,43,C ,CC_9_11 ,NA ,NA ,NA ,NA ,7/23 FLS dead census
+K ,F ,43,D ,652,,,,,6/25/24 wilted / 7/2 base of stem dving 
+NA ,F ,44,C ,IH_4_11 ,19.1,4.4,4,Y ,
+K ,F ,44,D ,NA ,,,,,
+K ,F ,45,C ,717,,,,,
+L ,F ,45,D ,buffer ,,,,,
+L ,F ,46,C ,66,,,,,6/18/24 roots exposed / reburied 
+L ,F ,46,D ,1460,,,,,6/18/24 stem exposed / reburied 
+L ,F ,47,C ,buffer ,,,,,
+L ,F ,47,D ,buffer ,,,,,
+L ,G ,1,A ,buffer ,,,,,
+L ,G ,1,B ,buffer ,,,,,
+L ,G ,2,A ,buffer ,,,,,
+L ,G ,2,B ,buffer ,,,,,
+L ,G ,3,A ,buffer ,,,,,
+L ,G ,3,B ,buffer ,,,,,
+L ,G ,4,A ,1238,8.6,5.7,3.7,Y ,
+L ,G ,4,B ,456,,,,,
+L ,G ,5,A ,1392,,,,,7/2 wilting 
+NA ,G ,5,B ,IH_4_12 ,,,,,no leaves 
+L ,G ,6,A ,82,,,,,6/25/24 wilted 
+L ,G ,6,B ,14,,,,,6/25/24 wilted 
+L ,G ,7,A ,537,,,,,herbivory 
+L ,G ,7,B ,933,,,,,
+NA ,G ,8,A ,YO7_6_15 ,NA ,NA ,NA ,NA ,7/16 remaining flowers are dry 7/23 healthy buds 8/6/24 fruits dving 8/13 annual census
+L ,G ,8,B ,499,,,,,6/25/24 wilted 
+L ,G ,9,A ,163,,,,,
+L ,G ,9,B ,305,,,,,6/25/24 wilted 
+L ,G ,10,A ,387,,,,,6/25/24 wilted 
+L ,G ,10,B ,153,,,,,6/25/24 wilted 
+L ,G ,11,A ,249,,,,,7/2 roots exposed reburned 
+L ,G ,11,B ,747,,,,,7/9/24 wilted 
+L ,G ,12,A ,892,,,,,6/25/24 wilted 
+L ,G ,12,B ,731,,,,,7/2 wilting 
+L ,G ,13,A ,606,,,,,6/18/24 very wilted/roots exposed 
+L ,G ,13,B ,1501,,,,,6/18/24 roots exposed 6/25/24 wilted 
+L ,G ,14,A ,365,,,,,
+L ,G ,14,B ,461,,,,,
+L ,G ,15,A ,275,,,,,
+L ,G ,15,B ,997,,,,,6/25/24 wilted 
+L ,G ,16,A ,1445,,,,,7/23 found alive but unsure if exptal plant 
+L ,G ,16,B ,134,,,,,
+L ,G ,17,A ,NA ,,,,,
+L ,G ,17,B ,NA ,,,,,
+M ,G ,18,A ,475,,,,,7/9/24 wilted 
+M ,G ,18,B ,833,,,,,6/18/24 very wilted 
+M ,G ,19,A ,802,,,,,6/25/24 wilted 
+M ,G ,19,B ,1265,,,,,
+M ,G ,20,A ,169,,,,,6/18/24 very wilted 
+M ,G ,20,B ,460,,,,,
+M ,G ,21,A ,1239,,,,,Dead at planting 
+M ,G ,21,B ,710,,,,,6/18/24 wilted 
+M ,G ,22,A ,1418,,,,,
+M ,G ,22,B ,1456,,,,,
+M ,G ,23,A ,994,,,,,
+M ,G ,23,B ,550,,,,,
+M ,G ,24,A ,1277,,,,,6/18/24 wilted 
+M ,G ,24,B ,502,,,,,Stem partially broken at planting 
+M ,G ,25,A ,1115,,,,,
+M ,G ,25,B ,512,,,,,Stem partially broken at planting 
+M ,G ,26,A ,561,,,,,6/25/24 wilted 
+M ,G ,26,B ,276,,,,,6/18/24 wilted 
+M ,G ,27,A ,388,,,,,
+M ,G ,27,B ,748,,,,,6/18/24 wilted 
+M ,G ,28,A ,152,,,,,
+M ,G ,28,B ,440,,,,,6/18/24 wilted 
+M ,G ,29,A ,1393,,,,,
+M ,G ,29,B ,732,,,,,6/25/24 wilted 
+M ,G ,30,A ,195,4,2.5,1.8,N ,
+M ,G ,30,B ,NA ,,,,,
+NA ,G ,31,A ,BH_7_13 ,,,,,7/16 dry damaged 7/30 flowers plant dving 
+M ,G ,31,B ,NA ,,,,,
+N ,G ,32,A ,1254,,,,,
+N ,G ,32,B ,43,,,,,6/25/24 wilted 
+N ,G ,33,A ,556,NA ,NA ,NA ,NA ,exposed roots Dead 9/24 census 
+N ,G ,33,B ,84,,,,,6/25/24 wilted 
+N ,G ,34,A ,143,,,,,very wilted 
+N ,G ,34,B ,68,,,,,6/25/24 wilted 
+N ,G ,35,A ,1057,,,,,Broken stem at planting 
+N ,G ,35,B ,880,,,,,
+N ,G ,36,A ,450,,,,,
+N ,G ,36,B ,1410,,,,,7/2 wilting 
+NA ,G ,37,A ,YO7_7_9 ,NA ,NA ,NA ,NA ,7/16 dry flowers very tiny 8/27 all fruit frail annual census 9/24
+N ,G ,37,B ,836,,,,,6/25/24 wilted 
+N ,G ,38,A ,111,,,,,
+N ,G ,38,B ,1330,5.1,3.1,2.6,Y ,
+NA ,G ,39,A ,TM2_7_17 ,,,,,TM2 fruiting from 2023 
+N ,G ,39,B ,171,,,,,
+NA ,G ,40,A ,TM2_3_7 ,,,,,TM2 fruiting from 2023 
+N ,G ,40,B ,476,,,,,6/18/24 bent stem 
+N ,G ,41,A ,1017,,,,,Very small and dying at planting 
+N ,G ,41,B ,706,4.9,3.5,2.2,Y ,
+N ,G ,42,A ,841,,,,,Very wilted 
+N ,G ,42,B ,1464,3.6,2.8,2.1,N ,
+NA ,G ,43,A ,IH_6_13 ,NA ,NA ,NA ,NA ,9/24 annual census
+N ,G ,43,B ,534,,,,,6/25/24 wilted 
+N ,G ,44,A ,buffer ,,,,,
+N ,G ,44,B ,buffer ,,,,,
+N ,G ,45,A ,buffer ,,,,,
+N ,G ,45,B ,buffer ,,,,,
+L ,G ,1,C ,buffer ,,,,,
+L ,G ,1,D ,buffer ,,,,,
+L ,G ,2,C ,buffer ,,,,,
+L ,G ,2,D ,buffer ,,,,,
+L ,G ,3,C ,buffer ,,,,,
+L ,G ,3,D ,buffer ,,,,,
+L ,G ,4,C ,721,,,,,6/25/24 wilted 
+L ,G ,4,D ,1100,8.8,3.4,3.3,Y ,
+L ,G ,5,C ,570,,,,,7/2 wilting 
+NA ,G ,5,D ,YO7_5_7 ,NA ,NA ,NA ,NA ,assume yellow pick from 7/9 / 8/13 harvested fruit 9/24 census 
+L ,G ,6,C ,1180,,,,,
+NA ,G ,6,D ,IH_2_12 ,NA ,NA ,NA ,NA ,8/20 tape 9/24 Annual census
+L ,G ,7,C ,516,,,,,Stem partially broken at planting 
+NA ,G ,7,D ,BH_4_12 ,,,,,8/20 tape 8/27 harvested 
+L ,G ,8,C ,1116,,,,,6/25/24 wilted 
+L ,G ,8,D ,530,9.7,3.5,3.3,N ,
+L ,G ,9,C ,474,,,,,
+L ,G ,9,D ,555,9.5,4.1,3.9,Y ,
+L ,G ,10,C ,1039,,,,,7/2 wilting 
+L ,G ,10,D ,210,10.3,4.4,3.4,Y ,6/18 exposed Stem 7/23 not dead 
+L ,G ,11,C ,970,,,,,
+L ,G ,11,D ,33,,,,,
+L ,G ,12,C ,194,,,,,
+NA ,G ,12,D ,CC_5_12 ,,,,,
+L ,G ,13,C ,184,,,,,
+L ,G ,13,D ,259,,,,,6/25/24 wilted 
+L ,G ,14,C ,109,,,,,
+L ,G ,14,D ,120,,,,,Dead at planting 
+L ,G ,15,C ,1166,,,,,
+L ,G ,15,D ,644,,,,,6/18/24 very wilted 
+L ,G ,16,C ,NA ,,,,,
+L ,G ,16,D ,NA ,,,,,
+M ,G ,17,C ,1152,,,,,6/25/24 wilted 7/2 wilted 
+M ,G ,17,D ,83,,,,,6/25/24 wilted 
+M ,G ,18,C ,1361,,,,,6/25/24 wilted 
+M ,G ,18,D ,533,,,,,
+M ,G ,19,C ,765,,,,,
+M ,G ,19,D ,67,,,,,
+M ,G ,20,C ,121,,,,,7/2 wilted 
+M ,G ,20,D ,891,,,,,6/25/24 wilted 7/2 wilted 
+M ,G ,21,C ,193,,,,,
+M ,G ,21,D ,926,,,,,6/18/24 wilted 
+M ,G ,22,C ,1181,,,,,6/25/24 wilted 
+M ,G ,24,C ,1343,,,,,6/18/24 wilted 7/2 wilted 
+M ,G ,24,D ,260,,,,,
+M ,G ,25,C ,110,,,,,Dead at planting 
+M ,G ,25,D ,719,,,,,
+M ,G ,26,C ,1195,,,,,
+M ,G ,26,D ,132,,,,,6/18/24 wilted 
+NA ,G ,27,C ,YO7_6_9 ,NA ,NA ,NA ,NA ,8/20 tape 8/6 dehiscing but still has buds 9/24 annual census
+M ,G ,27,D ,313,,,,,7/23 wilted 
+M ,G ,28,C ,1111,,,,,
+M ,G ,28,D ,15,,,,,6/18/24 very wilted 
+M ,G ,29,C ,1041,,,,,6/25/24 wilting 
+M ,G ,29,D ,219,,,,,
+M ,G ,30,C ,NA ,,,,,
+M ,G ,30,D ,NA ,,,,,
+NA ,G ,31,C ,TM2_7_5 ,,,,,TM2 fruiting from 2023 
+N ,G ,31,D ,1174,,,,,7/2 wilting 
+N ,G ,32,C ,901,,,,,
+NA ,G ,32,D ,WL2_7_6 ,NA ,NA ,NA ,NA ,7/16 flowers small/ crispy 7/30 new buds emerging 9/24 annual census
+N ,G ,33,C ,1090,,,,,
+N ,G ,33,D ,277,,,,,
+N ,G ,34,C ,238,5.5,3.6,1.9,Y ,
+N ,G ,34,D ,196,,,,,
+N ,G ,35,C ,1394,3.2,2.8,2.1,N ,
+N ,G ,35,D ,300,,,,,
+N ,G ,36,C ,1240,3.5,2.3,1.8,N ,
+N ,G ,36,D ,733,6.3,2.4,1.9,N ,
+N ,G ,37,C ,1122,,,,,
+N ,G ,37,D ,261,4,3.2,2.8,N ,
+N ,G ,38,C ,123,,,,,
+N ,G ,38,D ,1447,5.8,3.2,2.5,N,
+N ,G ,39,C ,433,,,,,7/2 wilting 
+N ,G ,39,D ,389,,,,,
+NA ,G ,40,C ,BH_2_13 ,NA ,NA ,NA ,NA ,9/24 annual census 8/20 tape 8/27 harvested 
+N ,G ,40,D ,541,,,,,
+N ,G ,41,C ,938,,,,,6/25/24 wilting 
+N ,G ,41,D ,1197,,,,,6/25/24 wilting 7/2 wilting 
+NA ,G ,42,C ,SC_2_27 ,,,,,6/18 Short Stem 
+N ,G ,42,D ,NA ,,,,,
+N ,G ,43,C ,514,,,,,6/25/24 no leaves 
+N ,G ,43,D ,19,,,,,
+N ,G ,44,C ,buffer ,,,,,
+N ,G ,44,D ,339,,,,,
+N ,G ,45,C ,buffer ,,,,,
+N ,G ,45,D ,buffer ,,,,,
+N ,H ,1,A ,buffer ,,,,,
+N ,H ,1,B ,buffer ,,,,,
+N ,H ,2,A ,buffer ,,,,,
+N ,H ,2,B ,buffer ,,,,,
+N ,H ,3,A ,buffer ,,,,,
+N ,H ,3,B ,buffer ,,,,,
+N ,H ,4,A ,1500,,,,,6/18/24 wilting 
+N ,H ,4,B ,16,,,,,6/18/24 wilting 
+NA ,H ,5,A ,SC_4_1 ,,,,,
+N ,H ,5,B ,28,,,,,
+N ,H ,6,A ,497,,,,,Broken stem at planting 
+NA ,H ,6,B ,SC_2_26 ,,,,,
+N ,H ,7,A ,723,,,,,
+N ,H ,8,A ,155,,,,,
+N ,H ,8,B ,362,,,,,
+N ,H ,9,B ,NA ,,,,,
+O ,H ,10,B ,523,,,,,
+NA ,H ,11,B ,IH_2_1 ,NA ,NA ,NA ,NA ,9/24 census 8/6 buds eaten 8/20 only branches 
+NA ,H ,12,B ,SC_2_1 ,NA ,NA ,NA ,NA , 6/18/24 Missing 9/24 census
+NA ,H ,13,A ,TM2_2_6 ,,,,,
+O ,H ,13,B ,166,,,,,
+O ,H ,15,B ,1263,,,,,
+O ,H ,17,A ,557,,,,,6/18 Wilting 
+O ,H ,17,B ,327,,,,,
+O ,H ,18,A ,1132,,,,,
+O ,H ,18,B ,406,,,,,
+O ,H ,19,A ,1149,,,,,
+O ,H ,19,B ,1317,,,,,
+O ,H ,20,A ,501,,,,,
+O ,H ,20,B ,342,,,,,
+O ,H ,21,A ,343,,,,,
+NA ,H ,21,B ,TM2_1_12 ,,,,,TM2 fruiting from 2023 
+O ,H ,22,A ,536,,,,,
+O ,H ,22,B ,234,,,,,
+O ,H ,23,A ,360,,,,,
+O ,H ,23,B ,734,8,3.5,3.1,Y ,
+O ,H ,24,A ,1076,,,,,
+O ,H ,24,B ,24,,,,,
+O ,H ,25,A ,1323,,,,,7/23 wilted 
+NA ,H ,25,B ,SC_4_14 ,,,,,
+O ,H ,26,A ,1020,,,,,
+O ,H ,26,B ,278,,,,,
+NA ,H ,27,A ,TM2_6_10 ,,,,,TM2 fruiting from 2023 
+O ,H ,27,B ,966,,,,,
+O ,H ,28,A ,935,,,,,
+O ,H ,28,B ,477,,,,,6/18 Broken Stem 
+O ,H ,29,A ,506,,,,,
+O ,H ,29,B ,NA ,,,,,
+O ,H ,30,A ,NA ,,,,,
+P ,H ,30,B ,587,,,,,
+NA ,H ,31,A ,YO7_4_11 ,NA ,NA ,NA ,NA ,7/16 small crispy flowers 8/6 dehiscing 8/13/24 harvest fruit 9/24 census
+P ,H ,31,B ,1151,,,,,
+P ,H ,32,A ,70,6,2.1,1.6,N ,9/24 small crispy flowers nearly dead
+P ,H ,32,B ,493,,,,,
+P ,H ,33,A ,buffer ,,,,,
+P ,H ,33,B ,buffer ,,,,,
+NA ,H ,34,A ,WL2_2_7 ,,,,,May have died earler mistakenly coded as NA before 7/23 
+P ,H ,34,B ,buffer ,,,,,
+N ,H ,1,C ,buffer ,,,,,
+N ,H ,1,D ,buffer ,,,,,
+N ,H ,2,C ,buffer ,,,,,
+N ,H ,2,D ,buffer ,,,,,
+N ,H ,3,C ,YO7_7_15 ,NA ,NA ,NA ,NA ,7/16 small crispy flowers 8/13/24 harvest fruit 9/24 census 
+N ,H ,3,D ,buffer ,,,,,
+N ,H ,4,D ,1303,,,,,
+N ,H ,5,D ,749,,,,,
+N ,H ,6,C ,177,,,,,
+N ,H ,6,D ,1340,,,,,
+N ,H ,7,D ,1040,,,,,
+N ,H ,8,C ,NA ,,,,,
+N ,H ,8,D ,NA ,,,,,
+N ,H ,9,C ,NA ,,,,,
+O ,H ,9,D ,197,,,,,
+O ,H ,10,C ,1225,,,,,
+O ,H ,10,D ,766,,,,,Dead at planting 
+NA ,H ,11,C ,IH_4_1 ,,,,,
+NA ,H ,12,C ,YO7_4_1 ,,,,,8/20 tape 
+O ,H ,13,C ,96,,,,,
+O ,H ,14,D ,463,,,,,
+O ,H ,15,C ,1246,,,,,
+O ,H ,15,D ,716,,,,,
+O ,H ,16,D ,1278,,,,,Wilting 
+O ,H ,17,D ,750,,,,,
+O ,H ,18,C ,69,,,,,
+O ,H ,18,D ,1099,,,,,
+O ,H ,19,C ,85,,,,,
+O ,H ,19,D ,611,,,,,7/9/24 wilted 
+O ,H ,20,C ,903,,,,,
+O ,H ,20,D ,1128,,,,,
+O ,H ,21,C ,567,,,,,
+O ,H ,21,D ,838,,,,,
+O ,H ,22,C ,893,,,,,
+O ,H ,22,D ,112,,,,,
+O ,H ,23,C ,320,,,,,
+O ,H ,23,D ,137,,,,,6/18/24 Wilting 
+O ,H ,24,C ,159,,,,,
+NA ,H ,24,D ,SC_6_13 ,NA ,NA ,NA ,NA ,9/24 and cansus 
+O ,H ,25,C ,192,,,,,
+O ,H ,25,D ,292,,,,,
+O ,H ,26,C ,211,,,,,
+O ,H ,26,D ,1183,,,,,6/18/24 Wilting 
+O ,H ,27,C ,390,,,,,
+O ,H ,27,D ,1395,,,,,
+O ,H ,28,C ,262,,,,,
+O ,H ,28,D ,1337,,,,,Dead at planting 
+O ,H ,29,C ,NA ,,,,,
+O ,H ,29,D ,NA ,,,,,
+P ,H ,30,C ,478,,,,,
+P ,H ,30,D ,263,4.6,3.3,1.7,N ,
+NA ,H ,31,C ,IH_5_13 ,,,,,
+P ,H ,31,D ,156,,,,,6/18/24 Wilting 
+P ,H ,32,C ,773,,,,,
+P ,H ,32,D ,1168,,,,,
+P ,H ,33,C ,buffer ,,,,,
+P ,H ,33,D ,buffer ,,,,,
+P ,H ,34,C ,buffer ,,,,,
+P ,H ,34,D ,buffer ,,,,,
+P ,I ,1,A ,buffer ,,,,,
+P ,I ,1,B ,buffer ,,,,,
+P ,I ,2,A ,buffer ,,,,,
+P ,I ,2,B ,buffer ,,,,,
+P ,I ,3,B ,1000,,,,,
+P ,I ,4,A ,1226,,,,,
+P ,I ,4,B ,898,,,,,
+P ,I ,5,A ,1341,,,,,
+P ,I ,5,B ,797,,,,,
+P ,I ,6,A ,751,,,,,
+P ,I ,6,B ,86,,,,,
+P ,I ,7,A ,544,,,,,
+P ,I ,7,B ,1125,,,,,6/18/24 wilting 
+P ,I ,8,A ,191,,,,,
+P ,I ,8,B ,508,,,,,
+P ,I ,9,A ,1454,,,,,
+P ,I ,9,B ,391,6.1,2.4,1.1,Y ,
+P ,I ,10,A ,1272,3,2.1,1.5,Y ,
+P ,I ,10,B ,124,,,,,
+P ,I ,11,A ,1250,5.9,2.5,1.2,Y ,
+P ,I ,11,B ,1184,,,,,
+NA ,I ,12,A ,IH_1_1 ,,,,,
+P ,I ,12,B ,307,,,,,
+P ,I ,13,A ,524,,,,,
+P ,I ,13,B ,863,,,,,
+P ,I ,14,A ,954,,,,,
+P ,I ,14,B ,686,,,,,7/9 wilted 
+P ,I ,15,A ,NA ,,,,,
+P ,I ,15,B ,NA ,,,,,
+NA ,I ,16,A ,NA ,,,,,
+NA ,I ,16,B ,BH_2_1 ,,,,,
+NA ,I ,17,A ,NA ,,,,,
+NA ,I ,17,B ,NA ,,,,,
+NA ,I ,18,A ,BH_1_1 ,10.6,2.4,2.3,Y,
+NA ,I ,18,B ,NA ,,,,,
+NA ,I ,19,A ,NA ,,,,,
+NA ,I ,19,B ,NA ,,,,,
+NA ,I ,20,A ,NA ,,,,,
+NA ,I ,20,B ,NA ,,,,,
+NA ,I ,21,A ,NA ,,,,,
+NA ,I ,21,B ,NA ,,,,,
+NA ,I ,22,A ,NA ,,,,,
+NA ,I ,22,B ,NA ,,,,,
+NA ,I ,23,A ,buffer ,,,,,
+NA ,I ,23,B ,buffer ,,,,,
+NA ,I ,24,A ,buffer ,,,,,
+NA ,I ,24,B ,buffer ,,,,,
+P ,I ,1,C ,buffer ,,,,,
+P ,I ,1,D ,buffer ,,,,,
+P ,I ,2,C ,buffer ,,,,,
+P ,I ,2,D ,buffer ,,,,,
+P ,I ,3,C ,279,,,,,7/9 wilted 
+NA ,I ,3,D ,BH_4_1 ,,,,,
+P ,I ,4,D ,164,,,,,
+P ,I ,5,C ,370,,,,,
+P ,I ,6,C ,97,,,,,
+P ,I ,6,D ,335,,,,,6/18/24 wilting 
+P ,I ,7,C ,735,,,,,
+P ,I ,7,D ,198,,,,,
+P ,I ,8,C ,405,,,,,
+P ,I ,8,D ,139,,,,,
+P ,I ,9,C ,551,,,,,
+P ,I ,9,D ,1396,,,,,7/16 wilting 
+P ,I ,10,C ,1210,,,,,
+P ,I ,10,D ,443,8.2,1.2,0.7,N ,8/6 no leaves 9/24 grew leaves 
+P ,I ,11,C ,1318,,,,,
+P ,I ,11,D ,294,,,,,
+P ,I ,12,C ,459,,,,,
+P ,I ,12,D ,708,,,,,
+P ,I ,13,C ,1288,,,,,
+P ,I ,13,D ,1035,,,,,6/25/24 no leaves 
+P ,I ,14,C ,NA ,,,,,
+P ,I ,14,D ,NA ,,,,,
+NA ,I ,15,C ,NA ,,,,,
+NA ,I ,15,D ,NA ,,,,,
+NA ,I ,16,C ,NA ,,,,,
+NA ,I ,16,D ,NA ,,,,,
+NA ,I ,17,C ,NA ,,,,,
+NA ,I ,17,D ,NA ,,,,,
+NA ,I ,18,C ,NA ,,,,,
+NA ,I ,18,D ,NA ,,,,,
+NA ,I ,19,C ,NA ,,,,,
+NA ,I ,19,D ,NA ,,,,,
+NA ,I ,20,C ,NA ,,,,,
+NA ,I ,20,D ,NA ,,,,,
+NA ,I ,21,C ,NA ,,,,,
+NA ,I ,21,D ,NA ,,,,,
+NA ,I ,22,C ,NA ,,,,,
+NA ,I ,22,D ,NA ,,,,,
+NA ,I ,23,C ,buffer ,,,,,
+NA ,I ,23,D ,buffer ,,,,,
+NA ,I ,24,C ,buffer ,,,,,
+NA ,I ,24,D ,buffer ,,,,,
+NA ,J ,4,A ,YO7_3_8 ,NA ,NA ,NA ,NA ,missed the flowering and last FI 9/24 dates 7/23 FR still elongating 8/6 ; 9/24 census
+NA ,J ,5,A ,TM2_2_11 ,,,,,TM2 fruiting from 2023 
+NA ,J ,8,A ,BH_5_2 ,,,,,
+NA ,J ,10,A ,BH_4_2 ,6.3,1.8,1.8,Y ,
+NA ,J ,15,A ,YO7_7_11 ,1.8,1.1,0.7,Y ,
+NA ,J ,17,B ,TM2_5_12 ,,,,,TM2 fruiting from 2023 
+NA ,J ,18,B ,SC_8_2 ,,,,,
+NA ,J ,4,D ,TM2_7_7 ,,,,,TM2 fruiting from 2023 
+NA ,J ,11,D ,IH_5_2 ,12.6,NA ,NA ,NA ,9/3 snapped 9/24 just stem no leaves 
+NA ,J ,13,C ,BH_6_2 ,6.4,1.6,1.5,N ,
+NA ,J ,17,D ,LV1_8_1 ,,,,,6/18/24 turgid stem/no leaves 
+NA ,K ,2,B ,IH_4_14 ,,,,,
+NA ,K ,4,B ,IH_6_2 ,,,,,
+NA ,K ,10,A ,YO7_1_2 ,,,,,7/16 remaining flowers dry 8/6 fruit drving 8/13/24 harvest fruit 
+NA ,K ,13,A ,CC_1_2 ,NA ,NA ,NA ,NA ,9/24 annual census
+NA ,K ,2,C ,YO7_5_13 ,,,,,8/13/24 harvest fruit 
+NA ,K ,7,C ,SC_6_2 ,,,,,
+NA ,K ,8,C ,IH_1_2 ,,,,,6/18/24 no tag 
+NA ,K ,12,D ,TM2_6_12 ,,,,,TM2 fruiting from 2023 
