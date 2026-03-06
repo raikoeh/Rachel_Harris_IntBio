@@ -212,4 +212,15 @@ corrplot(cor_matrix,
          tl.col = "black")
 ```
 
+
+```{r}
+# Test for relationship between stem diameter, canopy area, and height
+# merge 2024 data
+Merged_2024 <- left_join(WL2_Annual_Census_20241023_corrected, WL2_size_survey_20240924_corrected, by = c("unique.ID", "overhd.diam", "overhd.perp", "row", "bed", "col"))
+
+# canopy area
+Merged_2024$canopy.area <- pi * (Merged_2024$overhd.diam/2) * (Merged_2024$overhd.perp/2)
+```
+
+
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
