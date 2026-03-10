@@ -8,11 +8,7 @@ date: "2026-01-22"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+## Davis Garden Size Correlations 
 
 ```{r}
 #libraries
@@ -21,6 +17,7 @@ library(tidyverse)
 library(corrplot)
 
 ```
+
 ```{r}
 Grouped_Biomass_Blocks <- Biomass_Blocks_Biomass_Blocks %>%
 group_by(unique.ID, block) %>%
@@ -221,6 +218,3 @@ Merged_2024 <- left_join(WL2_Annual_Census_20241023_corrected, WL2_size_survey_2
 # canopy area
 Merged_2024$canopy.area <- pi * (Merged_2024$overhd.diam/2) * (Merged_2024$overhd.perp/2)
 ```
-
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
