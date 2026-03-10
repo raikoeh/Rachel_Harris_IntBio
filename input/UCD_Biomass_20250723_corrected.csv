@@ -47,7 +47,7 @@ unique.ID ,date.collected ,person.meas ,date.meas ,total.biomass_g ,total.seed.m
 666,6-Jun,BD ,3-Oct,103.31,,
 2004,27-Jun,MW YX ,7-Oct,109,,
 489,28-Jun,MW YX ,7-Oct,32.55,,
-1778,28-Jun,HM ,7-Oct,18.07,,
+1278,28-Jun,HM ,7-Oct,18.07,,
 691,30-May,HM ,7-Oct,54.52,,2 seed envelopes 
 333,6-Jun,HM ,7-Oct,16.65,,
 725,27-Jun,BD ,8-Oct,106.78,,1/2 bags; some seeds lost
@@ -138,7 +138,7 @@ unique.ID ,date.collected ,person.meas ,date.meas ,total.biomass_g ,total.seed.m
 82,30-May,PK ,3-Dec,41.23,,
 643,4-Jun,YX ,4-Dec,78.16,,bag 2/2 
 750,28-Jun,MW ,4-Dec,168.61,,
-939,30-May,BD ,5-Dec,78.75,,bag 1/2 
+989,30-May,BD ,5-Dec,78.75,,bag 1/2 
 432,6-Jun,mw ,5-Dec,73.49,,bag 1/2 
 657,14-Jun,mw ,5-Dec,32.96,,
 667,14-Jun,YX ,9-Dec,48.34,,bag 2/3 
