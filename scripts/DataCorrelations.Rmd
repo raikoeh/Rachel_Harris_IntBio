@@ -18,6 +18,13 @@ library(corrplot)
 
 ```
 
+## Read in data 
+```{r}
+Biomass_Blocks_Biomass_Blocks <- read_csv("../input/Biomass_Blocks - Biomass_Blocks.csv")
+Genotypes_2023_2024 <- read_csv("../input/Genotypes_2023_2024.csv")
+```
+
+
 ```{r}
 Grouped_Biomass_Blocks <- Biomass_Blocks_Biomass_Blocks %>%
 group_by(unique.ID, block) %>%
@@ -48,7 +55,7 @@ CMerged_GT_BMB %>%
   theme_bw() +
   labs(x="Population", y="Biomass", title="Population vs Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("output/Population vs Biomass.png", width = 20, height = 14, units = "in")
+ggsave("../output/Population vs Biomass.png", width = 20, height = 14, units = "in")
 
 #column plot for population and average biomass
 CMerged_GT_BMB %>% 
@@ -59,7 +66,7 @@ CMerged_GT_BMB %>%
   theme_bw() +
   labs(x="Population", y="Average Biomass", title="Population vs Average Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("output/Population vs Average Biomass.png", width = 20, height = 8, units = "in")
+ggsave("../output/Population vs Average Biomass.png", width = 20, height = 8, units = "in")
 ```
 
 ```{r}
@@ -91,7 +98,7 @@ Merged_PopBio_AnCen %>%
   theme_bw() +
   labs(x="Stem Diameter (mm)", y="Biomass", title="Stem Diameter vs Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("output/StemDiametervsBiomass.png", width = 20, height = 8, units = "in")
+ggsave("../output/StemDiametervsBiomass.png", width = 20, height = 8, units = "in")
 
 #non facet plot
 Merged_PopBio_AnCen %>% 
@@ -100,7 +107,7 @@ Merged_PopBio_AnCen %>%
   theme_bw() +
   labs(x="Stem Diameter (mm)", y="Biomass", title="Stem Diameter vs Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("output/StemDiamvsBiomassNonFacet.png", width = 20, height = 14, units = "in")
+ggsave("../output/StemDiamvsBiomassNonFacet.png", width = 20, height = 14, units = "in")
 ```
 
 ```{r}
@@ -118,7 +125,7 @@ Merged_PopBio_AnCen %>%
   theme_bw() +
   labs(x="Canopy Area", y="Biomass", title="Canopy Area vs Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("output/CanopyAreavsBiomass.png", width = 20, height = 8, units = "in")
+ggsave("../output/CanopyAreavsBiomass.png", width = 20, height = 8, units = "in")
 
 #non facet plot
 Merged_PopBio_AnCen %>% 
@@ -127,7 +134,7 @@ Merged_PopBio_AnCen %>%
   theme_bw() +
   labs(x="Canopy Area", y="Biomass", title="Canopy Area vs Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("output/CanopyAreavsBiomassNonFacet.png", width = 20, height = 14, units = "in")
+ggsave("../output/CanopyAreavsBiomassNonFacet.png", width = 20, height = 14, units = "in")
 ```
 
 
@@ -152,7 +159,7 @@ Merged_BioMass_Size %>%
   theme_bw() +
   labs(x="Height cm", y="Biomass", title="Height vs Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("output/HeightvsBiomass.png", width = 20, height = 8, units = "in")
+ggsave("../output/HeightvsBiomass.png", width = 20, height = 8, units = "in")
 
 Merged_BioMass_Size %>% 
   ggplot(aes(x=height.cm, y=TotalBiomass)) +
@@ -160,7 +167,7 @@ Merged_BioMass_Size %>%
   theme_bw() +
   labs(x="Height cm", y="Biomass", title="Height vs Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("output/HeightvsBiomassNonFacet.png", width = 20, height = 8, units = "in")
+ggsave("../output/HeightvsBiomassNonFacet.png", width = 20, height = 8, units = "in")
 ```
 
 ```{r}
@@ -201,7 +208,7 @@ size_variables <- size_variables %>%
 # correlation matrix
 cor_matrix <- cor(size_variables, use = "complete.obs")
 
-png("output/Correlation_Matrix.png", width = 800, height = 800, )
+png("../output/Correlation_Matrix.png", width = 800, height = 800, )
 corrplot(cor_matrix,
          method = "square",
          type = "lower",
