@@ -1,0 +1,69 @@
+---
+title: "WL2 Garden Correlations"
+author: "Brandie QC"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## WL2 Garden Size Correlations 
+Test for relationship between stem diameter, canopy area, and height
+
+```{r}
+#libraries
+library(dplyr)
+library(tidyverse)
+library(corrplot)
+```
+
+## Read in data 
+```{r}
+WL2_Annual_Census_20241023_corrected <- read_csv("../input/WL2_Annual_Census_20241023_corrected.csv")
+WL2_size_survey_20240924_corrected <- read_csv("../input/WL2_size_survey_20240924_corrected.csv")
+```
+
+## Merge Data 
+```{r}
+## check for non-NA canopy cols 
+WL2_Annual_Census_20241023_corrected %>% filter(!is.na(overhd.diam))
+WL2_size_survey_20240924_corrected %>% filter(!is.na(overhd.diam))
+### different rows with canopy info in the different data sheets 
+
+## separate out canopy info from other size data 
+WL2_anncens_stemdiam <- WL2_Annual_Census_20241023_corrected %>% select(bed:unique.ID, diam.mm)
+WL2_anncens_canopyinfo <- WL2_Annual_Census_20241023_corrected %>% select(bed:unique.ID, overhd.diam:overhd.perp) %>% 
+  filter(!is.na(overhd.diam)) #only keep columns with data 
+
+WL2_size_height <- WL2_size_survey_20240924_corrected %>% select(bed:height.cm)
+WL2_size_canopyinfo <- WL2_size_survey_20240924_corrected %>% select(bed:unique.ID, overhd.diam:overhd.perp) %>% 
+  filter(!is.na(overhd.diam)) #only keep columns with data 
+
+## bind canopy info
+WL2_2024_canopy <- bind_rows(WL2_anncens_canopyinfo, WL2_size_canopyinfo)
+
+# merge 2024 data
+Merged_2024 <- WL2_anncens_stemdiam %>% 
+  left_join(WL2_size_height) %>% 
+  left_join(WL2_2024_canopy)
+Merged_2024 %>% filter(!is.na(overhd.diam)) #285 rows with canopy info, merge mostly worked
+#Note that we lost 1 row of canopy info, Rachel should investigate 
+
+# canopy area
+Merged_2024$canopy.area <- pi * (Merged_2024$overhd.diam/2) * (Merged_2024$overhd.perp/2)
+size_variables <- Merged_2024 %>% select(diam.mm:height.cm, canopy.area)
+```
+
+```{r}
+# 2024 correlation matrix
+cor_matrix <- cor(size_variables, use = "complete.obs")
+
+png("../output/WL2_2024_Correlation_Matrix.png", width = 800, height = 800, )
+corrplot(cor_matrix,
+         method = "square",
+         type = "lower",
+         addCoef.col = "black",
+         tl.col = "black")
+```
