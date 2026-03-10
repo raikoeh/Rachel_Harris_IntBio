@@ -16,24 +16,29 @@ library(dplyr)
 library(tidyverse)
 library(corrplot)
 
+sem <- function(x, na.rm=FALSE) {           #for calculating standard error
+  sd(x,na.rm=na.rm)/sqrt(length(na.omit(x)))
+} 
 ```
 
 ## Read in data 
 ```{r}
-Biomass_Blocks_Biomass_Blocks <- read_csv("../input/UCD_Biomass_20250723_corrected.csv")
+Biomass <- read_csv("../input/UCD_Biomass_20250723_corrected.csv")
 Genotypes_2023_2024 <- read_csv("../input/Genotypes_2023_2024.csv")
+UCD_annual_census_20240718_corrected <- read_csv("../input/UCD_annual_census_20240718_corrected.csv")
+UCD_size_survey_20240516_corrected <- read_csv("../input/UCD_size_survey_20240516_corrected.csv")
 ```
 
 
 ```{r}
-Grouped_Biomass_Blocks <- Biomass_Blocks_Biomass_Blocks %>%
-group_by(unique.ID, block) %>%
-summarize(TotalBiomass=sum(total.biomass_g))
+Grouped_Biomass <- Biomass %>%
+group_by(unique.ID) %>%
+summarize(TotalBiomass=sum(total.biomass_g), N_bags=n())
 ```
 
 ```{r}
 #merging genotypes and biomass based on their two shared columns "unique.ID" and "blocks"
-Merged_GT_BMB <- left_join(Genotypes_2023_2024, Grouped_Biomass_Blocks, by = c("unique.ID", "block"))
+Merged_GT_BMB <- left_join(Genotypes_2023_2024, Grouped_Biomass, by = c("unique.ID"))
 ```
 
 ```{r}
@@ -55,14 +60,18 @@ ggsave("../output/Population vs Biomass.png", width = 20, height = 14, units = "
 
 #column plot for population and average biomass
 CMerged_GT_BMB %>% 
-  group_by(pop.id) %>% 
-  summarise(mean_biomass = mean(TotalBiomass, na.rm =TRUE)) %>% 
+  group_by(pop.id, `Plant Type`) %>% 
+  summarise(mean_biomass = mean(TotalBiomass, na.rm =TRUE),
+            sem_biomass = sem(TotalBiomass, na.rm =TRUE)) %>% 
   ggplot(aes(x=pop.id, y=mean_biomass)) +
   geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  geom_errorbar(aes(ymin=mean_biomass-sem_biomass, ymax=mean_biomass+sem_biomass), #add error bars 
+                width=.2, position = position_dodge(0.75)) +
+  facet_wrap(~ `Plant Type`, scales = "free_x") +
   theme_bw() +
   labs(x="Population", y="Average Biomass", title="Population vs Average Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("../output/Population vs Average Biomass.png", width = 20, height = 8, units = "in")
+ggsave("../output/Population vs Average Biomass.png", width = 20, height = 14, units = "in")
 ```
 
 ```{r}
@@ -81,7 +90,8 @@ UCD_annual_census_20240718_corrected <- UCD_annual_census_20240718_corrected %>%
 
 ```{r}
 #merging pop/biomass with annual census
-Merged_PopBio_AnCen <- left_join(CMerged_GT_BMB, UCD_annual_census_20240718_corrected, by = c("unique.ID"))
+Merged_PopBio_AnCen <- left_join(CMerged_GT_BMB, UCD_annual_census_20240718_corrected)
+#, by = c("unique.ID")) #don't need the by statement, R will join by all matching columns 
 ```
 
 
@@ -89,7 +99,7 @@ Merged_PopBio_AnCen <- left_join(CMerged_GT_BMB, UCD_annual_census_20240718_corr
 #plot for stem diameter vs biomass
 Merged_PopBio_AnCen %>% 
   ggplot(aes(x=diam.mm, y=TotalBiomass)) +
-  geom_point(width = 0.7,position = position_dodge(0.75)) + 
+  geom_point() + 
   facet_wrap(~ `Plant Type`, scales = "free_x") +
   theme_bw() +
   labs(x="Stem Diameter (mm)", y="Biomass", title="Stem Diameter vs Biomass") + 
@@ -99,7 +109,7 @@ ggsave("../output/StemDiametervsBiomass.png", width = 20, height = 8, units = "i
 #non facet plot
 Merged_PopBio_AnCen %>% 
   ggplot(aes(x=diam.mm, y=TotalBiomass)) +
-  geom_point(width = 0.7,position = position_dodge(0.75)) + 
+  geom_point() + 
   theme_bw() +
   labs(x="Stem Diameter (mm)", y="Biomass", title="Stem Diameter vs Biomass") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
@@ -136,7 +146,8 @@ ggsave("../output/CanopyAreavsBiomassNonFacet.png", width = 20, height = 14, uni
 
 ```{r}
 #merge size survey and biomass/pop
-Merged_BioMass_Size <- left_join(Merged_GT_BMB, UCD_size_survey_20240516_corrected, by = c("unique.ID"))
+Merged_BioMass_Size <- left_join(CMerged_GT_BMB, UCD_size_survey_20240516_corrected)
+                                 #, by = c("unique.ID")) #don't need the by statement, R will join by all matching columns 
 ```
 
 
@@ -182,20 +193,16 @@ cor.test(Merged_PopBio_AnCen$diam.mm, Merged_PopBio_AnCen$TotalBiomass, method =
 Merged_BioMass_Size$unique.ID <- as.character(Merged_BioMass_Size$unique.ID)
 
 # left join to make size df
-Merged_Size <- left_join(Merged_BioMass_Size, Merged_PopBio_AnCen, by = c("unique.ID"))
+Merged_Size <- left_join(Merged_BioMass_Size, Merged_PopBio_AnCen)
 
 # new df with only size variables
 size_variables <- Merged_Size %>% 
   select(matches("biomass|height|area|diam.mm|width", ignore.case = TRUE))
 
-#filter out NA values and remove duplicate biomass column
-size_variables$TotalBiomass.y <- NULL
+#filter out NA values
 
 size_variables <- size_variables%>% 
-  filter(!is.na(TotalBiomass.x))
-
-size_variables <- size_variables %>% 
-  rename(TotalBiomass = TotalBiomass.x)
+  filter(!is.na(TotalBiomass))
 
 ```
 
@@ -210,14 +217,4 @@ corrplot(cor_matrix,
          type = "lower",
          addCoef.col = "black",
          tl.col = "black")
-```
-
-
-```{r}
-# Test for relationship between stem diameter, canopy area, and height
-# merge 2024 data
-Merged_2024 <- left_join(WL2_Annual_Census_20241023_corrected, WL2_size_survey_20240924_corrected, by = c("unique.ID", "overhd.diam", "overhd.perp", "row", "bed", "col"))
-
-# canopy area
-Merged_2024$canopy.area <- pi * (Merged_2024$overhd.diam/2) * (Merged_2024$overhd.perp/2)
 ```
