@@ -49,12 +49,38 @@ Merged_2024 <- WL2_anncens_stemdiam %>%
   left_join(WL2_size_height) %>% 
   left_join(WL2_2024_canopy)
 Merged_2024 %>% filter(!is.na(overhd.diam)) #285 rows with canopy info, merge mostly worked
-#Note that we lost 1 row of canopy info, Rachel should investigate 
+# Note that we lost 1 row of canopy info, Rachel should investigate 
 
 # canopy area
 Merged_2024$canopy.area <- pi * (Merged_2024$overhd.diam/2) * (Merged_2024$overhd.perp/2)
 size_variables <- Merged_2024 %>% select(diam.mm:height.cm, canopy.area)
 ```
+```{r}
+# finding what went wrong for Merged_2024
+anti_join(WL2_2024_canopy, Merged_2024_canopy)
+```
+
+```{r}
+# fixing canopy columns
+WL2_anncens_canopyinfo <- WL2_anncens_canopyinfo %>% 
+  mutate(DataSet = "AnnCens")
+
+WL2_size_canopyinfo <- WL2_size_canopyinfo %>%
+  mutate(DataSet = "Size")
+
+WL2_2024_canopy <- bind_rows(WL2_anncens_canopyinfo, WL2_size_canopyinfo)
+```
+
+
+```{r}
+# counting number of rows with canopy area
+Merged_2024 %>%
+  filter(!is.na(canopy.area))
+
+Merged_2024_canopy <- Merged_2024 %>% 
+  filter(!is.na(canopy.area))
+```
+
 
 ```{r}
 # 2024 correlation matrix
