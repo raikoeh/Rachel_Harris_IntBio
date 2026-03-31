@@ -127,3 +127,41 @@ corrplot(cor_matrix,
          addCoef.col = "black",
          tl.col = "black")
 ```
+
+
+```{r}
+# Read in 2025 data
+WL2_ann_cens_20251006_corrected <- read.csv("../input/WL2_ann_cens_20251006_corrected.csv")
+WL2_size_survey_20250924_blocksA_F_corrected <- read.csv("../input/WL2_size_survey_20250924_blocksA-F_corrected.csv")
+WL2_size_survey_20250929_blocksG_N_corrected <- read.csv("../input/WL2_size_survey_20250929_blocksG-N_corrected.csv")
+```
+
+```{r}
+# filter + merge 2025 data
+WL2_ann_cens_20251006_corrected %>% filter(!is.na(diam.mm))
+WL2_size_survey_20250924_blocksA_F_corrected %>% filter(!is.na(overhd.diam))
+WL2_size_survey_20250929_blocksG_N_corrected %>%  filter(!is.na(overhd.diam))
+
+
+# get only canopy information
+WL2_20251006_stemdiam <- WL2_ann_cens_20251006_corrected %>% select(bed:Unique.ID, diam.mm)
+WL2_20250924A_F_canopyinfo <- WL2_size_survey_20250924_blocksA_F_corrected %>% select(bed:Unique.ID, overhd.diam:overhd.perp, height.cm) %>% 
+  filter(!is.na(overhd.diam))
+WL2_20250929G_N_canopyinfo <- WL2_size_survey_20250929_blocksG_N_corrected %>% select(bed:Unique.ID, overhd.diam:overhd.perp, height.cm) %>% 
+  filter(!is.na(overhd.diam))
+```
+```{r}
+# merge datasets
+Merged_2025 <- WL2_20251006_stemdiam %>% 
+  left_join(WL2_20250924A_F_canopyinfo) %>% 
+  left_join(WL2_20250929G_N_canopyinfo)
+Merged_2025 %>% filter(!is.na(diam.mm))
+
+# add canopy area column
+Merged_2025$canopy.area <- pi * (Merged_2025$overhd.diam/2) * (Merged_2025$overhd.perp/2)
+size_variables_2025 <- Merged_2025 %>% select(diam.mm:height.cm, canopy.area)
+
+# remove rows without data for canopy area
+Merged_2025 <- Merged_2025[!is.na(Merged_2025$canopy.area), ]
+```
+
