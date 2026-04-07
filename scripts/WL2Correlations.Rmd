@@ -151,10 +151,14 @@ WL2_20250929G_N_canopyinfo <- WL2_size_survey_20250929_blocksG_N_corrected %>% s
   filter(!is.na(overhd.diam))
 ```
 ```{r}
+# bind rows for size surveys
+size_survey_2025 <- bind_rows(WL2_size_survey_20250924_blocksA_F_corrected, WL2_size_survey_20250929_blocksG_N_corrected)
+```
+
+
+```{r}
 # merge datasets
-Merged_2025 <- WL2_20251006_stemdiam %>% 
-  left_join(WL2_20250924A_F_canopyinfo) %>% 
-  left_join(WL2_20250929G_N_canopyinfo)
+Merged_2025 <- left_join()
 Merged_2025 %>% filter(!is.na(diam.mm))
 
 # add canopy area column
@@ -163,5 +167,63 @@ size_variables_2025 <- Merged_2025 %>% select(diam.mm:height.cm, canopy.area)
 
 # remove rows without data for canopy area
 Merged_2025 <- Merged_2025[!is.na(Merged_2025$canopy.area), ]
+```
+
+
+```{r}
+# plots for 2025 correlations
+
+# height vs canopy area
+Merged_2025 %>% 
+  ggplot(aes(x=height.cm, y=canopy.area)) +
+  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  theme_bw() +
+  labs(x="Height", y="Canopy Area", title="Height vs Canopy Area") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("../output/Height_v_Canopy_2025.png", width = 20, height = 14, units = "in")
+
+# overhead perp vs canopy area
+Merged_2025 %>% 
+  ggplot(aes(x=overhd.perp, y=canopy.area)) +
+  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  theme_bw() +
+  labs(x="Overhead Perpendicular", y="Canopy Area", title="Overhead Perpendicular vs Canopy Area") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("../output/Perpendicular_v_CanopyArea_2025.png", width = 20, height = 14, units = "in")
+
+# Overhead diameter vs canopy area
+Merged_2025 %>% 
+  ggplot(aes(x=overhd.diam, y=canopy.area)) +
+  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  theme_bw() +
+  labs(x="Diameter", y="Canopy Area", title="Diameter vs Canopy Area") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("../output/Diameter_v_CanopyArea_2025.png", width = 20, height = 14, units = "in")
+
+# stem diameter vs canopy area
+Merged_2025 %>% 
+  ggplot(aes(x=diam.mm, y=canopy.area)) +
+  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  theme_bw() +
+  labs(x="Stem Diameter", y="Canopy Area", title="Stem Diameter vs Canopy Area") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("../output/Stem_v_CanopyArea_2025.png", width = 20, height = 14, units = "in")
+# NOTE: stem diameter graph had limited data to work with, not many rows with diam.mm data
+```
+
+```{r}
+# 2025 correlation matrix
+cor_matrix_2025 <- cor(size_variables_2025, use = "complete.obs")
+
+png("../output/WL2_2025_Correlation_Matrix.png", width = 800, height = 800, )
+corrplot(cor_matrix,
+         method = "square",
+         type = "lower",
+         addCoef.col = "black",
+         tl.col = "black")
+```
+
+```{r}
+sum(!is.na(WL2_ann_cens_20251006_corrected$diam.mm))
 ```
 
