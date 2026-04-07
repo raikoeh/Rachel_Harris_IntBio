@@ -151,22 +151,40 @@ WL2_20250929G_N_canopyinfo <- WL2_size_survey_20250929_blocksG_N_corrected %>% s
   filter(!is.na(overhd.diam))
 ```
 ```{r}
+# filter out empty rows
+WL2_size_survey_20250924_blocksA_F_corrected <- WL2_size_survey_20250924_blocksA_F_corrected[!apply(is.na(WL2_size_survey_20250924_blocksA_F_corrected), 1, all), ]
+
+WL2_size_survey_20250929_blocksG_N_corrected <- WL2_size_survey_20250929_blocksG_N_corrected[!apply(is.na(WL2_size_survey_20250929_blocksG_N_corrected), 1, all), ]
+
 # bind rows for size surveys
 size_survey_2025 <- bind_rows(WL2_size_survey_20250924_blocksA_F_corrected, WL2_size_survey_20250929_blocksG_N_corrected)
+
+size_survey_2025 <- size_survey_2025 %>%
+  mutate(DataSet = "Size")
+
+WL2_ann_cens_20251028_corrected <- WL2_ann_cens_20251028_corrected %>% 
+  mutate(DataSet = "AnnCens")
 ```
 
 
 ```{r}
-# merge datasets
-Merged_2025 <- left_join()
-Merged_2025 %>% filter(!is.na(diam.mm))
+# merge 2025 data
+Merged_2025 <- WL2_ann_cens_20251028_corrected %>% 
+  left_join(size_survey_2025) 
+Merged_2025 %>% filter(!is.na(overhd.diam))
+
+Merged_2025 <- Merged_2025[, colSums(!is.na(Merged_2025)) > 0]
+
+Merged_2025 <- Merged_2025 %>%
+  select(`Unique.ID`, `bed`, `row`, `col`, `diam.mm`, `height. cm`, `overhd. diam`, `overhd. perp`) # LEFT OFF HERE 4/7/26
 
 # add canopy area column
 Merged_2025$canopy.area <- pi * (Merged_2025$overhd.diam/2) * (Merged_2025$overhd.perp/2)
 size_variables_2025 <- Merged_2025 %>% select(diam.mm:height.cm, canopy.area)
 
-# remove rows without data for canopy area
-Merged_2025 <- Merged_2025[!is.na(Merged_2025$canopy.area), ]
+# keep rows with ann cens data
+Merged_2025 <- Merged_2025 %>% 
+  filter(!grepl("Size", DataSet, ignore.case = TRUE))
 ```
 
 
