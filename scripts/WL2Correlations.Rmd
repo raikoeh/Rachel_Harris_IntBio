@@ -131,61 +131,95 @@ corrplot(cor_matrix,
 
 ```{r}
 # Read in 2025 data
-WL2_ann_cens_20251006_corrected <- read.csv("../input/WL2_ann_cens_20251006_corrected.csv")
+WL2_ann_cens_20251028_corrected <- read.csv("../input/WL2_ann_cens_20251006_corrected.csv")
 WL2_size_survey_20250924_blocksA_F_corrected <- read.csv("../input/WL2_size_survey_20250924_blocksA-F_corrected.csv")
 WL2_size_survey_20250929_blocksG_N_corrected <- read.csv("../input/WL2_size_survey_20250929_blocksG-N_corrected.csv")
 ```
 
 ```{r}
 # filter + merge 2025 data
-WL2_ann_cens_20251006_corrected %>% filter(!is.na(diam.mm))
+WL2_ann_cens_20251028_corrected %>% filter(!is.na(diam.mm))
 WL2_size_survey_20250924_blocksA_F_corrected %>% filter(!is.na(overhd.diam))
 WL2_size_survey_20250929_blocksG_N_corrected %>%  filter(!is.na(overhd.diam))
 
-
 # get only canopy information
-WL2_20251006_stemdiam <- WL2_ann_cens_20251006_corrected %>% select(bed:Unique.ID, diam.mm)
+WL2_20251028_stemdiam <- WL2_ann_cens_20251028_corrected %>% select(bed:Unique.ID, diam.mm)
 WL2_20250924A_F_canopyinfo <- WL2_size_survey_20250924_blocksA_F_corrected %>% select(bed:Unique.ID, overhd.diam:overhd.perp, height.cm) %>% 
   filter(!is.na(overhd.diam))
 WL2_20250929G_N_canopyinfo <- WL2_size_survey_20250929_blocksG_N_corrected %>% select(bed:Unique.ID, overhd.diam:overhd.perp, height.cm) %>% 
   filter(!is.na(overhd.diam))
 ```
 ```{r}
-# filter out empty rows
-WL2_size_survey_20250924_blocksA_F_corrected <- WL2_size_survey_20250924_blocksA_F_corrected[!apply(is.na(WL2_size_survey_20250924_blocksA_F_corrected), 1, all), ]
-
-WL2_size_survey_20250929_blocksG_N_corrected <- WL2_size_survey_20250929_blocksG_N_corrected[!apply(is.na(WL2_size_survey_20250929_blocksG_N_corrected), 1, all), ]
-
 # bind rows for size surveys
 size_survey_2025 <- bind_rows(WL2_size_survey_20250924_blocksA_F_corrected, WL2_size_survey_20250929_blocksG_N_corrected)
 
+# mark rows from each dataset to keep track in Merged_2025
 size_survey_2025 <- size_survey_2025 %>%
   mutate(DataSet = "Size")
 
-WL2_ann_cens_20251028_corrected <- WL2_ann_cens_20251028_corrected %>% 
+WL2_ann_cens_20251028_corrected <- WL2_ann_cens_20251028_corrected %>%
   mutate(DataSet = "AnnCens")
+
 ```
 
 
 ```{r}
-# merge 2025 data
-Merged_2025 <- WL2_ann_cens_20251028_corrected %>% 
-  left_join(size_survey_2025) 
-Merged_2025 %>% filter(!is.na(overhd.diam))
+# chunk to debug merged_2025 
+Merged_2025 %>% 
+  count(is.na(overhd.diam))
 
-Merged_2025 <- Merged_2025[, colSums(!is.na(Merged_2025)) > 0]
+unmatched <- anti_join(
+  size_survey_2025, 
+  WL2_ann_cens_20251028_corrected, 
+  by = "row"
+)
 
-Merged_2025 <- Merged_2025 %>%
-  select(`Unique.ID`, `bed`, `row`, `col`, `diam.mm`, `height. cm`, `overhd. diam`, `overhd. perp`) # LEFT OFF HERE 4/7/26
+head(unmatched$row)
 
-# add canopy area column
-Merged_2025$canopy.area <- pi * (Merged_2025$overhd.diam/2) * (Merged_2025$overhd.perp/2)
-size_variables_2025 <- Merged_2025 %>% select(diam.mm:height.cm, canopy.area)
-
-# keep rows with ann cens data
-Merged_2025 <- Merged_2025 %>% 
-  filter(!grepl("Size", DataSet, ignore.case = TRUE))
+names(size_survey_2025)
+names(WL2_ann_cens_20251028_corrected)
 ```
+```{r}
+# debugging chunk for size_survey_2025
+size_survey_2025 <- size_survey_2025 %>%
+  mutate(
+    survey.date = mdy(survey.date)
+)
+
+size_latest <- size_clean %>%
+  group_by(Unique.ID) %>%
+  slice_max(order_by = survey.date, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+size_latest %>%
+  count(Unique.ID) %>%
+  filter(n > 1)
+
+```
+
+
+
+```{r}
+# merge 2025 data + filter
+Merged_2025 <- size_survey_2025 %>% 
+  left_join(
+    WL2_ann_cens_20251028_corrected %>%
+      select(bed, row, col, diam.mm),
+    by = c("bed", "row", "col")
+  )
+
+# LEFT OFF HERE 4/14/26
+```
+
+```{r} 
+# code to keep/replace later
+Merged_2025 <- WL2_ann_cens_20251028_corrected %>% 
+  left_join(
+    size_survey_2025 %>% 
+      select(Unique.ID, height.cm, overhd.diam, overhd.perp ),
+    by = "Unique.ID")
+```
+
 
 
 ```{r}
