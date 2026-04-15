@@ -45,16 +45,24 @@ WL2_size_canopyinfo <- WL2_size_survey_20240924_corrected %>% select(bed:unique.
 
 ```{r}
 # fixing canopy columns
-WL2_anncens_canopyinfo <- WL2_anncens_canopyinfo %>% 
-  mutate(DataSet = "AnnCens")
-
 WL2_size_canopyinfo <- WL2_size_canopyinfo %>%
-  mutate(DataSet = "Size")
+  rename(overhd.diam_sizecens = overhd.diam, overhd.perp_sizecens = overhd.perp)
 
 WL2_2024_canopy <- bind_rows(WL2_anncens_canopyinfo, WL2_size_canopyinfo)
 dim(WL2_2024_canopy) #286 rows 
 WL2_2024_canopy %>% select(unique.ID) %>% distinct() #only 165 plants so definitely some duplicates
 
+#For the duplicates, we want to keep the AnnCens (more recent measurements)
+WL2_2024_canopy_noduplicates <- WL2_anncens_canopyinfo %>% 
+  full_join(WL2_size_canopyinfo) %>% 
+  mutate(overhd.diam=if_else(!is.na(overhd.diam), overhd.diam, #if there's ann cens data, keep it 
+                             overhd.diam_sizecens), #if no ann cens data then use size data
+         overhd.perp=if_else(!is.na(overhd.perp), overhd.perp, #if there's ann cens data, keep it 
+                             overhd.perp_sizecens)) %>% 
+  select(bed:overhd.perp)
+```
+
+```{r}
 # merge 2024 data
 Merged_2024 <- WL2_anncens_stemdiam %>% 
   left_join(WL2_size_height) %>% 
