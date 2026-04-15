@@ -43,8 +43,8 @@ WL2_size_canopyinfo <- WL2_size_survey_20240924_corrected %>% select(bed:unique.
 
 ```
 
+### fixing canopy columns
 ```{r}
-# fixing canopy columns
 WL2_size_canopyinfo <- WL2_size_canopyinfo %>%
   rename(overhd.diam_sizecens = overhd.diam, overhd.perp_sizecens = overhd.perp)
 
@@ -62,8 +62,8 @@ WL2_2024_canopy_noduplicates <- WL2_anncens_canopyinfo %>%
   select(bed:overhd.perp)
 ```
 
+### merge 2024 data
 ```{r}
-# merge 2024 data
 Merged_2024 <- WL2_anncens_stemdiam %>% 
   left_join(WL2_size_height) %>% 
   left_join(WL2_2024_canopy_noduplicates)
@@ -74,9 +74,9 @@ Merged_2024$canopy.area <- pi * (Merged_2024$overhd.diam/2) * (Merged_2024$overh
 size_variables <- Merged_2024 %>% select(diam.mm:height.cm, canopy.area)
 ```
 
+## plots for correlations
+Brandie changed to point plots since this is the raw data (not means)
 ```{r}
-# plots for correlations - Brandie changed to point plots since this is the raw data (not means)
-
 # height vs canopy area
 Merged_2024 %>% 
   ggplot(aes(x=height.cm, y=canopy.area)) +
@@ -114,9 +114,9 @@ Merged_2024 %>%
 ggsave("../output/Perpendicular vs Canopy Area.png", width = 20, height = 14, units = "in")
 ```
 
-
+## 2024 correlation matrix
 ```{r}
-# 2024 correlation matrix
+
 cor_matrix <- cor(size_variables, use = "complete.obs")
 
 png("../output/WL2_2024_Correlation_Matrix.png", width = 800, height = 800)
@@ -127,103 +127,69 @@ corrplot(cor_matrix,
          tl.col = "black")
 ```
 
-
+## Read in 2025 data
 ```{r}
-# Read in 2025 data
-WL2_ann_cens_20251028_corrected <- read.csv("../input/WL2_ann_cens_20251006_corrected.csv")
-WL2_size_survey_20250924_blocksA_F_corrected <- read.csv("../input/WL2_size_survey_20250924_blocksA-F_corrected.csv")
-WL2_size_survey_20250929_blocksG_N_corrected <- read.csv("../input/WL2_size_survey_20250929_blocksG-N_corrected.csv")
+WL2_ann_cens_20251028_corrected <- read_csv("../input/WL2_ann_cens_20251028_corrected.csv", 
+                                            na=c("", "NA", "N/A"))
+WL2_size_survey_20250924_blocksA_F_corrected <- read_csv("../input/WL2_size_survey_20250924_blocksA-F_corrected.csv")
+WL2_size_survey_20250929_blocksG_N_corrected <- read_csv("../input/WL2_size_survey_20250929_blocksG-N_corrected.csv")
 ```
 
-```{r}
-# filter + merge 2025 data
-WL2_ann_cens_20251028_corrected %>% filter(!is.na(diam.mm))
-WL2_size_survey_20250924_blocksA_F_corrected %>% filter(!is.na(overhd.diam))
-WL2_size_survey_20250929_blocksG_N_corrected %>%  filter(!is.na(overhd.diam))
+## Merge Data
 
-# get only canopy information
-WL2_20251028_stemdiam <- WL2_ann_cens_20251028_corrected %>% select(bed:Unique.ID, diam.mm)
-WL2_20250924A_F_canopyinfo <- WL2_size_survey_20250924_blocksA_F_corrected %>% select(bed:Unique.ID, overhd.diam:overhd.perp, height.cm) %>% 
+### Merge size data from 9/24 and 9/29
+```{r}
+WL2_size_survey_20250924_blocksA_F_corrected %>% filter(!is.na(height.cm))
+WL2_size_survey_20250929_blocksG_N_corrected %>% filter(!is.na(height.cm)) #some overlaps between the two 
+
+WL2_size_survey_20250929_blocksG_N_prep <- WL2_size_survey_20250929_blocksG_N_corrected %>% 
+  rename_with(~ paste0(.x, "_0929"), height.cm:overhd.perp) %>% 
+  select(bed:overhd.perp_0929)
+
+size_survey_2025 <- WL2_size_survey_20250924_blocksA_F_corrected %>% 
+  select(bed:overhd.perp) %>% 
+  full_join(WL2_size_survey_20250929_blocksG_N_prep) %>% 
+  mutate(height.cm=if_else(!is.na(height.cm), height.cm, #if there's 9/24 data, keep it 
+                             height.cm_0929),
+         overhd.diam=if_else(!is.na(overhd.diam), overhd.diam, #if there's 9/24 data, keep it 
+                             overhd.diam_0929), #if no 9/24 then use 9/29 data 
+         overhd.perp=if_else(!is.na(overhd.perp), overhd.perp,  
+                             overhd.perp_0929)) %>% 
+  select(bed:overhd.perp)
+```
+
+### Merge size surveys with anncens for height and canopy area 
+```{r}
+WL2_anncens_heightcanopy_2025 <- WL2_ann_cens_20251028_corrected %>% 
+  select(bed:Unique.ID, height.cm=`height. cm`, overhd.diam=`overhd. diam`, overhd.perp=`overhd. perp`) %>% 
   filter(!is.na(overhd.diam))
-WL2_20250929G_N_canopyinfo <- WL2_size_survey_20250929_blocksG_N_corrected %>% select(bed:Unique.ID, overhd.diam:overhd.perp, height.cm) %>% 
-  filter(!is.na(overhd.diam))
+size_survey_2025_prep <- size_survey_2025 %>% 
+  rename_with(~ paste0(.x, "_sizecens"), height.cm:overhd.perp)
+
+#For the duplicates, we want to keep the AnnCens (more recent measurements)
+WL2_2025_heightcanopy_noduplicates <- WL2_anncens_heightcanopy_2025 %>% 
+  full_join(size_survey_2025_prep) %>% 
+  mutate(height.cm=if_else(!is.na(height.cm), height.cm, #if there's ann cens data, keep it
+                             height.cm_sizecens),
+         overhd.diam=if_else(!is.na(overhd.diam), overhd.diam, #if there's ann cens data, keep it
+                             overhd.diam_sizecens), #if no ann cens data then use size data
+         overhd.perp=if_else(!is.na(overhd.perp), overhd.perp, #if there's ann cens data, keep it
+                             overhd.perp_sizecens)) %>% 
+  select(bed:overhd.perp)
 ```
+
+### Merge all 2025 size
 ```{r}
-# bind rows for size surveys
-size_survey_2025 <- bind_rows(WL2_size_survey_20250924_blocksA_F_corrected, WL2_size_survey_20250929_blocksG_N_corrected)
+WL2_anncens_stemdiam_2025 <- WL2_ann_cens_20251028_corrected %>% select(bed:Unique.ID, diam.mm)
+Merged_2025 <- WL2_anncens_stemdiam_2025 %>% 
+  left_join(WL2_2025_heightcanopy_noduplicates)
 
-# mark rows from each dataset to keep track in Merged_2025
-size_survey_2025 <- size_survey_2025 %>%
-  mutate(DataSet = "Size")
-
-WL2_ann_cens_20251028_corrected <- WL2_ann_cens_20251028_corrected %>%
-  mutate(DataSet = "AnnCens")
-
+Merged_2025$canopy.area <- pi * (Merged_2025$overhd.diam/2) * (Merged_2025$overhd.perp/2)
+size_variables_2025 <- Merged_2025 %>% select(diam.mm:height.cm, canopy.area)
 ```
 
-
+## plots for 2025 correlations
 ```{r}
-# chunk to debug merged_2025 
-Merged_2025 %>% 
-  count(is.na(overhd.diam))
-
-unmatched <- anti_join(
-  size_survey_2025, 
-  WL2_ann_cens_20251028_corrected, 
-  by = "row"
-)
-
-head(unmatched$row)
-
-names(size_survey_2025)
-names(WL2_ann_cens_20251028_corrected)
-```
-```{r}
-# debugging chunk for size_survey_2025
-size_survey_2025 <- size_survey_2025 %>%
-  mutate(
-    survey.date = mdy(survey.date)
-)
-
-size_latest <- size_clean %>%
-  group_by(Unique.ID) %>%
-  slice_max(order_by = survey.date, n = 1, with_ties = FALSE) %>%
-  ungroup()
-
-size_latest %>%
-  count(Unique.ID) %>%
-  filter(n > 1)
-
-```
-
-
-
-```{r}
-# merge 2025 data + filter
-Merged_2025 <- size_survey_2025 %>% 
-  left_join(
-    WL2_ann_cens_20251028_corrected %>%
-      select(bed, row, col, diam.mm),
-    by = c("bed", "row", "col")
-  )
-
-# LEFT OFF HERE 4/14/26
-```
-
-```{r} 
-# code to keep/replace later
-Merged_2025 <- WL2_ann_cens_20251028_corrected %>% 
-  left_join(
-    size_survey_2025 %>% 
-      select(Unique.ID, height.cm, overhd.diam, overhd.perp ),
-    by = "Unique.ID")
-```
-
-
-
-```{r}
-# plots for 2025 correlations
-
 # height vs canopy area
 Merged_2025 %>% 
   ggplot(aes(x=height.cm, y=canopy.area)) +
@@ -262,8 +228,9 @@ ggsave("../output/Stem_v_CanopyArea_2025.png", width = 20, height = 14, units = 
 # NOTE: stem diameter graph had limited data to work with, not many rows with diam.mm data
 ```
 
+## 2025 correlation matrix
 ```{r}
-# 2025 correlation matrix
+
 cor_matrix_2025 <- cor(size_variables_2025, use = "complete.obs")
 
 png("../output/WL2_2025_Correlation_Matrix.png", width = 800, height = 800, )
@@ -273,8 +240,3 @@ corrplot(cor_matrix,
          addCoef.col = "black",
          tl.col = "black")
 ```
-
-```{r}
-sum(!is.na(WL2_ann_cens_20251006_corrected$diam.mm))
-```
-
