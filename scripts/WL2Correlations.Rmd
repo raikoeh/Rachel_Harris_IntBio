@@ -52,6 +52,8 @@ WL2_size_canopyinfo <- WL2_size_canopyinfo %>%
   mutate(DataSet = "Size")
 
 WL2_2024_canopy <- bind_rows(WL2_anncens_canopyinfo, WL2_size_canopyinfo)
+dim(WL2_2024_canopy) #286 rows 
+WL2_2024_canopy %>% select(unique.ID) %>% distinct() #only 165 plants so definitely some duplicates
 
 # merge 2024 data
 Merged_2024 <- WL2_anncens_stemdiam %>% 
