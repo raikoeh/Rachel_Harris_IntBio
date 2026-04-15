@@ -75,12 +75,12 @@ size_variables <- Merged_2024 %>% select(diam.mm:height.cm, canopy.area)
 ```
 
 ```{r}
-# plots for correlations
+# plots for correlations - Brandie changed to point plots since this is the raw data (not means)
 
 # height vs canopy area
 Merged_2024 %>% 
   ggplot(aes(x=height.cm, y=canopy.area)) +
-  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  geom_point() +
   theme_bw() +
   labs(x="Height", y="Canopy Area", title="Height vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
@@ -89,7 +89,7 @@ ggsave("../output/Height vs Canopy.png", width = 20, height = 14, units = "in")
 # overhead diameter vs canopy area
 Merged_2024 %>% 
   ggplot(aes(x=overhd.diam, y=canopy.area)) +
-  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  geom_point() +
   theme_bw() +
   labs(x="Diameter", y="Canopy Area", title="Overhead Diameter vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
@@ -98,7 +98,7 @@ ggsave("../output/Overhead Diameter vs Canopy Area.png", width = 20, height = 14
 # stem diameter vs canopy area
 Merged_2024 %>% 
   ggplot(aes(x=diam.mm, y=canopy.area)) +
-  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  geom_point() +
   theme_bw() +
   labs(x="Stem Diameter (mm)", y="Canopy Area", title="Stem Diameter vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
@@ -107,7 +107,7 @@ ggsave("../output/Stem Diameter vs Canopy Area.png", width = 20, height = 14, un
 # overhead perp vs canopy area
 Merged_2024 %>% 
   ggplot(aes(x=overhd.perp, y=canopy.area)) +
-  geom_col(width = 0.7,position = position_dodge(0.75)) + 
+  geom_point() +
   theme_bw() +
   labs(x="Perpendicular", y="Canopy Area", title="Overhead Perpendicular vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
@@ -119,7 +119,7 @@ ggsave("../output/Perpendicular vs Canopy Area.png", width = 20, height = 14, un
 # 2024 correlation matrix
 cor_matrix <- cor(size_variables, use = "complete.obs")
 
-png("../output/WL2_2024_Correlation_Matrix.png", width = 800, height = 800, )
+png("../output/WL2_2024_Correlation_Matrix.png", width = 800, height = 800)
 corrplot(cor_matrix,
          method = "square",
          type = "lower",
