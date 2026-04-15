@@ -66,24 +66,13 @@ WL2_2024_canopy_noduplicates <- WL2_anncens_canopyinfo %>%
 # merge 2024 data
 Merged_2024 <- WL2_anncens_stemdiam %>% 
   left_join(WL2_size_height) %>% 
-  left_join(WL2_2024_canopy)
-Merged_2024 %>% filter(!is.na(overhd.diam)) #285 rows with canopy info, merge mostly worked
-# Note that we lost 1 row of canopy info, Rachel should investigate 
+  left_join(WL2_2024_canopy_noduplicates)
+Merged_2024 %>% filter(!is.na(overhd.diam)) #164 rows with canopy info
+# Note that we lost 1 row of canopy info, likely because we didn't have stem diameter for that plant 
 
 Merged_2024$canopy.area <- pi * (Merged_2024$overhd.diam/2) * (Merged_2024$overhd.perp/2)
 size_variables <- Merged_2024 %>% select(diam.mm:height.cm, canopy.area)
 ```
-
-```{r}
-# keep rows that come from anncens data
-Merged_2024 <- Merged_2024 %>% 
-  filter(!grepl("Size", DataSet, ignore.case = TRUE))
-
-# remove rows without data for canopy area
-Merged_2024 <- Merged_2024[!is.na(Merged_2024$canopy.area), ]
-```
-
-
 
 ```{r}
 # plots for correlations
