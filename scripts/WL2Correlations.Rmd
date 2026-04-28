@@ -84,46 +84,48 @@ Brandie changed to point plots since this is the raw data (not means)
 Merged_2024 %>% 
   ggplot(aes(x=height.cm, y=canopy.area)) +
   geom_point() +
+  coord_cartesian(ylim = c(0, 75)) +  
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
   theme_bw() +
-  labs(x="Height", y="Canopy Area", title="Height vs Canopy Area") + 
+  labs(x="Height", y="Canopy Area", title="2024 Height vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("../output/Height_v_Canopy_Area2024.png", width = 20, height = 14, units = "in")
+ggsave("../output/2024_Height_v_Canopy_Area.png", width = 20, height = 14, units = "in")
 
 # overhead diameter vs canopy area
 Merged_2024 %>% 
   ggplot(aes(x=overhd.diam, y=canopy.area)) +
   geom_point() +
   theme_bw() +
-  labs(x="Diameter", y="Canopy Area", title="Overhead Diameter vs Canopy Area") + 
+  labs(x="Diameter", y="Canopy Area", title="2024 Overhead Diameter vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("../output/Overhead Diameter_v_Canopy_Area2024.png", width = 20, height = 14, units = "in")
+ggsave("../output/2024_Overhead_Diameter_v_Canopy_Area.png", width = 20, height = 14, units = "in")
 
 # stem diameter vs canopy area
 Merged_2024 %>% 
   ggplot(aes(x=diam.mm, y=canopy.area)) +
   geom_point() +
   theme_bw() +
-  labs(x="Stem Diameter (mm)", y="Canopy Area", title="Stem Diameter vs Canopy Area") + 
+  labs(x="Stem Diameter (mm)", y="Canopy Area", title="2024 Stem Diameter vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("../output/Stem Diameter_v_Canopy_Area2024.png", width = 20, height = 14, units = "in")
+ggsave("../output/2024_Stem_Diameter_v_Canopy_Area.png", width = 20, height = 14, units = "in")
 
 # overhead perp vs canopy area
 Merged_2024 %>% 
   ggplot(aes(x=overhd.perp, y=canopy.area)) +
   geom_point() +
   theme_bw() +
-  labs(x="Perpendicular", y="Canopy Area", title="Overhead Perpendicular vs Canopy Area") + 
+  labs(x="Perpendicular", y="Canopy Area", title="2024 Overhead Perpendicular vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("../output/Perpendicular_v_Canopy_Area2024.png", width = 20, height = 14, units = "in")
+ggsave("../output/2024_Perpendicular_v_Canopy_Area.png", width = 20, height = 14, units = "in")
 
 # stem diameter vs height
 Merged_2024 %>% 
   ggplot(aes(x=diam.mm, y=height.cm)) +
   geom_point() + 
   theme_bw() +
-  labs(x="Stem Diameter", y="Height", title="Stem Diameter vs Height") + 
+  labs(x="Stem Diameter", y="Height", title="2024 Stem Diameter vs Height") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("../output/Stem_v_Height2024.png", width = 20, height = 14, units = "in")
+ggsave("../output/2024_Stem_v_Height.png", width = 20, height = 14, units = "in")
 ```
 
 ## 2024 correlation matrix
@@ -138,6 +140,13 @@ corrplot(cor_matrix,
          addCoef.col = "black",
          tl.col = "black")
 ```
+
+
+## Separate Plots for 2024 and 2023 planted plants
+```{r}
+Final_2023_2024_Pop_Loc_Info <- read.csv("../input/Final_2023_2024_Pop_Loc_Info.csv")
+```
+
 
 ## Read in 2025 data
 ```{r}
@@ -210,36 +219,36 @@ Merged_2025 %>%
   ggplot(aes(x=height.cm, y=canopy.area)) +
   geom_point() + 
   theme_bw() +
-  labs(x="Height", y="Canopy Area", title="Height vs Canopy Area") + 
+  labs(x="Height", y="Canopy Area", title="2025 Height vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("../output/Height_v_Canopy_2025.png", width = 20, height = 14, units = "in")
+ggsave("../output/2025_Height_v_Canopy.png", width = 20, height = 14, units = "in")
 
 # overhead perp vs canopy area
 Merged_2025 %>% 
   ggplot(aes(x=overhd.perp, y=canopy.area)) +
   geom_point() + 
   theme_bw() +
-  labs(x="Overhead Perpendicular", y="Canopy Area", title="Overhead Perpendicular vs Canopy Area") + 
+  labs(x="Overhead Perpendicular", y="Canopy Area", title="2025 Overhead Perpendicular vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("../output/Perpendicular_v_CanopyArea_2025.png", width = 20, height = 14, units = "in")
+ggsave("../output/2025_Perpendicular_v_CanopyArea.png", width = 20, height = 14, units = "in")
 
 # Overhead diameter vs canopy area
 Merged_2025 %>% 
   ggplot(aes(x=overhd.diam, y=canopy.area)) +
   geom_point() + 
   theme_bw() +
-  labs(x="Diameter", y="Canopy Area", title="Diameter vs Canopy Area") + 
+  labs(x="Diameter", y="Canopy Area", title=" 2025 Diameter vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("../output/Diameter_v_CanopyArea_2025.png", width = 20, height = 14, units = "in")
+ggsave("../output/2025_Diameter_v_CanopyArea.png", width = 20, height = 14, units = "in")
 
 # stem diameter vs canopy area
 Merged_2025 %>% 
   ggplot(aes(x=diam.mm, y=canopy.area)) +
   geom_point() + 
   theme_bw() +
-  labs(x="Stem Diameter", y="Canopy Area", title="Stem Diameter vs Canopy Area") + 
+  labs(x="Stem Diameter", y="Canopy Area", title=" 2025 Stem Diameter vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("../output/Stem_v_CanopyArea_2025.png", width = 20, height = 14, units = "in")
+ggsave("../output/2025_Stem_v_CanopyArea.png", width = 20, height = 14, units = "in")
 # NOTE: stem diameter graph had limited data to work with, not many rows with diam.mm data
 
 # stem diameter vs height
@@ -247,9 +256,9 @@ Merged_2025 %>%
   ggplot(aes(x=diam.mm, y=height.cm)) +
   geom_point() + 
   theme_bw() +
-  labs(x="Stem Diameter", y="Height", title="Stem Diameter vs Height") + 
+  labs(x="Stem Diameter", y="Height", title="2025 Stem Diameter vs Height") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("../output/Stem_v_Height2025.png", width = 20, height = 14, units = "in")
+ggsave("../output/2025_Stem_v_Height.png", width = 20, height = 14, units = "in")
 ```
 
 ## 2025 correlation matrix
