@@ -142,12 +142,6 @@ corrplot(cor_matrix,
 ```
 
 
-## Separate Plots for 2024 and 2023 planted plants
-```{r}
-Final_2023_2024_Pop_Loc_Info <- read.csv("../input/Final_2023_2024_Pop_Loc_Info.csv")
-```
-
-
 ## Read in 2025 data
 ```{r}
 WL2_ann_cens_20251028_corrected <- read_csv("../input/WL2_ann_cens_20251028_corrected.csv", 
@@ -273,3 +267,43 @@ corrplot(cor_matrix_2025,
          addCoef.col = "black",
          tl.col = "black")
 ```
+
+
+## Separate 2024 and 2023 planted plants
+```{r}
+Final_2023_2024_Pop_Loc_Info <- read.csv("../input/Final_2023_2024_Pop_Loc_Info.csv")
+
+# remove 2023-TM2-fruit rows
+Filtered_2023_2024_Pop_Loc <- Final_2023_2024_Pop_Loc_Info %>% 
+  filter(Pop.Type != "2023-TM2-fruit")
+
+Merged_2023_2024_Pop_Loc <- Filtered_2023_2024_Pop_Loc %>%
+  inner_join(Merged_2024, by = "unique.ID")
+
+# separate into the years plants planted
+Filtered_Pop_Loc_23_24 <- Merged_2023_2024_Pop_Loc %>%
+  mutate(PlantYear = case_when(
+    Pop.Type %in% c("F1", "F2", "Parent") ~ "2024",
+    Pop.Type == "2023-survivor" ~ "2023",
+    TRUE ~ NA_character_
+  ))
+
+```
+## Plots for 2023 planted plants
+```{r}
+# stem diameter, canopy area, and height
+# height vs canopy area
+Filtered_Pop_Loc_23_24 %>% 
+  # line to filter only 2023 planted
+  ggplot(aes(x=height.cm, y=canopy.area)) +
+  geom_point() +
+  coord_cartesian(ylim = c(0, 75)) +  
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_bw() +
+  labs(x="Height", y="Canopy Area", title="2024 Height vs Canopy Area") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+ggsave("../output/2024_Height_v_Canopy_Area.png", width = 20, height = 14, units = "in")
+
+
+```
+
