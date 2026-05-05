@@ -294,16 +294,68 @@ Filtered_Pop_Loc_23_24 <- Merged_2023_2024_Pop_Loc %>%
 # stem diameter, canopy area, and height
 # height vs canopy area
 Filtered_Pop_Loc_23_24 %>% 
-  # line to filter only 2023 planted
+  filter(Pop.Type == "2023-survivor") %>% 
   ggplot(aes(x=height.cm, y=canopy.area)) +
   geom_point() +
   coord_cartesian(ylim = c(0, 75)) +  
   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
   theme_bw() +
-  labs(x="Height", y="Canopy Area", title="2024 Height vs Canopy Area") + 
+  labs(x="Height", y="Canopy Area", title="2023 Planted Plants: Height vs Canopy Area") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
-ggsave("../output/2024_Height_v_Canopy_Area.png", width = 20, height = 14, units = "in")
 
+# stem diameter vs canopy area
+Filtered_Pop_Loc_23_24 %>% 
+  filter(Pop.Type == "2023-survivor") %>% 
+  ggplot(aes(x=diam.mm, y=canopy.area)) +
+  geom_point() +
+  coord_cartesian(ylim = c(0, 75)) +  
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_bw() +
+  labs(x="Stem Diameter", y="Canopy Area", title="2023 Planted Plants: Stem Diameter vs Canopy Area") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
 
+# stem diameter vs height
+Filtered_Pop_Loc_23_24 %>% 
+  filter(Pop.Type == "2023-survivor") %>% 
+  ggplot(aes(x=diam.mm, y=height.cm)) +
+  geom_point() +
+  coord_cartesian(ylim = c(0, 75)) +  
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_bw() +
+  labs(x="Stem Diameter", y="Height", title="2023 Planted Plants: Stem Diameter vs Height") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+
+```
+## Plots for 2024 planted plants
+```{r}
+Filtered_Pop_Loc_23_24 %>% 
+  filter(PlantYear == "2024") %>% 
+  ggplot(aes(x=height.cm, y=canopy.area)) +
+  geom_point() +
+  coord_cartesian(ylim = c(0, 75)) +  
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_bw() +
+  labs(x="Height", y="Canopy Area", title="2024 Planted Plants: Height vs Canopy Area") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+
+Filtered_Pop_Loc_23_24 %>% 
+  filter(PlantYear == "2024") %>% 
+  ggplot(aes(x=diam.mm, y=canopy.area)) +
+  geom_point() +
+  coord_cartesian(ylim = c(0, 75)) +  
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_bw() +
+  labs(x="Stem Diameter", y="Canopy Area", title="2024 Planted Plants: Stem Diameter vs Canopy Area") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+
+Filtered_Pop_Loc_23_24 %>% 
+  filter(PlantYear == "2024") %>% 
+  ggplot(aes(x=diam.mm, y=height.cm)) +
+  geom_point() +
+  coord_cartesian(ylim = c(0, 75)) +  
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_bw() +
+  labs(x="Stem Diameter", y="Height", title="2024 Planted Plants: Stem Diameter vs Height") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
 ```
 
