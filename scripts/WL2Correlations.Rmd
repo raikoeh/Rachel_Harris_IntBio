@@ -326,7 +326,7 @@ Filtered_Pop_Loc_23_24 %>%
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
 
 ```
-## Plots for 2024 planted plants
+## Plots for 2024 planted plants (2023-2024)
 ```{r}
 Filtered_Pop_Loc_23_24 %>% 
   filter(PlantYear == "2024") %>% 
@@ -357,5 +357,58 @@ Filtered_Pop_Loc_23_24 %>%
   theme_bw() +
   labs(x="Stem Diameter", y="Height", title="2024 Planted Plants: Stem Diameter vs Height") + 
   theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+```
+```{r}
+# read in csv 
+Pop_Loc_Info_2024_2025 <- read.csv("../input/2025_Pop_Loc_Info Updated.csv")
+
+# merge with 2025 size info
+Merged_2025_Pop_Loc <- Pop_Loc_Info_2024_2025 %>%
+  inner_join(Merged_2025, by = "Unique.ID")
+
+# change available to 2025 plant
+Merged_2025_Pop_Loc$status[Merged_2025_Pop_Loc$status == "available"] <- "2025_plant"
+```
+## Plots for 2025 planted plants
+```{r}
+# identify parent vs crosses
+Merged_2025_Pop_Loc <- Merged_2025_Pop_Loc %>% 
+  mutate(Pop.Type=if_else(str_detect(pop.id, "x"), "Cross",
+                                  "Parent"
+                          ))
+
+Merged_2025_Pop_Loc %>% 
+  filter(status == "2025_plant") %>% 
+  ggplot(aes(x=height.cm, y=canopy.area, color = Pop.Type)) +
+  geom_point() +
+  coord_cartesian(ylim = c(0, 75)) +  
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_bw() +
+  labs(x="Height", y="Canopy Area", title="2025 Planted Plants: Height vs Canopy Area") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+
+Merged_2025_Pop_Loc %>% 
+  filter(status == "2025_plant") %>% 
+  ggplot(aes(x=diam.mm, y=canopy.area, color = Pop.Type)) +
+  geom_point() +
+  coord_cartesian(ylim = c(0, 75)) +  
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_bw() +
+  labs(x="Stem Diameter", y="Canopy Area", title="2025 Planted Plants: Stem Diameter vs Canopy Area") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+
+Merged_2025_Pop_Loc %>% 
+  filter(status == "2025_plant") %>% 
+  ggplot(aes(x=diam.mm, y=height.cm, color = Pop.Type)) +
+  geom_point() +
+  coord_cartesian(ylim = c(0, 75)) +  
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_bw() +
+  labs(x="Stem Diameter", y="Height", title="2025 Planted Plants: Stem Diameter vs Height") + 
+  theme(axis.text.x = element_text(angle = 45, hjust =1, size = 11), text=element_text(size=20))
+```
+## Parent vs Cross pop facet plots
+```{r}
+
 ```
 
